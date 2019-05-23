@@ -3,8 +3,8 @@
 #   A. Gnias
 #   Created: 5/22/2019
 #
-#   Linux tux5 4.15.0-43-generic
-#   Python 3.6.7
+#   Linux 4.18.0-18-generic #19-Ubuntu
+#   Python 3.6.8
 #   Vim 8.0 [tabstop=3]
 
 import json
