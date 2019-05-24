@@ -9,13 +9,16 @@ PYTHON = python3
 VIEWER = less
 SHELL = bash
 
-.PHONY : clean view test_module run
+.PHONY : clean view license test_module run
 
 clean :
 	rm -rf *.pyc __pycache__
 
 view : spotify_module.py
 	$(VIEWER) spotify_module.py
+
+license : LICENSE
+	$(VIEWER) LICENSE
 
 test_module : spotify_module.py
 	$(PYTHON) spotify_module.py
