@@ -9,7 +9,7 @@ PYTHON = python3
 VIEWER = less
 SHELL = bash
 
-.PHONY : clean view prob1 run
+.PHONY : clean view test_module run
 
 clean :
 	rm -rf *.pyc __pycache__
