@@ -47,15 +47,23 @@ def query_artist(oauth, artist) :
 	d2 = data["artists"]["items"][0]
 	return d2
 
+
+
 def get_albums_by_artist(oauth, artist_id) :
-	SearchURL = "https://api.spotify.com/v1/artists/{}/albums".format(artist_id)
+	SearchURL = "https://api.spotify.com/v1/artists/{}/albums?include_groups=album,single&country=US&limit=50".format(artist_id)
 	headers = {'Content-Type': 'application/json',
               'Authorization': 'Bearer {0}'.format(oauth)}
 	response = requests.get(SearchURL, headers=headers)
 	if response.status_code != 200 :
 		print("catch errors here")
 	data = json.loads(response.content.decode("utf-8"))
-	print_pretty_json(data)
+	album_list = data["items"]
+	#for album in album_list :
+		#print_pretty_json(album)
+		#print("")
+	testalbum = album_list[1]
+	print(testalbum["href"])
+	print(testalbum["id"])
 
 
 def print_pretty_json(jsonDataLoads) :
