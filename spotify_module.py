@@ -3,6 +3,10 @@
 #   A. Gnias
 #   Created: 5/22/2019
 #
+#   spotify_module.py - Functions utilizing the Spotify API
+# 
+#   Requirements: OAuth Token
+#
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.6.8
 #   Vim 8.0 [tabstop=3]

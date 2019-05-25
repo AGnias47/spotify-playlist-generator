@@ -1,14 +1,11 @@
 #!/usr/bin/python3
 #
 #   A. Gnias
-#   date
-#   CS 260
-#   HW Assignment xxx
 #
-#   name and description
+#   general_functions.py - General functions needed that do not utilize the Spotify API
 #
-#   Linux tux5 4.15.0-43-generic
-#   Python 3.6.7
+#   Linux 4.18.0-18-generic #19-Ubuntu
+#   Python 3.6.8
 #   Vim 8.0 [tabstop=3]
 
 def parse_csv_playlist(fname) :
