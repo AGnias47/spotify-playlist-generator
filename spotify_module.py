@@ -53,19 +53,14 @@ def get_json_response_dict(oauth, SearchURL) :
 	return json.loads(response.content.decode("utf-8"))
 
 
-def get_albums_by_artist(oauth, artist_id, data_specifier="name") :
+def get_album_data_by_artist(oauth, artist_id, data_specifier="name") :
 	SearchURL = "https://api.spotify.com/v1/artists/{}/albums?include_groups=album,single&country=US&limit=50".format(artist_id)
 	data = get_json_response_dict(oauth, SearchURL)
 	album_list = data["items"]
-	#for album in album_list :
-		#print_pretty_json(album)
-		#print("")
-	testalbum = album_list[1]
-	print(testalbum[data_specifier])
-	#print(testalbum["href"])
-	#print(testalbum["id"])
-	#print(testalbum["name"])
-
+	data_list = list()
+	for album in album_list :
+		data_list.append(album[data_specifier])
+	return data_list
 
 def print_pretty_json(jsonDataLoads) :
 	"""
@@ -83,4 +78,10 @@ if __name__ == "__main__" :
 	print(get_artist_external_url(OAUTH_token, artist))
 	SealID = get_artist_id(OAUTH_token, artist)
 	print(SealID)
-	get_albums_by_artist(OAUTH_token, SealID)
+	print(get_album_data_by_artist(OAUTH_token, SealID))
+	print(get_album_data_by_artist(OAUTH_token, SealID, "href"))
+	print(get_album_data_by_artist(OAUTH_token, SealID, "id"))
+
+
+
+
