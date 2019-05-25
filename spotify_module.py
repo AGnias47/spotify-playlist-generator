@@ -41,12 +41,22 @@ def query_artist(oauth, artist) :
 	headers = {'Content-Type': 'application/json',
               'Authorization': 'Bearer {0}'.format(oauth)}
 	response = requests.get(SearchURL + SearchKey, headers=headers)
-	if response.status_code != 200:
+	if response.status_code != 200 :
 		print("An error occurred here")
 	data = json.loads(response.content.decode('utf-8'))
 	d2 = data["artists"]["items"][0]
-	print(type(d2))
 	return d2
+
+def get_albums_by_artist(oauth, artist_id) :
+	SearchURL = "https://api.spotify.com/v1/artists/{}/albums".format(artist_id)
+	headers = {'Content-Type': 'application/json',
+              'Authorization': 'Bearer {0}'.format(oauth)}
+	response = requests.get(SearchURL, headers=headers)
+	if response.status_code != 200 :
+		print("catch errors here")
+	data = json.loads(response.content.decode("utf-8"))
+	print_pretty_json(data)
+
 
 def print_pretty_json(jsonDataLoads) :
 	"""
@@ -62,4 +72,6 @@ if __name__ == "__main__" :
 	artist = "Seal"
 	print_pretty_json(query_artist(OAUTH_token, artist))
 	print(get_artist_external_url(OAUTH_token, artist))
-	print(get_artist_id(OAUTH_token, artist))
+	SealID = get_artist_id(OAUTH_token, artist)
+	print(SealID)
+	get_albums_by_artist(OAUTH_token, SealID)
