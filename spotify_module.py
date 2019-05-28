@@ -85,7 +85,3 @@ if __name__ == "__main__" :
 	print(get_album_data_by_artist(OAUTH_token, SealID))
 	print(get_album_data_by_artist(OAUTH_token, SealID, "href"))
 	print(get_album_data_by_artist(OAUTH_token, SealID, "id"))
-
-
-
-

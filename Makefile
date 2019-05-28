@@ -25,4 +25,7 @@ license : LICENSE
 test : spotify_module.py
 	$(PYTHON) spotify_module.py $$(cat OAuth_Token)
 
+runnode : 
+	node ~/spotifyapitestbed/web-api-auth-examples/authorization_code/app.js
 run : test_module view
+
