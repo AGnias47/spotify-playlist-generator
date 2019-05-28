@@ -8,7 +8,7 @@
 #   Requirements: OAuth Token
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.6.8
+#   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
 import json
