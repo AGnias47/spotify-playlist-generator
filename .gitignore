@@ -1,6 +1,10 @@
 #OAuth Token
 OAuth_Token
 
+#outfiles for testing
+out*
+oot
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

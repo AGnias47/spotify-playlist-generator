@@ -5,7 +5,7 @@
 #
 #   spotify_module.py - Functions utilizing the Spotify API
 # 
-#   Requirements: OAuth Token
+#   Requirements: OAuth Token value for Spotify API
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.7.3
@@ -14,6 +14,8 @@
 import json
 import requests
 from sys import argv as arg
+from sys import exit as sys_exit
+from time import sleep
 
 
 def get_artist_external_url(oauth, artist) :
@@ -48,6 +50,11 @@ def query_artist(oauth, artist) :
 	return d2
 
 def get_json_response_dict(oauth, SearchURL) :
+	"""
+	Returns a json dict from a REST get request
+	Input: OAuth token and Search URL
+	Return Value: Json returned from request as a dict
+	"""
 	headers = {'Content-Type': 'application/json',
               'Authorization': 'Bearer {0}'.format(oauth)}
 	response = requests.get(SearchURL, headers=headers)
@@ -56,8 +63,15 @@ def get_json_response_dict(oauth, SearchURL) :
 		return "Something bad here"
 	return json.loads(response.content.decode("utf-8"))
 
-
 def get_album_data_by_artist(oauth, artist_id, data_specifier="name") :
+	"""
+	Get data on an artists albums. Can return data as a list of 
+	either the names of an artist's albums as a string, the URL
+	used to access the albums, or the ID of the albums.
+	Input: OAuth Token, artist ID, data specifier (can be either
+	name, href, or id; takes name by default)
+	Return value: list of specified data as strings
+	"""
 	SearchURL = "https://api.spotify.com/v1/artists/{}/albums?include_groups=album,single&country=US&limit=50".format(artist_id)
 	data = get_json_response_dict(oauth, SearchURL)
 	album_list = data["items"]
@@ -66,22 +80,60 @@ def get_album_data_by_artist(oauth, artist_id, data_specifier="name") :
 		data_list.append(album[data_specifier])
 	return data_list
 
+def get_tracks_by_album_id(oauth, album_id, data_specifier="name") :
+	"""
+	Get data on an album's tracks. Can return data as a list of 
+	either the names of an album's tracks as a string, the URL
+	used to access the tracks, or the ID of the tracks.
+	Input: OAuth Token, album ID, data specifier (can be either
+	name, href, or id; takes name by default)
+	Return value: list of specified data as strings
+	"""
+	SearchURL = "https://api.spotify.com/v1/albums/{}/tracks".format(album_id)
+	data = get_json_response_dict(oauth, SearchURL)
+	track_list = data["items"]
+	data_list = list()
+	for track in track_list :
+		data_list.append(track[data_specifier])
+	return data_list
+
 def print_pretty_json(jsonDataLoads) :
 	"""
 	Prints a formatted json to stdout
 	Input: json formatted as a dict by Python JSON library
 	Return Value: None (prints to stdout)
 	"""
-	print(type(jsonDataLoads))
 	print(json.dumps(jsonDataLoads, indent=3, sort_keys=False))
 
 if __name__ == "__main__" :
-	OAUTH_token= arg[1]
+	#Check if the OAuth token has been defined as an argument; if not, exit
+	try :
+		OAUTH_token= arg[1]
+	except :
+		sys_exit("OAUTH token must be provided as an argument")
+	#Artist to use as an example
 	artist = "Seal"
+	test_delay = 3
+
+	print("Artist JSON data")
 	print_pretty_json(query_artist(OAUTH_token, artist))
-	print(get_artist_external_url(OAUTH_token, artist))
+	sleep(test_delay)
+
+	print("Specific artist data")
+	external_url = get_artist_external_url(OAUTH_token, artist)
 	SealID = get_artist_id(OAUTH_token, artist)
-	print(SealID)
+	print("{}'s external URL: {}".format(artist, external_url))
+	print("{}'s ID: {}".format(artist, SealID))
+	sleep(test_delay)
+
+	print("Album Data Functions")
 	print(get_album_data_by_artist(OAUTH_token, SealID))
 	print(get_album_data_by_artist(OAUTH_token, SealID, "href"))
 	print(get_album_data_by_artist(OAUTH_token, SealID, "id"))
+	sleep(test_delay)
+
+	print("Track Data Functions")
+	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi"))
+	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi", "href"))
+	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi", "id"))
+
