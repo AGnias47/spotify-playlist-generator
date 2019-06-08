@@ -1,6 +1,11 @@
 #OAuth Token
 OAuth_Token
 
+#unit testing outputs
+Test_Artifacts/album_data_test
+Test_Artifacts/artist_data_test
+Test_Artifacts/track_data_test
+
 #outfiles for testing
 out*
 oot
