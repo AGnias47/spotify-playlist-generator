@@ -22,10 +22,11 @@ view : spotify_module.py
 license : LICENSE
 	$(VIEWER) LICENSE
 
-test : spotify_module.py
-	$(PYTHON) spotify_module.py $$(cat OAuth_Token)
+test : test_spotify_module.py
+	$(PYTHON) test_spotify_module.py $$(cat OAuth_Token)
 
 runnode : 
 	node ~/spotifyapitestbed/web-api-auth-examples/authorization_code/app.js
-run : test_module view
 
+run : spotify_module.py
+	$(PYTHON) spotify_module.py $$(cat OAuth_Token)

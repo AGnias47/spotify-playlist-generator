@@ -62,6 +62,8 @@ if __name__ == "__main__" :
 	
 	get_artist_JSON_test(OAUTH_token, artist)
 	get_artist_data_test(OAUTH_token, artist) 
+	assert cmp("Test_Artifacts/expected_artist_data_test", "Test_Artifacts/artist_data_test")
 	get_album_data_test(OAUTH_token, artist, SealID)
+	assert cmp("Test_Artifacts/expected_album_data_test", "Test_Artifacts/album_data_test")
 	get_track_data_test(OAUTH_token, artist)
-
+	assert cmp("Test_Artifacts/expected_track_data_test", "Test_Artifacts/track_data_test")
