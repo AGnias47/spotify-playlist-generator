@@ -15,6 +15,32 @@ from spotify_module import *
 from filecmp import cmp
 from sys import argv
 
+def get_artist_JSON_test(OAUTH_token, artist) :
+	print("Artist JSON data")
+	print_pretty_json(query_artist(OAUTH_token, artist))
+	sleep(test_delay)
+
+def get_artist_data_test(OAUTH_token, artist) :
+	print("Specific artist data")
+	external_url = get_artist_external_url(OAUTH_token, artist)
+	SealID = get_artist_id(OAUTH_token, artist)
+	print("{}'s external URL: {}".format(artist, external_url))
+	print("{}'s ID: {}".format(artist, SealID))
+	sleep(test_delay)
+
+def get_album_data_test(OAUTH_token, artist, SealID) :
+	print("Album Data Functions")
+	print(get_album_data_by_artist(OAUTH_token, SealID))
+	print(get_album_data_by_artist(OAUTH_token, SealID, "href"))
+	print(get_album_data_by_artist(OAUTH_token, SealID, "id"))
+	sleep(test_delay)
+
+def get_track_data_test(OAUTH_token, artist) :
+	print("Track Data Functions")
+	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi"))
+	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi", "href"))
+	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi", "id"))
+
 if __name__ == "__main__" :
 	#Check if the OAuth token has been defined as an argument; if not, exit
 	try :
@@ -23,27 +49,11 @@ if __name__ == "__main__" :
 		sys_exit("OAUTH token must be provided as an argument")
 	#Artist to use as an example
 	artist = "Seal"
-	test_delay = 3
-
-	print("Artist JSON data")
-	print_pretty_json(query_artist(OAUTH_token, artist))
-	sleep(test_delay)
-
-	print("Specific artist data")
-	external_url = get_artist_external_url(OAUTH_token, artist)
 	SealID = get_artist_id(OAUTH_token, artist)
-	print("{}'s external URL: {}".format(artist, external_url))
-	print("{}'s ID: {}".format(artist, SealID))
-	sleep(test_delay)
-
-	print("Album Data Functions")
-	print(get_album_data_by_artist(OAUTH_token, SealID))
-	print(get_album_data_by_artist(OAUTH_token, SealID, "href"))
-	print(get_album_data_by_artist(OAUTH_token, SealID, "id"))
-	sleep(test_delay)
-
-	print("Track Data Functions")
-	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi"))
-	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi", "href"))
-	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi", "id"))
+	test_delay = 3
+	
+	get_artist_JSON_test(OAUTH_token, artist)
+	get_artist_data_test(OAUTH_token, artist) 
+	get_album_data_test(OAUTH_token, artist, SealID)
+	get_track_data_test(OAUTH_token, artist)
 
