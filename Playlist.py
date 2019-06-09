@@ -7,9 +7,10 @@
 #   Vim 8.0 [tabstop=3]
 
 class Playlist :
-	def __init__(self, name, id=None) :
+	def __init__(self, name, tracks=None, id=None) :
 		self._name = name
 		self._id = id
+		self._tracks = tracks
 
 	def name(self) :
 		return self._name
@@ -17,11 +18,18 @@ class Playlist :
 	def id(self) :
 		return self._id
 
-	#def create(self) :
-		#stub
+	def tracks(self) :
+		return self._tracks
 
-	#def exists(self, name) :
-		#stub
+	def create(self) :
+		if self.exists() == False :
+			#create the playlist here
+			pass
+
+	def exists(self) :
+		if _id is None :
+			return False
+		#check through spofity API
 
 if __name__ == "__main__" :
 	playlist = Playlist("Doldrums")

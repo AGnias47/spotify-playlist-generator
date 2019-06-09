@@ -7,10 +7,9 @@
 #   Vim 8.0 [tabstop=3]
 
 from general_functions import *
+from Playlist import Playlist
 
-playlist = parse_csv_playlist("playlist.csv")
+playlistTracks = parse_csv_playlist("playlist.csv")
+playlist = Playlist("Test Playlist", playlistTracks)
 #create an empty playlist in spotify or append to an existing one
-for song in playlist :
-	artist = song[0]
-	track = song[1]
-	#add the song to the created playlist
+#add the song to the created playlist
