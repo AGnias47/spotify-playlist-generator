@@ -105,6 +105,18 @@ def print_pretty_json(jsonDataLoads) :
 	"""
 	print(json.dumps(jsonDataLoads, indent=3, sort_keys=False))
 
+def create_playlist(oauth) :
+	PlaylistURL = "https://api.spotify.com/v1/users/put uname here/playlists" 
+	data = {'name': 'new_playlist',
+           'description': 'a dumb playlist',
+           'public': 'false'}
+	headers = {'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer {0}'.format(oauth)}
+	response = requests.post(PlaylistURL, headers=headers, data=data)
+	print(response.status_code)
+	print(response.reason)
+	
 if __name__ == "__main__" :
 	#Used for quick testing area
 	#
@@ -113,4 +125,4 @@ if __name__ == "__main__" :
 		OAUTH_token= arg[1]
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
-
+	create_playlist(OAUTH_token)
