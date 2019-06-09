@@ -105,16 +105,22 @@ def print_pretty_json(jsonDataLoads) :
 	"""
 	print(json.dumps(jsonDataLoads, indent=3, sort_keys=False))
 
-def create_playlist(oauth) :
+def create_playlist(oauth, name, description="Playlist generated from Spotify API") :
+	"""
+	Creates a playlist for the logged-in user
+	Input: OAuth Token, Playlist name, Playlist description
+	Output: True if playlist was created, else False
+	"""
 	PlaylistURL = "https://api.spotify.com/v1/me/playlists" 
-	data = "{\"name\":\"New_ Playlist\",\"description\":\"New playlist description\",\"public\":false}" 
+	data = "{\"name\":\"" + name + "\",\"description\":\"" + description + "\",\"public\":false}" 
 	headers = {'Accept': 'application/json',
               'Content-Type': 'application/json',
               'Authorization': 'Bearer {0}'.format(oauth)}
 	response = requests.post(PlaylistURL, headers=headers, data=data)
-	print(response.status_code)
-	print(response.reason)
-
+	if response.status_code != 201 : 
+		print(response.reason)
+		return False
+	return True
 	
 if __name__ == "__main__" :
 	#Used for quick testing area
@@ -124,4 +130,4 @@ if __name__ == "__main__" :
 		OAUTH_token= arg[1]
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
-	create_playlist(OAUTH_token)
+	create_playlist(OAUTH_token, "testname")
