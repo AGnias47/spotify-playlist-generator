@@ -106,7 +106,7 @@ def print_pretty_json(jsonDataLoads) :
 	print(json.dumps(jsonDataLoads, indent=3, sort_keys=False))
 
 def create_playlist(oauth) :
-	PlaylistURL = "https://api.spotify.com/v1/users/AGnias47/playlists" 
+	PlaylistURL = "https://api.spotify.com/v1/me/playlists" 
 	data = "{\"name\":\"New_ Playlist\",\"description\":\"New playlist description\",\"public\":false}" 
 	headers = {'Accept': 'application/json',
               'Content-Type': 'application/json',
