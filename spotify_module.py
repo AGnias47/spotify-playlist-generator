@@ -106,16 +106,15 @@ def print_pretty_json(jsonDataLoads) :
 	print(json.dumps(jsonDataLoads, indent=3, sort_keys=False))
 
 def create_playlist(oauth) :
-	PlaylistURL = "https://api.spotify.com/v1/users/put uname here/playlists" 
-	data = {'name': 'new_playlist',
-           'description': 'a dumb playlist',
-           'public': 'false'}
+	PlaylistURL = "https://api.spotify.com/v1/users/AGnias47/playlists" 
+	data = "{\"name\":\"New_ Playlist\",\"description\":\"New playlist description\",\"public\":false}" 
 	headers = {'Accept': 'application/json',
               'Content-Type': 'application/json',
               'Authorization': 'Bearer {0}'.format(oauth)}
 	response = requests.post(PlaylistURL, headers=headers, data=data)
 	print(response.status_code)
 	print(response.reason)
+
 	
 if __name__ == "__main__" :
 	#Used for quick testing area
