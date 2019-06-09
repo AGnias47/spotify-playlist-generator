@@ -23,5 +23,5 @@ def parse_csv_playlist(fname) :
 			el.append([artist, song])
 	f.close()
 	return el
-
-print(parse_csv_playlist("playlist.csv"))
+if __name__ == "__main__" :
+	print(parse_csv_playlist("playlist.csv"))
