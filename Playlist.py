@@ -18,8 +18,10 @@ class Playlist :
 		self._id = id
 		if self._oauth is not None and id is None :
 			(self._id, url) = spotify_module.create_playlist(self._oauth, self._name)
+		else :
+			url = "https://api.spotify.com/v1/playlists/" + self._id
 		if (self.exists(self._oauth, url) == False) :
-			print("something bad happens here")
+			sys_exit("something bad happens here")
 
 	def name(self) :
 		return self._name
