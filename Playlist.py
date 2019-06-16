@@ -11,15 +11,17 @@ from sys import argv as arg
 from sys import exit as sys_exit
 
 class Playlist :
-	def __init__(self, name, oauth=None, tracks=None, id=None) :
+	def __init__(self, name, oauth=None, tracks=None, ID=None) :
 		self._name = name
 		self._oauth = oauth
 		self._tracks = tracks
-		self._id = id
+		self._id = ID
+
+	def create(self) :
 		if self._oauth is not None and id is None :
-			(self._id, url) = spotify_module.create_playlist(self._oauth, self._name)
-		if (self.exists(self._oauth) == False) :
-			sys_exit("something bad happens here")
+			(self._id, URL) = spotify_module.create_playlist(self._oauth, self._name)
+			#self.setID(ID)
+		return self.exists(self._oauth)
 
 	def name(self) :
 		return self._name
@@ -29,6 +31,9 @@ class Playlist :
 
 	def setOAuth(self, OAUTH) :
 		self._oauth = OAUTH
+
+	def setID(self, ID) :
+		self._id = ID
 
 	def tracks(self) :
 		return self._tracks
@@ -51,5 +56,6 @@ if __name__ == "__main__" :
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
 	playlist = Playlist("Doldrums", OAUTH_token)
+	playlist.create()
 	print(playlist.name())
 	print(playlist.id())
