@@ -13,42 +13,26 @@ import unittest
 
 class test_Playlist(unittest.TestCase) :
 
-	def start(self, OAUTH_token) :
-		self.newPlaylist = Playlist("A new playlist test instance", OAUTH_token)
+	def setUp(self) :
+		self.newPlaylist = Playlist("A new playlist test instance")
 
 	def test_name(self) :
-		self.assertEqual(Playlist.name(), "A new playlist test instance")
+		self.assertEqual(self.newPlaylist.name(), "A new playlist test instance")
 
 	def test_oauth(self) :
-		self.assertEqual(Playlist.oauth(), OAUTH_token)
+		self.assertEqual(self.newPlaylist.oauth(), None)
 
 	def test_id(self) :
-		pass
-		#self.assertEqual(Playlist.id(), get id here)
+		self.assertEqual(self.newPlaylist.id(), None)
 
 	def test_tracks(self) :
-		pass
-
-	def test_setTracks(self, Tracks) :
-		pass
+		self.assertEqual(self.newPlaylist.id(), None)
 
 	def test_url(self) :
-		self.assertEqual(Playlist.url(), "https://api.spotify.com/v1/playlists/" + self._id)
-
-	def test_setOAuth(self, OAUTH) :
-		pass
-
-	def test_exists(self) :
-		self.assertEqual(newPlaylist.exists(Playlist.oauth(), Playlist.url()), True)
-
-	def test_delete(self) :
-		pass
+		if self.newPlaylist.id() is not None :
+			self.assertEqual(self.newPlaylist.url(), "https://api.spotify.com/v1/playlists/" + self.newPlaylist.id())
+		else :
+			self.assertEqual(self.newPlaylist.url(), None)
 
 if __name__ == "__main__" :
-	try :
-		OAUTH_token= arg[1]
-	except :
-		sys_exit("OAUTH token must be provided as an argument")
 	unittest.main()
-	#Need to put more work into picking up an existing playlist for this to work well
-	#existingPlaylist = Playlist("Musical", OAUTH_token, None, None)
