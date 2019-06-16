@@ -119,9 +119,27 @@ def create_playlist(oauth, name, description="Playlist generated from Spotify AP
 	response = requests.post(PlaylistURL, headers=headers, data=data)
 	if response.status_code != 201 : 
 		print(response.reason)
+		return (None, None)
+	data = json.loads(response.content.decode("utf-8"))
+	return (data["id"], data["href"])
+
+def get_user_playlists(oauth) :
+	"""
+	"""
+	PlaylistURL = "https://api.spotify.com/v1/me/playlists?limit=50" 
+	data = get_json_response_dict(oauth, PlaylistURL)
+	print(data)
+
+def check_existence(oauth, SearchURL) :
+	"""
+	"""
+	headers = {'Content-Type': 'application/json',
+				  'Authorization': 'Bearer {0}'.format(oauth)}
+	response = requests.get(SearchURL, headers=headers)
+	if response.status_code != 200 :
 		return False
 	return True
-	
+
 if __name__ == "__main__" :
 	#Used for quick testing area
 	#
@@ -130,4 +148,4 @@ if __name__ == "__main__" :
 		OAUTH_token= arg[1]
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
-	create_playlist(OAUTH_token, "testname")
+	create_playlist(OAUTH_token, "tname")
