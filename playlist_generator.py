@@ -9,7 +9,11 @@
 from general_functions import *
 from Playlist import Playlist
 
+try :
+	OAUTH_token= arg[1]
+except :
+	sys_exit("OAUTH token must be provided as an argument")
+
 playlistTracks = parse_csv_playlist("playlist.csv")
-playlist = Playlist("Test Playlist", playlistTracks)
-#create an empty playlist in spotify or append to an existing one
+playlist = Playlist("Test Playlist", playlistTracks, OAUTH_token)
 #add the song to the created playlist
