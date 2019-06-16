@@ -19,8 +19,9 @@ class Playlist :
 
 	def create(self) :
 		if self._oauth is not None and id is None :
-			(self._id, URL) = spotify_module.create_playlist(self._oauth, self._name)
-			#self.setID(ID)
+			(ID, URL) = spotify_module.create_playlist(self._oauth, self._name)
+			print(ID, URL)
+			self.setID(ID)
 		return self.exists(self._oauth)
 
 	def name(self) :
