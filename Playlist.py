@@ -23,10 +23,8 @@ class Playlist :
 
 	def create(self) :
 		if self._oauth is not None and id is None :
-			(ID, URL) = spotify_module.create_playlist(self._oauth, self._name)
-			print(ID, URL)
-			self.setID(ID)
-		return self.exists(self._oauth)
+			(self._id, self._url) = spotify_module.create_playlist(self._oauth, self._name)
+		return self.exists()
 
 	def name(self) :
 		return self._name
@@ -52,8 +50,8 @@ class Playlist :
 	def setID(self, ID) :
 		self._id = ID
 
-	def exists(self, oauth) :
-		return spotify_module.check_existence(oauth, self.url())
+	def exists(self) :
+		return spotify_module.check_existence(self._oauth, self._url)
 
 if __name__ == "__main__" :
 	try :
@@ -61,6 +59,6 @@ if __name__ == "__main__" :
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
 	playlist = Playlist("Doldrums", OAUTH_token)
-	#playlist.create()
+	playlist.create()
 	#print(playlist.name())
 	#print(playlist.id())
