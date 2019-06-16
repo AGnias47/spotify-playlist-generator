@@ -18,9 +18,7 @@ class Playlist :
 		self._id = id
 		if self._oauth is not None and id is None :
 			(self._id, url) = spotify_module.create_playlist(self._oauth, self._name)
-		else :
-			url = "https://api.spotify.com/v1/playlists/" + self._id
-		if (self.exists(self._oauth, url) == False) :
+		if (self.exists(self._oauth) == False) :
 			sys_exit("something bad happens here")
 
 	def name(self) :
@@ -29,16 +27,23 @@ class Playlist :
 	def oauth(self) :
 		return self._oauth
 
+	def setOAuth(self, OAUTH) :
+		self._oauth = OAUTH
+
 	def tracks(self) :
 		return self._tracks
+
+	def setTracks(self, Tracks) :
+		self._tracks = Tracks
 
 	def id(self) :
 		return self._id
 
-	def exists(self, oauth, url) :
-		if url is None :
-			return False
-		return spotify_module.check_existence(oauth, url)
+	def url(self) :
+		return "https://api.spotify.com/v1/playlists/" + self._id
+
+	def exists(self, oauth) :
+		return spotify_module.check_existence(oauth, self.url())
 
 if __name__ == "__main__" :
 	try :
