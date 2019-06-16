@@ -148,4 +148,3 @@ if __name__ == "__main__" :
 		OAUTH_token= arg[1]
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
-	create_playlist(OAUTH_token, "tname")
