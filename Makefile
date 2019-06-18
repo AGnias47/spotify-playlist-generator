@@ -22,8 +22,16 @@ view : spotify_module.py
 license : LICENSE
 	$(VIEWER) LICENSE
 
-test : test_spotify_module.py
+ftest : test_spotify_module.py
 	$(PYTHON) test_spotify_module.py $$(cat OAuth_Token)
+
+utest_Playlist : test_Playlist.py
+	$(PYTHON) test_Playlist.py
+
+utest_Track : test_Track.py
+	$(PYTHON) test_Track.py
+
+utest : utest_Playlist utest_Track
 
 runnode : 
 	node ~/spotifyapitestbed/web-api-auth-examples/authorization_code/app.js
