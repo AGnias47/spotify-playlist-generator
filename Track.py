@@ -6,8 +6,8 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
-class Playlist :
-	def __init__(self, artist, song) :
+class Track :
+	def __init__(self, song, artist) :
 		self._artist = artist
 		self._song = song
 
