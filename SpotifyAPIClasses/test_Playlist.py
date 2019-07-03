@@ -6,7 +6,7 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
-from Playlist import *
+from Playlist import Playlist
 from sys import argv as arg
 from sys import exit as sys_exit
 import unittest

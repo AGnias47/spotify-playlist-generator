@@ -6,7 +6,7 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
-from Track import *
+from Track import Track
 import unittest
 
 class test_Track(unittest.TestCase) :

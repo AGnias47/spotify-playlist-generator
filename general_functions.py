@@ -24,4 +24,4 @@ def parse_csv_playlist(fname) :
 	f.close()
 	return el
 if __name__ == "__main__" :
-	print(parse_csv_playlist("playlist.csv"))
+	print(parse_csv_playlist("Test_Artifacts/playlist.csv"))
