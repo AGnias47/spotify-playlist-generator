@@ -24,8 +24,7 @@ def get_artist_external_url(oauth, artist) :
 	Input: OAUTH token as a string, artist as a string
 	Return Value: external_url as a string
 	"""
-	data = query_artist(oauth, artist)
-	return data["external_urls"]["spotify"]
+	return query_artist(oauth, artist)["external_urls"]["spotify"]
 	
 def get_artist_id(oauth, artist) :
 	"""
@@ -33,8 +32,7 @@ def get_artist_id(oauth, artist) :
 	Input: OAUTH token as a string, artist as a string
 	Return Value: id as a string
 	"""
-	data = query_artist(oauth, artist)
-	return data["id"]
+	return query_artist(oauth, artist)["id"]
 
 def query_artist(oauth, artist) :
 	"""
@@ -44,10 +42,7 @@ def query_artist(oauth, artist) :
 	"""
 	SearchBase = "https://api.spotify.com/v1/search"
 	SearchKey = "?q={0}&type=artist&market=US&limit=1".format(artist)
-	SearchURL = SearchBase + SearchKey
-	data = get_json_response_dict(oauth, SearchURL)
-	d2 = data["artists"]["items"][0]
-	return d2
+	return get_json_response_dict(oauth, SearchBase + SearchKey)["artists"]["items"][0]
 
 def get_json_response_dict(oauth, SearchURL) :
 	"""
@@ -73,12 +68,7 @@ def get_album_data_by_artist(oauth, artist_id, data_specifier="name") :
 	Return value: list of specified data as strings
 	"""
 	SearchURL = "https://api.spotify.com/v1/artists/{}/albums?include_groups=album,single&country=US&limit=50".format(artist_id)
-	data = get_json_response_dict(oauth, SearchURL)
-	album_list = data["items"]
-	data_list = list()
-	for album in album_list :
-		data_list.append(album[data_specifier])
-	return data_list
+	return [album[data_specifier] for album in get_json_response_dict(oauth, SearchURL)["items"]]
 
 def get_tracks_by_album_id(oauth, album_id, data_specifier="name") :
 	"""
@@ -90,12 +80,7 @@ def get_tracks_by_album_id(oauth, album_id, data_specifier="name") :
 	Return value: list of specified data as strings
 	"""
 	SearchURL = "https://api.spotify.com/v1/albums/{}/tracks".format(album_id)
-	data = get_json_response_dict(oauth, SearchURL)
-	track_list = data["items"]
-	data_list = list()
-	for track in track_list :
-		data_list.append(track[data_specifier])
-	return data_list
+	return [track[data_specifier] for track in get_json_response_dict(oauth,SearchURL)["items"]]
 
 def print_pretty_json(jsonDataLoads) :
 	"""
