@@ -10,12 +10,10 @@ from sys import path
 path.append("..")
 
 from src.Playlist import Playlist
-from sys import argv as arg
-from sys import exit as sys_exit
 import unittest
 
-class test_Playlist(unittest.TestCase) :
 
+class test_Playlist(unittest.TestCase) :
 	def setUp(self) :
 		self.newPlaylist = Playlist("A new playlist test instance")
 
@@ -36,6 +34,7 @@ class test_Playlist(unittest.TestCase) :
 			self.assertEqual(self.newPlaylist.url(), "https://api.spotify.com/v1/playlists/" + self.newPlaylist.id())
 		else :
 			self.assertEqual(self.newPlaylist.url(), None)
+
 
 if __name__ == "__main__" :
 	unittest.main()
