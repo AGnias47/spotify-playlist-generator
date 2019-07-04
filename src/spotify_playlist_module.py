@@ -14,6 +14,8 @@
 
 from sys import argv as arg
 from sys import exit as sys_exit
+import requests
+import json
 
 
 def create_playlist(oauth, name, description="Playlist generated from Spotify API") :
@@ -28,6 +30,7 @@ def create_playlist(oauth, name, description="Playlist generated from Spotify AP
 				'Content-Type': 'application/json',
 				'Authorization': 'Bearer {0}'.format(oauth)}
 	response = requests.post(PlaylistURL, headers=headers, data=data)
+	print(response)
 	if response.status_code != 201 : 
 		print(response.reason)
 		return (None, None)

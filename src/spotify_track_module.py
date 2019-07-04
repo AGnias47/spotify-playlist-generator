@@ -19,7 +19,7 @@ from general_functions import get_json_response_dict, print_pretty_json
 from Track import Track
 
 
-#Define a global variable for the market being queried by country code
+# Define a global variable for the market being queried by country code
 MARKET = "US"
 
 def query_track(oauth, Track) :
@@ -28,12 +28,12 @@ def query_track(oauth, Track) :
 	SearchKey = "?q={0}&type=track&market={1}&limit={2}".format(Track.song(), MARKET, limit)
 	SearchItems = get_json_response_dict(oauth, SearchBase + SearchKey)["tracks"]["items"]
 	for item in SearchItems :
-		external_track_url = item["external_urls"]["spotify"]
-		api_track_url = item["href"]
 		artist = item["artists"][0]["name"]
-		if artist == Track.artist() :
-			return api_track_url
-	return None
+		if artist == Track.artist() : #make more tolerant, ex case insensitive, spelling
+			Track.set_href(item["href"])
+			Track.set_external_url(item["external_urls"]["spotify"])
+			return True
+	return False
 
 
 if __name__ == "__main__" :
