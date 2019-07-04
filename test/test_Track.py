@@ -12,8 +12,8 @@ sys.path.append("..")
 from src.Track import Track
 import unittest
 
-class test_Track(unittest.TestCase) :
 
+class test_Track(unittest.TestCase) :
 	def setUp(self) :
 		self.newTrack = Track("Born to Run", "Bruce Springsteen")
 
@@ -30,6 +30,7 @@ class test_Track(unittest.TestCase) :
 	def test_setArtist(self) :
 		self.newTrack.setArtist("Kendrick Lamar")
 		self.assertEqual(self.newTrack.artist(), "Kendrick Lamar")
+
 
 if __name__ == "__main__" :
 	unittest.main()

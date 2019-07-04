@@ -6,6 +6,7 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
+
 class Track :
 	def __init__(self, song, artist) :
 		self._artist = artist

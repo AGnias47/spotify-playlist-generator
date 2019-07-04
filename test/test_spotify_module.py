@@ -16,12 +16,15 @@ path.append("..")
 
 from src.spotify_module import *
 from filecmp import cmp
-from sys import argv
+from sys import argv as arg
+from time import sleep
+
 
 def get_artist_JSON_test(OAUTH_token, artist) :
 	print("Artist JSON data")
 	print_pretty_json(query_artist(OAUTH_token, artist))
 	sleep(test_delay)
+
 
 def get_artist_data_test(OAUTH_token, artist) :
 	print("Specific artist data")
@@ -33,6 +36,7 @@ def get_artist_data_test(OAUTH_token, artist) :
 	print("{}'s ID: {}".format(artist, SealID), file=open("Test_Artifacts/artist_data_test", "a"))
 	sleep(test_delay)
 
+
 def get_album_data_test(OAUTH_token, artist, SealID) :
 	print("Album Data Functions")
 	print(get_album_data_by_artist(OAUTH_token, SealID))
@@ -43,6 +47,7 @@ def get_album_data_test(OAUTH_token, artist, SealID) :
 	print(get_album_data_by_artist(OAUTH_token, SealID, "id"), file=open("Test_Artifacts/album_data_test", "a"))
 	sleep(test_delay)
 
+
 def get_track_data_test(OAUTH_token, artist) :
 	print("Track Data Functions")
 	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi"))
@@ -52,13 +57,14 @@ def get_track_data_test(OAUTH_token, artist) :
 	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi", "href"), file=open("Test_Artifacts/track_data_test", "a"))
 	print(get_tracks_by_album_id(OAUTH_token, "2Fd1KIL5aUNTl40H3OkOQi", "id"), file=open("Test_Artifacts/track_data_test", "a"))
 
+
 if __name__ == "__main__" :
-	#Check if the OAuth token has been defined as an argument; if not, exit
+	# Check if the OAuth token has been defined as an argument; if not, exit
 	try :
 		OAUTH_token= arg[1]
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
-	#Artist to use as an example
+	# Artist to use as an example
 	artist = "Seal"
 	SealID = get_artist_id(OAUTH_token, artist)
 	test_delay = 0
