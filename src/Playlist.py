@@ -6,7 +6,6 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
-import spotify_module
 from sys import argv as arg
 from sys import exit as sys_exit
 
@@ -20,11 +19,6 @@ class Playlist :
 			self._url = "https://api.spotify.com/v1/playlists/" + self._id
 		else :
 			self._url = None
-
-	def create(self) :
-		if self._oauth is not None and self._id is None :
-			(self._id, self._url) = spotify_module.create_playlist(self._oauth, self._name)
-		return self.exists()
 
 	def name(self) :
 		return self._name
@@ -49,9 +43,6 @@ class Playlist :
 
 	def setID(self, ID) :
 		self._id = ID
-
-	def exists(self) :
-		return spotify_module.check_existence(self._oauth, self._url)
 
 if __name__ == "__main__" :
 	try :

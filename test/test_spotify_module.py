@@ -11,7 +11,10 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
-from spotify_module import *
+from sys import path
+path.append("..")
+
+from src.spotify_module import *
 from filecmp import cmp
 from sys import argv
 
