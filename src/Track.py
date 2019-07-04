@@ -23,5 +23,6 @@ class Track :
 	def setSong(self, song) :
 		self._song = song	
 
+
 if __name__ == "__main__" :
 	print("Nothing to run. Import class to use")

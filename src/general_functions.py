@@ -8,6 +8,7 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
+
 def parse_csv_playlist(fname) :
 	"""
 	Generates a list containing items of the form [artist, song]
@@ -23,5 +24,7 @@ def parse_csv_playlist(fname) :
 			el.append([artist, song])
 	f.close()
 	return el
+
+
 if __name__ == "__main__" :
 	print(parse_csv_playlist("Test_Artifacts/playlist.csv"))

@@ -15,7 +15,6 @@ import json
 import requests
 from sys import argv as arg
 from sys import exit as sys_exit
-from time import sleep
 
 
 def get_artist_external_url(oauth, artist) :
@@ -25,7 +24,8 @@ def get_artist_external_url(oauth, artist) :
 	Return Value: external_url as a string
 	"""
 	return query_artist(oauth, artist)["external_urls"]["spotify"]
-	
+
+
 def get_artist_id(oauth, artist) :
 	"""
 	Returns the id for a specified artist
@@ -33,6 +33,7 @@ def get_artist_id(oauth, artist) :
 	Return Value: id as a string
 	"""
 	return query_artist(oauth, artist)["id"]
+
 
 def query_artist(oauth, artist) :
 	"""
@@ -44,6 +45,7 @@ def query_artist(oauth, artist) :
 	SearchKey = "?q={0}&type=artist&market=US&limit=1".format(artist)
 	return get_json_response_dict(oauth, SearchBase + SearchKey)["artists"]["items"][0]
 
+
 def get_json_response_dict(oauth, SearchURL) :
 	"""
 	Returns a json dict from a REST get request
@@ -51,12 +53,13 @@ def get_json_response_dict(oauth, SearchURL) :
 	Return Value: Json returned from request as a dict
 	"""
 	headers = {'Content-Type': 'application/json',
-              'Authorization': 'Bearer {0}'.format(oauth)}
+				'Authorization': 'Bearer {0}'.format(oauth)}
 	response = requests.get(SearchURL, headers=headers)
 	if response.status_code != 200 :
 		print("catch errors here")
 		return "Something bad here"
 	return json.loads(response.content.decode("utf-8"))
+
 
 def get_album_data_by_artist(oauth, artist_id, data_specifier="name") :
 	"""
@@ -70,6 +73,7 @@ def get_album_data_by_artist(oauth, artist_id, data_specifier="name") :
 	SearchURL = "https://api.spotify.com/v1/artists/{}/albums?include_groups=album,single&country=US&limit=50".format(artist_id)
 	return [album[data_specifier] for album in get_json_response_dict(oauth, SearchURL)["items"]]
 
+
 def get_tracks_by_album_id(oauth, album_id, data_specifier="name") :
 	"""
 	Get data on an album's tracks. Can return data as a list of 
@@ -82,6 +86,7 @@ def get_tracks_by_album_id(oauth, album_id, data_specifier="name") :
 	SearchURL = "https://api.spotify.com/v1/albums/{}/tracks".format(album_id)
 	return [track[data_specifier] for track in get_json_response_dict(oauth,SearchURL)["items"]]
 
+
 def print_pretty_json(jsonDataLoads) :
 	"""
 	Prints a formatted json to stdout
@@ -89,6 +94,7 @@ def print_pretty_json(jsonDataLoads) :
 	Return Value: None (prints to stdout)
 	"""
 	print(json.dumps(jsonDataLoads, indent=3, sort_keys=False))
+
 
 def create_playlist(oauth, name, description="Playlist generated from Spotify API") :
 	"""
@@ -99,8 +105,8 @@ def create_playlist(oauth, name, description="Playlist generated from Spotify AP
 	PlaylistURL = "https://api.spotify.com/v1/me/playlists" 
 	data = "{\"name\":\"" + name + "\",\"description\":\"" + description + "\",\"public\":false}" 
 	headers = {'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer {0}'.format(oauth)}
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer {0}'.format(oauth)}
 	response = requests.post(PlaylistURL, headers=headers, data=data)
 	if response.status_code != 201 : 
 		print(response.reason)
@@ -108,10 +114,11 @@ def create_playlist(oauth, name, description="Playlist generated from Spotify AP
 	data = json.loads(response.content.decode("utf-8"))
 	return (data["id"], data["href"])
 
+
 if __name__ == "__main__" :
-	#Used for quick testing area
+	# Used for quick testing area
 	#
-	#Check if the OAuth token has been defined as an argument; if not, exit
+	# Check if the OAuth token has been defined as an argument; if not, exit
 	try :
 		OAUTH_token= arg[1]
 	except :
