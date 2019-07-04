@@ -9,6 +9,7 @@
 from sys import argv as arg
 from sys import exit as sys_exit
 
+
 class Playlist :
 	def __init__(self, name, oauth=None, tracks=None, ID=None) :
 		self._name = name
@@ -43,6 +44,7 @@ class Playlist :
 
 	def setID(self, ID) :
 		self._id = ID
+
 
 if __name__ == "__main__" :
 	try :

@@ -6,6 +6,7 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
+
 class Track :
 	def __init__(self, song, artist) :
 		self._artist = artist
@@ -22,6 +23,7 @@ class Track :
 
 	def setSong(self, song) :
 		self._song = song	
+
 
 if __name__ == "__main__" :
 	print("Nothing to run. Import class to use")

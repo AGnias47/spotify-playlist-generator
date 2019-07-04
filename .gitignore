@@ -10,6 +10,9 @@ Test_Artifacts/track_data_test
 out*
 oot
 
+#PyCharm File
+.idea
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
