@@ -8,10 +8,11 @@
 
 from sys import argv as arg
 from sys import exit as sys_exit
+from spotify_playlist_module import *
 
 
 class Playlist :
-	def __init__(self, name, oauth=None, tracks=None, ID=None) :
+	def __init__(self, oauth=None, name="Unnamed Playlist", tracks=None, ID=None) :
 		self._name = name
 		self._oauth = oauth
 		self._tracks = tracks
@@ -45,13 +46,16 @@ class Playlist :
 	def setID(self, ID) :
 		self._id = ID
 
+	def spotifyInit(self) :
+		print(self._oauth, self._name, "Playlist generated from Spotify API")
+		(self._id, self._url) = create_playlist(self._oauth, self._name, "Playlist generated from Spotify API")
+		if self._id is not None and self._url is not None :
+			return True
+		else : 
+			return False
 
 if __name__ == "__main__" :
 	try :
 		OAUTH_token= arg[1]
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
-	playlist = Playlist("Doldrums", OAUTH_token)
-	playlist.create()
-	print(playlist.name())
-	print(playlist.id())
