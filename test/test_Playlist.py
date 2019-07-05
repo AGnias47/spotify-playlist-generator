@@ -8,6 +8,7 @@
 
 from sys import path
 path.append("..")
+path.append("../src")
 
 from src.Playlist import Playlist
 import unittest
@@ -19,9 +20,6 @@ class test_Playlist(unittest.TestCase) :
 
 	def test_name(self) :
 		self.assertEqual(self.newPlaylist.name(), "A new playlist test instance")
-
-	def test_oauth(self) :
-		self.assertEqual(self.newPlaylist.oauth(), None)
 
 	def test_id(self) :
 		self.assertEqual(self.newPlaylist.id(), None)

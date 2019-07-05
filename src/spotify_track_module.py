@@ -29,10 +29,10 @@ def query_track(oauth, Track) :
 	SearchItems = get_json_response_dict(oauth, SearchBase + SearchKey)["tracks"]["items"]
 	for item in SearchItems :
 		external_track_url = item["external_urls"]["spotify"]
-		api_track_url = item["href"]
+		href = item["href"]
 		artist = item["artists"][0]["name"]
 		if artist == Track.artist() : #make more tolerant, ex case insensitive, spelling
-			return api_track_url
+			return (href, external_track_url)
 	return None
 
 

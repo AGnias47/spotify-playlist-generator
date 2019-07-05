@@ -18,6 +18,8 @@ try :
 except :
 	sys_exit("OAUTH token must be provided as an argument")
 playlistTracks = parse_csv_playlist("test/Test_Artifacts/playlist.csv") #method for parsing dash separated values
+print(playlistTracks)
 playlist = Playlist(OAUTH_token, "SpotifyAPI Test Playlist", playlistTracks)
-playlist.spotifyInit()
+if not playlist.spotifyInit() :
+	sys_exit("Playlist could not be created; exiting")
 # add the song to the created playlist

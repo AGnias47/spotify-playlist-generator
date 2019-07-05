@@ -23,12 +23,12 @@ class test_Track(unittest.TestCase) :
 	def test_artist(self) :
 		self.assertEqual(self.newTrack.artist(), "Bruce Springsteen")
 
-	def test_setSong(self) :
-		self.newTrack.setSong("XXX")
+	def test_set_song(self) :
+		self.newTrack.set_song("XXX")
 		self.assertEqual(self.newTrack.song(), "XXX")
 
-	def test_setArtist(self) :
-		self.newTrack.setArtist("Kendrick Lamar")
+	def test_set_artist(self) :
+		self.newTrack.set_artist("Kendrick Lamar")
 		self.assertEqual(self.newTrack.artist(), "Kendrick Lamar")
 
 

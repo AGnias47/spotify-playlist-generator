@@ -12,9 +12,8 @@ from spotify_playlist_module import *
 
 
 class Playlist :
-	def __init__(self, oauth=None, name="Unnamed Playlist", tracks=None, ID=None) :
+	def __init__(self, name="Unnamed Playlist", tracks=None, ID=None) :
 		self._name = name
-		self._oauth = oauth
 		self._tracks = tracks
 		self._id = ID
 		if self._id is not None :
@@ -25,9 +24,6 @@ class Playlist :
 	def name(self) :
 		return self._name
 
-	def oauth(self) :
-		return self._oauth
-
 	def tracks(self) :
 		return self._tracks
 
@@ -37,18 +33,14 @@ class Playlist :
 	def url(self) :
 		return self._url
 
-	def setTracks(self, Tracks) :
+	def set_tracks(self, Tracks) :
 		self._tracks = Tracks
 
-	def setOAuth(self, OAUTH) :
-		self._oauth = OAUTH
-
-	def setID(self, ID) :
+	def set_id(self, ID) :
 		self._id = ID
 
-	def spotifyInit(self) :
-		print(self._oauth, self._name, "Playlist generated from Spotify API")
-		(self._id, self._url) = create_playlist(self._oauth, self._name, "Playlist generated from Spotify API")
+	def spotifyInit(self, oauth) :
+		(self._id, self._url) = create_playlist(oauth, self._name, "Playlist generated from Spotify API")
 		if self._id is not None and self._url is not None :
 			return True
 		else : 

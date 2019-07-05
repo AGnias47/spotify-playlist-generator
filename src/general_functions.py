@@ -15,6 +15,7 @@ import json
 import requests
 from sys import argv as arg
 from sys import exit as sys_exit
+from Track import Track
 
 
 def get_json_response_dict(oauth, SearchURL) :
@@ -51,9 +52,7 @@ def parse_csv_playlist(fname) :
 	with open(fname,'r') as f :
 		for line in f :
 			contents = line.strip().split(',')
-			artist = contents[0].strip()
-			song = contents[1].strip()
-			el.append([artist, song])
+			el.append(Track(contents[1].strip(), contents[0].strip()))
 	f.close()
 	return el
 
