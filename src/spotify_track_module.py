@@ -15,7 +15,7 @@
 
 from sys import argv as arg
 from sys import exit as sys_exit
-from general_functions import get_json_response_dict
+from general_functions import get_json_response_dict, print_pretty_json
 
 
 #Define a global variable for the market being queried by country code

@@ -33,8 +33,8 @@ utest_Track : test/test_Track.py
 
 utest : utest_Playlist utest_Track
 
-ftest : test/test_spotify_module.py
-	cd test && $(PYTHON) test_spotify_module.py $$(cat ../OAuth_Token)
+ftest : test/test_spotify_modules.py
+	cd test && $(PYTHON) test_spotify_modules.py $$(cat ../OAuth_Token)
 
 test : utest ftest
 
