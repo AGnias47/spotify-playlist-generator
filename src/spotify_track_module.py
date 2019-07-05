@@ -19,7 +19,7 @@ from general_functions import get_json_response_dict, print_pretty_json
 from Track import Track
 
 
-#Define a global variable for the market being queried by country code
+# Define a global variable for the market being queried by country code
 MARKET = "US"
 
 def query_track(oauth, Track) :
@@ -31,7 +31,7 @@ def query_track(oauth, Track) :
 		external_track_url = item["external_urls"]["spotify"]
 		api_track_url = item["href"]
 		artist = item["artists"][0]["name"]
-		if artist == Track.artist() :
+		if artist == Track.artist() : #make more tolerant, ex case insensitive, spelling
 			return api_track_url
 	return None
 
