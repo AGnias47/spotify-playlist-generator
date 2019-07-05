@@ -17,6 +17,7 @@ path.append("../src")
 
 from src.spotify_artist_module import *
 from src.spotify_album_module import *
+
 # Unwritten tests
 from src.spotify_playlist_module import *
 from src.spotify_track_module import *
