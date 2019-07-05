@@ -1,0 +1,77 @@
+{
+   "album": {
+      "album_type": "album",
+      "artists": [
+         {
+            "external_urls": {
+               "spotify": "https://open.spotify.com/artist/4V8LLVI7PbaPR0K2TGSxFF"
+            },
+            "href": "https://api.spotify.com/v1/artists/4V8LLVI7PbaPR0K2TGSxFF",
+            "id": "4V8LLVI7PbaPR0K2TGSxFF",
+            "name": "Tyler, The Creator",
+            "type": "artist",
+            "uri": "spotify:artist:4V8LLVI7PbaPR0K2TGSxFF"
+         }
+      ],
+      "external_urls": {
+         "spotify": "https://open.spotify.com/album/5zi7WsKlIiUXv09tbGLKsE"
+      },
+      "href": "https://api.spotify.com/v1/albums/5zi7WsKlIiUXv09tbGLKsE",
+      "id": "5zi7WsKlIiUXv09tbGLKsE",
+      "images": [
+         {
+            "height": 640,
+            "url": "https://i.scdn.co/image/bb05317292465b8809b29c00906c1a4b6a226194",
+            "width": 640
+         },
+         {
+            "height": 300,
+            "url": "https://i.scdn.co/image/4db4370eb6b2fd2800cc428879143dfc7866180c",
+            "width": 300
+         },
+         {
+            "height": 64,
+            "url": "https://i.scdn.co/image/2bc1fbc23fa717856bd5df9adc4dbf75ed76284f",
+            "width": 64
+         }
+      ],
+      "name": "IGOR",
+      "release_date": "2019-05-17",
+      "release_date_precision": "day",
+      "total_tracks": 12,
+      "type": "album",
+      "uri": "spotify:album:5zi7WsKlIiUXv09tbGLKsE"
+   },
+   "artists": [
+      {
+         "external_urls": {
+            "spotify": "https://open.spotify.com/artist/4V8LLVI7PbaPR0K2TGSxFF"
+         },
+         "href": "https://api.spotify.com/v1/artists/4V8LLVI7PbaPR0K2TGSxFF",
+         "id": "4V8LLVI7PbaPR0K2TGSxFF",
+         "name": "Tyler, The Creator",
+         "type": "artist",
+         "uri": "spotify:artist:4V8LLVI7PbaPR0K2TGSxFF"
+      }
+   ],
+   "disc_number": 1,
+   "duration_ms": 190066,
+   "explicit": true,
+   "external_ids": {
+      "isrc": "USQX91901111"
+   },
+   "external_urls": {
+      "spotify": "https://open.spotify.com/track/5hVghJ4KaYES3BFUATCYn0"
+   },
+   "href": "https://api.spotify.com/v1/tracks/5hVghJ4KaYES3BFUATCYn0",
+   "id": "5hVghJ4KaYES3BFUATCYn0",
+   "is_local": false,
+   "is_playable": true,
+   "name": "EARFQUAKE",
+   "popularity": 91,
+   "preview_url": "https://p.scdn.co/mp3-preview/d6528c193bac76f7a04bdf1ea9453ec016a94f88?cid=70c4a3cfaa964245935ced129bb10825",
+   "track_number": 2,
+   "type": "track",
+   "uri": "spotify:track:5hVghJ4KaYES3BFUATCYn0"
+}
+dict_keys(['album', 'artists', 'disc_number', 'duration_ms', 'explicit', 'external_ids', 'external_urls', 'href', 'id', 'is_local', 'is_playable', 'name', 'popularity', 'preview_url', 'track_number', 'type', 'uri'])

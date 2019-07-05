@@ -16,35 +16,24 @@
 from sys import argv as arg
 from sys import exit as sys_exit
 from general_functions import get_json_response_dict, print_pretty_json
+from Track import Track
 
 
 #Define a global variable for the market being queried by country code
 MARKET = "US"
 
 def query_track(oauth, Track) :
+	limit = 10
 	SearchBase = "https://api.spotify.com/v1/search"
-	SearchKey = "?q={0}&type=track&market={1}&limit=10".format("EARFQUAKE", MARKET)
-	return get_json_response_dict(oauth, SearchBase + SearchKey)#["artists"]["items"][0]
-
-
-
-def create_playlist(oauth, name, description="Playlist generated from Spotify API") :
-	"""
-	Creates a playlist for the logged-in user
-	Input: OAuth Token, Playlist name, Playlist description
-	Output: True if playlist was created, else False
-	"""
-	PlaylistURL = "https://api.spotify.com/v1/me/playlists" 
-	data = "{\"name\":\"" + name + "\",\"description\":\"" + description + "\",\"public\":false}" 
-	headers = {'Accept': 'application/json',
-				'Content-Type': 'application/json',
-				'Authorization': 'Bearer {0}'.format(oauth)}
-	response = requests.post(PlaylistURL, headers=headers, data=data)
-	if response.status_code != 201 : 
-		print(response.reason)
-		return (None, None)
-	data = json.loads(response.content.decode("utf-8"))
-	return (data["id"], data["href"])
+	SearchKey = "?q={0}&type=track&market={1}&limit={2}".format(Track.song(), MARKET, limit)
+	SearchItems = get_json_response_dict(oauth, SearchBase + SearchKey)["tracks"]["items"]
+	for item in SearchItems :
+		external_track_url = item["external_urls"]["spotify"]
+		api_track_url = item["href"]
+		artist = item["artists"][0]["name"]
+		if artist == Track.artist() :
+			return api_track_url
+	return None
 
 
 if __name__ == "__main__" :
@@ -55,5 +44,5 @@ if __name__ == "__main__" :
 		OAUTH_token= arg[1]
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
-	print_pretty_json(query_track(OAUTH_token, ""))
-	
+	EARFQUAKE = Track("EARFQUAKE", "Tyler, The Creator")
+	print(query_track(OAUTH_token, EARFQUAKE))
