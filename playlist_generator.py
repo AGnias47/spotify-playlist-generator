@@ -21,9 +21,10 @@ playlist_tracks = parse_csv_playlist("test/Test_Artifacts/playlist.csv") #method
 playlist = Playlist("SpotifyAPI Test Playlist", playlist_tracks)
 #if not playlist.spotifyInit(OAUTH_token) :
 #	sys_exit("Playlist could not be created; exiting")
+missed_tracks = list()
 for track in playlist_tracks :
 	print("Adding " + track.song() + " : " + track.artist() + " to " + playlist.name())
 	if query_track(OAUTH_token, track) :
 		#add to playlist
 	else :
-		#could not add to playlist
+		missed_tracks.append(track)
