@@ -21,7 +21,7 @@ class Track :
 		return self._song
 
 	def href(self) :
-		return self._song
+		return self._href
 
 	def external_url(self) :
 		return self._external_url
