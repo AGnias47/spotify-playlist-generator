@@ -9,6 +9,7 @@
 from sys import path
 path.append("..")
 path.append("src")
+path.append("../src")
 
 
 from src.Track import Track

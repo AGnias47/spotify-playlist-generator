@@ -19,7 +19,7 @@ from src.spotify_artist_module import *
 from src.spotify_album_module import *
 # Unwritten tests
 from src.spotify_playlist_module import *
-from src.spotify_track_module import *
+from Track import Track
 
 from src.general_functions import print_pretty_json
 

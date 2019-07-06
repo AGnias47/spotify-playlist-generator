@@ -6,6 +6,13 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
+from sys import argv as arg
+from sys import exit as sys_exit
+from general_functions import get_json_response_dict, print_pretty_json
+
+
+# Define a global variable for the market being queried by country code
+MARKET = "US"
 
 class Track :
 	def __init__(self, song, artist, href=None, external_url=None, ID=None) :
@@ -45,9 +52,30 @@ class Track :
 	def set_id(self, ID) :
 		self._id = ID
 
-	def set_track_data(self, oauth) :
-		(self._href, self._external_url) = query_track(oauth, self)
+	def spotify_query(self, oauth) :
+		limit = 10
+		SearchBase = "https://api.spotify.com/v1/search"
+		SearchKey = "?q={0}&type=track&market={1}&limit={2}".format(self._song, MARKET, limit)
+		SearchItems = get_json_response_dict(oauth, SearchBase + SearchKey)["tracks"]["items"]
+		for item in SearchItems :
+			artist = item["artists"][0]["name"]
+			if artist == self._artist : #make more tolerant, ex case insensitive, spelling
+				self._href = item["href"]
+				self._external_url = item["external_urls"]["spotify"]
+				self._id = item["id"]
+				return True
+		return False
 
 
 if __name__ == "__main__" :
-	print("Nothing to run. Import class to use")
+	# Used for quick testing area
+	#
+	# Check if the OAuth token has been defined as an argument; if not, exit
+	try :
+		OAUTH_token= arg[1]
+	except :
+		sys_exit("OAUTH token must be provided as an argument")
+	EARFQUAKE = Track("EARFQUAKE", "Tyler, The Creator")
+	print(query_track(OAUTH_token, EARFQUAKE))
+
+

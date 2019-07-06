@@ -10,8 +10,7 @@
 
 from sys import path
 path.append("./src")
-from src.general_functions import *
-from src.spotify_track_module import *
+from src.track_parsing import *
 from src.spotify_playlist_module import add_track_to_playlist
 from src.Playlist import Playlist
 from src.Track import Track
@@ -37,7 +36,7 @@ if not playlist.spotify_init(OAUTH_token) :
 missed_tracks = list()
 for track in playlist_tracks :
 	print("Adding " + track.song() + " : " + track.artist() + " to " + playlist.name())
-	if query_track(OAUTH_token, track) : # If track was found via search
+	if track.spotify_query(OAUTH_token) : # If track was found via search
 		if add_track_to_playlist(OAUTH_token, playlist.id(), track.id()) : # add to playlist
 			print("Success")
 		else :
