@@ -15,7 +15,6 @@ import json
 import requests
 from sys import argv as arg
 from sys import exit as sys_exit
-from Track import Track
 
 
 def get_json_response_dict(oauth, SearchURL) :
@@ -42,21 +41,6 @@ def print_pretty_json(jsonDataLoads) :
 	print(json.dumps(jsonDataLoads, indent=3, sort_keys=False))
 
 
-def parse_csv_playlist(fname) :
-	"""
-	Generates a list containing items of the form [artist, song]
-	Input: text file name in cwd
-	Output: populated list
-	"""
-	el = list()
-	with open(fname,'r') as f :
-		for line in f :
-			contents = line.strip().split(',')
-			el.append(Track(contents[1].strip(), contents[0].strip()))
-	f.close()
-	return el
-
-
 if __name__ == "__main__" :
 	# Used for quick testing area
 	#
@@ -65,5 +49,4 @@ if __name__ == "__main__" :
 		OAUTH_token= arg[1]
 	except :
 		sys_exit("OAUTH token must be provided as an argument")
-	print(parse_csv_playlist("Test_Artifacts/playlist.csv"))
 
