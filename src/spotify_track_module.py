@@ -28,12 +28,12 @@ def query_track(oauth, Track) :
 	SearchKey = "?q={0}&type=track&market={1}&limit={2}".format(Track.song(), MARKET, limit)
 	SearchItems = get_json_response_dict(oauth, SearchBase + SearchKey)["tracks"]["items"]
 	for item in SearchItems :
-		external_track_url = item["external_urls"]["spotify"]
-		href = item["href"]
 		artist = item["artists"][0]["name"]
 		if artist == Track.artist() : #make more tolerant, ex case insensitive, spelling
-			return (href, external_track_url)
-	return None
+			Track.set_href(item["href"])
+			Track.set_external_url(item["external_urls"]["spotify"])
+			return True
+	return False
 
 
 if __name__ == "__main__" :
