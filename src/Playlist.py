@@ -46,12 +46,13 @@ class Playlist :
 		else :
 			self._url = None
 
-	def spotifyInit(self, oauth) :
+	def spotify_init(self, oauth) :
 		(self._id, self._url) = create_playlist(oauth, self._name, "Playlist generated from Spotify API")
 		if self._id is not None and self._url is not None :
 			return True
 		else : 
 			return False
+
 
 if __name__ == "__main__" :
 	try :
