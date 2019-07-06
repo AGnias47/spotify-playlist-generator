@@ -32,6 +32,7 @@ def query_track(oauth, Track) :
 		if artist == Track.artist() : #make more tolerant, ex case insensitive, spelling
 			Track.set_href(item["href"])
 			Track.set_external_url(item["external_urls"]["spotify"])
+			Track.set_id(item["id"])
 			return True
 	return False
 

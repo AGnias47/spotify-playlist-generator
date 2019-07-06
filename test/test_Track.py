@@ -18,7 +18,7 @@ import unittest
 class test_Track(unittest.TestCase) :
 	def setUp(self) :
 		self.newTrack = Track("Born to Run", "Bruce Springsteen")
-		self.newSpotifyTrack = Track("Interplay", "Bill Evans", "fake/href", "fake/externalURL")
+		self.newSpotifyTrack = Track("Interplay", "Bill Evans", "fake/href", "fake/externalURL", "jkwon")
 
 	def test_song(self) :
 		self.assertEqual(self.newTrack.song(), "Born to Run")
@@ -32,6 +32,9 @@ class test_Track(unittest.TestCase) :
 	def test_external_url(self) :
 		self.assertEqual(self.newSpotifyTrack.external_url(), "fake/externalURL")
 
+	def test_id(self) :
+		self.assertEqual(self.newSpotifyTrack.id(), "jkwon")
+
 	def test_set_song(self) :
 		self.newTrack.set_song("XXX")
 		self.assertEqual(self.newTrack.song(), "XXX")
@@ -44,9 +47,14 @@ class test_Track(unittest.TestCase) :
 		self.newTrack.set_href("href/Bruce")
 		self.assertEqual(self.newTrack.href(), "href/Bruce")
 
+	def test_set_id(self) :
+		self.newTrack.set_id("idBruce")
+		self.assertEqual(self.newTrack.id(), "idBruce")
+
 	def test_set_external_url(self) :
 		self.newSpotifyTrack.set_external_url("fake/morefake/externalURL")
 		self.assertEqual(self.newSpotifyTrack.external_url(), "fake/morefake/externalURL")
+
 
 if __name__ == "__main__" :
 	unittest.main()

@@ -47,5 +47,6 @@ class test_Playlist(unittest.TestCase) :
 		self.assertEqual(self.newPlaylist.tracks().song(), "EARFQUAKE")
 		self.assertEqual(self.newPlaylist.tracks().artist(), "Tyler, The Creator")
 
+
 if __name__ == "__main__" :
 	unittest.main()

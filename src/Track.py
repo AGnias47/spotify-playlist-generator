@@ -8,11 +8,12 @@
 
 
 class Track :
-	def __init__(self, song, artist, href=None, external_url=None) :
+	def __init__(self, song, artist, href=None, external_url=None, ID=None) :
 		self._artist = artist
 		self._song = song
 		self._href = href
 		self._external_url = external_url
+		self._id = ID
 
 	def artist(self) :
 		return self._artist
@@ -26,6 +27,9 @@ class Track :
 	def external_url(self) :
 		return self._external_url
 
+	def id(self) :
+		return self._id
+
 	def set_artist(self, artist) :
 		self._artist = artist
 
@@ -38,8 +42,12 @@ class Track :
 	def set_external_url(self, external_url) :
 		self._external_url = external_url
 
+	def set_id(self, ID) :
+		self._id = ID
+
 	def set_track_data(self, oauth) :
 		(self._href, self._external_url) = query_track(oauth, self)
+
 
 if __name__ == "__main__" :
 	print("Nothing to run. Import class to use")
