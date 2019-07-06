@@ -33,11 +33,18 @@ class Playlist :
 	def url(self) :
 		return self._url
 
+	def set_name(self, name) :
+		self._name = name
+
 	def set_tracks(self, Tracks) :
 		self._tracks = Tracks
 
 	def set_id(self, ID) :
 		self._id = ID
+		if self._id is not None :
+			self._url = "https://api.spotify.com/v1/playlists/" + self._id
+		else :
+			self._url = None
 
 	def spotifyInit(self, oauth) :
 		(self._id, self._url) = create_playlist(oauth, self._name, "Playlist generated from Spotify API")
