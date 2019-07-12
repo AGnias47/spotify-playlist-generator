@@ -49,7 +49,7 @@ class Playlist :
 
 	def spotify_init(self, oauth, description="Playlist generated from Spotify API") :
 		"""
-		Creates a playlist for the logged-in user
+		Creates a new playlist for the logged-in user on Spotify
 		Input: OAuth Token, Playlist name, Playlist description
 		Output: True if playlist was created, else False
 		"""
@@ -72,7 +72,7 @@ class Playlist :
 
 	def spotify_add_track(self, oauth, track_id) :
 		"""
-		Adds a track to a playlist
+		Adds a track to a playlist on Spotify
 		Input: OAuth Token, Playlist href, Track href
 		Output: True upon success, else false
 		"""
