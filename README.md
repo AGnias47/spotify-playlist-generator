@@ -14,12 +14,13 @@ There is probably an easier way to do this. Look into method used in spotipy mod
 
 ## Planned improvements
 App is still in the early stages of development. Planned improvements include:
- * Merge spotify_playlist_module.py into Playlist.py class
  * Script for easily viewing top result of search function
  * More tolerance for comparing found song against artist
  * Dash separated list as opposed to CSV
  * Allow user to pass in custom CSV, Playlist name, etc.
  * 100% coverage of functional testing
+ * Better sync with Playlist object and actual Spotify playlist
+ * Allow for usage of already created playlists
  * Ensure all scripts can run from anywhere within repo (clean up relative imports)
  * Automated test for more varied testing of adding tracks
  * Accounting for songs with special characters
