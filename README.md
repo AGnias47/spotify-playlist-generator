@@ -14,7 +14,6 @@ There is probably an easier way to do this. Look into method used in spotipy mod
 
 ## Planned improvements
 App is still in the early stages of development. Planned improvements include:
- * Script for easily viewing top result of search function
  * Ensure all scripts can run from anywhere within repo (clean up relative imports)
  * Allow user to pass in custom CSV, Playlist name, etc.
  * More tolerance for comparing found song against artist
