@@ -7,11 +7,7 @@
 #   Vim 8.0 [tabstop=3]
 
 from sys import path
-path.append("..")
-path.append("src")
-path.append("../src")
-
-
+path.append("../")
 from src.Track import Track
 import unittest
 

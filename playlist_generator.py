@@ -8,8 +8,6 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
-from sys import path
-path.append("./src")
 from src.track_parsing import *
 from src.Playlist import Playlist
 from src.Track import Track

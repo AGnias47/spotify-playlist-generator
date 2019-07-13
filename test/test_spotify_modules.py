@@ -12,13 +12,12 @@
 #   Vim 8.0 [tabstop=3]
 
 from sys import path
-path.append("..")
-path.append("../src")
+path.append("../")
 
 from src.spotify_artist_module import *
 from src.spotify_album_module import *
 # Unwritten tests
-from Track import Track
+from src.Track import Track
 
 from src.general_functions import print_pretty_json
 

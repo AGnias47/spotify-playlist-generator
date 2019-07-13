@@ -6,9 +6,11 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
+from sys import path
+path.append("../")
 from sys import argv as arg
 from sys import exit as sys_exit
-from general_functions import get_json_response_dict, print_pretty_json
+from src.general_functions import get_json_response_dict, print_pretty_json
 
 
 # Define a global variable for the market being queried by country code

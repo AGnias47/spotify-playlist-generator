@@ -12,9 +12,11 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
+from sys import path
+path.append("../")
 from sys import argv as arg
 from sys import exit as sys_exit
-from general_functions import get_json_response_dict
+from src.general_functions import get_json_response_dict
 
 
 def get_album_data_by_artist(oauth, artist_id, data_specifier="name") :

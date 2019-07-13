@@ -11,9 +11,11 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
+from sys import path
+path.append("../")
 from sys import argv as arg
 from sys import exit as sys_exit
-from Track import Track
+from src.Track import Track
 
 
 def parse_csv_playlist(fname) :
