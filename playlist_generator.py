@@ -23,15 +23,19 @@ def process_commandline_parameters() :
 	Output: 
 	"""
 	try :
-		options, arguments = getopt.getopt(arg[1:], "t:p:n:", ["token=", "playlist=", "name="])
+		options, arguments = getopt.getopt(arg[1:], "t:f:n:d:", ["token=", "filename=", "name=", "description="])
 	except getopt.GetoptError as err:
 		print(err)
 		sys_exit(1)
 	for o, a in options :
 		if o in ("-t", "--token") :
 			OAuth_Token = a
-		elif o in ("-p", "--playlist") : 
+		elif o in ("-f", "--filename") : 
+			Playlist_Filename = a
+		elif o in ("-n", "--name") :
 			Playlist_Name = a
+		elif o in ("-d", "--description") :
+			Description = a
 		else :
 			print("Unhandled option; ignoring {1}", o)
 	try : OAuth_Token
@@ -42,22 +46,30 @@ def process_commandline_parameters() :
 			T.closed
 		else :
 			OAuth_Token = input("Sender's email: ").strip()
-	try : Playlist_Name
+	try : Playlist_Filename
 	except :
-		Playlist_Name = input("File containing tracks to add to playlist: (playlist.csv) ").strip()
+		Playlist_Filename = input("File containing tracks to add to playlist: (playlist.csv) ").strip()
+		if Playlist_Filename == "" :
+			Playlist_Filename = "playlist.csv"
+	try : Playlist_Name
+	except : 
+		Playlist_Name = input("Playlist name: (SpotifyAPI Test Playlist) ").strip()
 		if Playlist_Name == "" :
-			Playlist_Name = "playlist.csv"
-	return (OAuth_Token, Playlist_Name)
+			Playlist_Name = "SpotifyAPI Test Playlist"
+	try : Description
+	except :
+		Description = "Playlist generated from playlist_generator.py"
+	return (OAuth_Token, Playlist_Filename, Playlist_Name, Description)
 
 def main() :
-	(OAuth_Token, Playlist_Name) = process_commandline_parameters()
+	(OAuth_Token, Playlist_Filename, Playlist_Name, Description) = process_commandline_parameters()
 
 	# Parse the tracks from the CSV
-	playlist_tracks = parse_csv_playlist(Playlist_Name)
+	playlist_tracks = parse_csv_playlist(Playlist_Filename)
 
 	# Initialize the Playlist to be created
-	playlist = Playlist("SpotifyAPI Test Playlist", playlist_tracks)
-	if not playlist.spotify_init(OAuth_token) :
+	playlist = Playlist(Playlist_Name, playlist_tracks)
+	if not playlist.spotify_init(OAuth_token, Description) :
 		sys_exit("Playlist could not be created; exiting")
 
 	# Add any tracks unable to be added to this list
