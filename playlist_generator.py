@@ -16,6 +16,7 @@ from sys import exit as sys_exit
 from os import path
 import getopt
 
+
 def process_commandline_parameters() :
 	"""
 	Processes commandline parameters
@@ -61,6 +62,7 @@ def process_commandline_parameters() :
 		Description = "Playlist generated from playlist_generator.py"
 	return (OAuth_Token, Playlist_Filename, Playlist_Name, Description)
 
+
 def main() :
 	(OAuth_Token, Playlist_Filename, Playlist_Name, Description) = process_commandline_parameters()
 
@@ -89,5 +91,6 @@ def main() :
 
 	print("\nTracks unable to be found: ")
 	print(*missed_tracks, sep="\n")
+
 
 main()
