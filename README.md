@@ -15,14 +15,14 @@ There is probably an easier way to do this. Look into method used in spotipy mod
 ## Planned improvements
 App is still in the early stages of development. Planned improvements include:
  * More tolerance for comparing found song against artist
+ * Accounting for songs with special characters
+ * Tolerance for song from an artist containing features
+ * User testing with more diverse array of songs
  * Dash separated list as opposed to CSV
  * 100% coverage of functional testing
  * Better sync with Playlist object and actual Spotify playlist
  * Allow for usage of already created playlists
  * Automated test for more varied testing of adding tracks
- * Accounting for songs with special characters
- * Tolerance for song from an artist containing features
  * Easier method of obtaining OAuth Token
  * Validate the OAuth Token works before running
- * User testing with more diverse array of songs
  * GUI wrapper (stretch goal)
