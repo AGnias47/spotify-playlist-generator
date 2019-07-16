@@ -45,7 +45,7 @@ def process_commandline_parameters() :
 				OAuth_Token = T.read().strip()
 			T.closed
 		else :
-			OAuth_Token = input("Sender's email: ").strip()
+			OAuth_Token = input("OAuth Token: ").strip()
 	try : Playlist_Filename
 	except :
 		Playlist_Filename = input("File containing tracks to add to playlist: (playlist.csv) ").strip()
@@ -64,20 +64,23 @@ def process_commandline_parameters() :
 def main() :
 	(OAuth_Token, Playlist_Filename, Playlist_Name, Description) = process_commandline_parameters()
 
+	if not path.exists(Playlist_Filename) :
+		sys_exit("Could not find " + Playlist_Filename + "; exiting")
+
 	# Parse the tracks from the CSV
 	playlist_tracks = parse_csv_playlist(Playlist_Filename)
 
 	# Initialize the Playlist to be created
 	playlist = Playlist(Playlist_Name, playlist_tracks)
-	if not playlist.spotify_init(OAuth_token, Description) :
+	if not playlist.spotify_init(OAuth_Token, Description) :
 		sys_exit("Playlist could not be created; exiting")
 
 	# Add any tracks unable to be added to this list
 	missed_tracks = list()
 	for track in playlist_tracks :
 		print("Adding " + track.song() + " : " + track.artist() + " to " + playlist.name())
-		if track.spotify_query(OAuth_token) : # If track was found via search
-			if playlist.spotify_add_track(OAuth_token, track.id()) : # add to playlist
+		if track.spotify_query(OAuth_Token) : # If track was found via search
+			if playlist.spotify_add_track(OAuth_Token, track.id()) : # add to playlist
 				print("Success")
 			else :
 				missed_tracks.append(track.song() + ", " + track.artist())
@@ -86,3 +89,5 @@ def main() :
 
 	print("\nTracks unable to be found: ")
 	print(*missed_tracks, sep="\n")
+
+main()

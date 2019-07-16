@@ -39,5 +39,7 @@ ftest : test/test_spotify_modules.py
 test : utest ftest
 
 run : playlist_generator.py
-	$(PYTHON) playlist_generator.py $$(cat OAuth_Token)
+	$(PYTHON) playlist_generator.py -t $$(cat OAuth_Token) -f test/Test_Artifacts/playlist.csv -n Spotify_API_$$(date +%m_%d_%Y) -d "Playlist from the spotify API"
 
+test_parameterinput : playlist_generator.py
+	$(PYTHON) playlist_generator.py
