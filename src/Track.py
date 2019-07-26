@@ -11,6 +11,7 @@ path.append("../")
 from sys import argv as arg
 from sys import exit as sys_exit
 from src.general_functions import get_json_response_dict, print_pretty_json
+from fuzzywuzzy import fuzz as fuzzy
 
 
 # Define a global variable for the market being queried by country code
@@ -56,13 +57,15 @@ class Track :
 	def set_id(self, ID) :
 		self._id = ID
 
-	def spotify_query(self, oauth) :
+	def spotify_query(self, oauth, lev_partial_ratio = 75) :
 		SearchBase = "https://api.spotify.com/v1/search"
 		SearchKey = "?q={0}&type=track&market={1}&limit={2}".format(self._song, MARKET, limit)
 		SearchItems = get_json_response_dict(oauth, SearchBase + SearchKey)["tracks"]["items"]
 		for item in SearchItems :
 			artist = item["artists"][0]["name"]
-			if artist == self._artist : #make more tolerant, ex case insensitive, spelling
+			song = item["name"]
+			if fuzzy.partial_ratio(artist.lower(), self._artist.lower()) > lev_partial_ratio  and \
+				fuzzy.partial_ratio(song.lower(), self._song.lower()) > lev_partial_ratio :
 				self._href = item["href"]
 				self._external_url = item["external_urls"]["spotify"]
 				self._id = item["id"]
