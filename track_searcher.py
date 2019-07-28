@@ -10,19 +10,23 @@
 
 from sys import path
 path.append("./src")
-from src.track_parsing import *
-from src.Playlist import Playlist
+from src.parse_file_into_tracks import *
 from src.Track import Track
-from sys import argv as arg
-from sys import exit as sys_exit
+from sys import argv as arg, exit
 
 
 # Check if the OAUTH_token was provided as an argument
-try :
-	OAUTH_token= arg[1]
-except :
-	sys_exit("OAUTH token must be provided as an argument")
+if len(arg) > 1 :
+	OAuth_Token = arg.pop()
+else :
+	try :
+		with open("OAuth_Token", 'r') as F :
+			OAuth_Token = F.read().strip()
+		F.closed
+	except :
+		exit("OAuth Token not provided as an argument or at OAuth_Token. Exiting")
+
 
 # Parse the tracks from the CSV
-for track in parse_playlist("test/Test_Artifacts/playlist.csv") :
-	track.view_top_results(OAUTH_token)
+for track in parse_playlist("functional_test/Test_Artifacts/playlist.csv") :
+	track.view_top_results(OAuth_Token)

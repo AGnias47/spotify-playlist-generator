@@ -14,30 +14,19 @@
 
 from sys import path
 path.append("../")
-from sys import argv as arg
-from sys import exit as sys_exit
 from src.general_functions import get_json_response_dict
 
 
 class Artist :
 
 	def __init__(self, name, oauth = None) :
-		self._name = name
+		self.name = name
 		if oauth is None :
-			self._external_url = None
-			self._id = None
+			self.external_url = None
+			self.ID = None
 		else :
-			set_artist_external_url(oauth)
-			set_artist_id(oauth)
-
-	def name(self) :
-		return self._name
-
-	def external_url(self) :
-		return self._external_url
-
-	def id(self) :
-		return self._id
+			self.set_artist_external_url(oauth)
+			self.set_artist_id(oauth)
 
 	def query_artist(oauth, artist) :
 		"""
@@ -55,7 +44,7 @@ class Artist :
 		Input: OAUTH token as a string, artist as a string
 		Return Value: external_url as a string
 		"""
-		self._external_url = query_artist(oauth, self._name)["external_urls"]["spotify"]
+		self.external_url = self.query_artist(oauth, self.name)["external_urls"]["spotify"]
 
 	def set_artist_id(self, oauth) :
 		"""
@@ -63,7 +52,7 @@ class Artist :
 		Input: OAUTH token as a string, artist as a string
 		Return Value: id as a string
 		"""
-		self._id = query_artist(oauth, self._name)["id"]
+		self.ID = self.query_artist(oauth, self.name)["id"]
 
 	def get_album_data_by_artist(self, oauth) :
 		"""
@@ -74,7 +63,7 @@ class Artist :
 		name, href, or id; takes name by default)
 		Return value: list of specified data as strings
 		"""
-		if self._id is None :
-			set_artist_id(oauth)
-		SearchURL = "https://api.spotify.com/v1/artists/{}/albums?include_groups=album,single&country=US&limit=50".format(self._id)
+		if self.ID is None :
+			self.set_artist_id(oauth)
+		SearchURL = "https://api.spotify.com/v1/artists/{}/albums?include_groups=album,single&country=US&limit=50".format(self.ID)
 		return [album["name"] for album in get_json_response_dict(oauth, SearchURL)["items"]]

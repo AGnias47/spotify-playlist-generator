@@ -6,8 +6,6 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
-from sys import argv as arg
-from sys import exit as sys_exit
 import requests
 import json
 
@@ -35,7 +33,7 @@ class Playlist :
 		Output: True if playlist was created, else False
 		"""
 		PlaylistURL = "https://api.spotify.com/v1/me/playlists" 
-		data = "{\"name\":\"" + self._name + "\",\"description\":\"" + description + "\",\"public\":false}" 
+		data = "{\"name\":\"" + self.name + "\",\"description\":\"" + description + "\",\"public\":false}" 
 		headers = {'Accept': 'application/json',
 					'Content-Type': 'application/json',
 					'Authorization': 'Bearer {0}'.format(oauth)}
@@ -44,9 +42,9 @@ class Playlist :
 			print(response.reason)
 			return (None, None)
 		data = json.loads(response.content.decode("utf-8"))
-		self._id = data["id"]
-		self._url = data["href"]
-		if self._id is not None and self._url is not None :
+		self.ID = data["id"]
+		self.url = data["href"]
+		if self.ID is not None and self.url is not None :
 			return True
 		else : 
 			return False
@@ -60,16 +58,10 @@ class Playlist :
 		headers = {'Accept': 'application/json',
 					'Content-Type': 'application/json',
 					'Authorization': 'Bearer {0}'.format(oauth)}
-		PlaylistURL = "https://api.spotify.com/v1/playlists/{0}/".format(self._id)
+		PlaylistURL = "https://api.spotify.com/v1/playlists/{0}/".format(self.ID)
 		TrackRef = "tracks?uris=spotify%3Atrack%3A{0}".format(track_id) 
 		response = requests.post(PlaylistURL + TrackRef, headers=headers)
 		if response.status_code != 201 :
 			print(response.reason)
 			return False
 		return True
-
-if __name__ == "__main__" :
-	try :
-		OAUTH_token= arg[1]
-	except :
-		sys_exit("OAUTH token must be provided as an argument")

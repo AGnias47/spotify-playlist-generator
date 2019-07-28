@@ -17,13 +17,14 @@ class test_Artist(unittest.TestCase) :
 		self.newArtist = Artist("Kendrick Lamar")
 
 	def test_name(self) :
-		self.assertEqual(self.newArtist.name(), "Kendrick Lamar")
+		self.assertEqual(self.newArtist.name, "Kendrick Lamar")
 
 	def test_external_url(self) :
-		self.assertEqual(self.newArtist.external_url(), None)
+		self.assertEqual(self.newArtist.external_url, None)
 
 	def test_id(self) :
-		self.assertEqual(self.newArtist.id(), None)
+		self.assertEqual(self.newArtist.ID, None)
+
 
 if __name__ == "__main__" :
 	unittest.main()

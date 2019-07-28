@@ -18,39 +18,39 @@ class test_Track(unittest.TestCase) :
 		self.newSpotifyTrack = Track("Interplay", "Bill Evans", "fake/href", "fake/externalURL", "jkwon")
 
 	def test_song(self) :
-		self.assertEqual(self.newTrack.song(), "Born to Run")
+		self.assertEqual(self.newTrack.song, "Born to Run")
 
 	def test_artist(self) :
-		self.assertEqual(self.newTrack.artist(), "Bruce Springsteen")
+		self.assertEqual(self.newTrack.artist, "Bruce Springsteen")
 
 	def test_href(self) :
-		self.assertEqual(self.newSpotifyTrack.href(), "fake/href")
+		self.assertEqual(self.newSpotifyTrack.href, "fake/href")
 
 	def test_external_url(self) :
-		self.assertEqual(self.newSpotifyTrack.external_url(), "fake/externalURL")
+		self.assertEqual(self.newSpotifyTrack.external_url, "fake/externalURL")
 
 	def test_id(self) :
-		self.assertEqual(self.newSpotifyTrack.id(), "jkwon")
+		self.assertEqual(self.newSpotifyTrack.ID, "jkwon")
 
 	def test_set_song(self) :
-		self.newTrack.set_song("XXX")
-		self.assertEqual(self.newTrack.song(), "XXX")
+		self.newTrack.song = "XXX"
+		self.assertEqual(self.newTrack.song, "XXX")
 
 	def test_set_artist(self) :
-		self.newTrack.set_artist("Kendrick Lamar")
-		self.assertEqual(self.newTrack.artist(), "Kendrick Lamar")
+		self.newTrack.artist = "Kendrick Lamar"
+		self.assertEqual(self.newTrack.artist, "Kendrick Lamar")
 
 	def test_set_href(self) :
-		self.newTrack.set_href("href/Bruce")
-		self.assertEqual(self.newTrack.href(), "href/Bruce")
+		self.newTrack.href = "href/Bruce"
+		self.assertEqual(self.newTrack.href, "href/Bruce")
 
 	def test_set_id(self) :
-		self.newTrack.set_id("idBruce")
-		self.assertEqual(self.newTrack.id(), "idBruce")
+		self.newTrack.ID = "idBruce"
+		self.assertEqual(self.newTrack.ID, "idBruce")
 
 	def test_set_external_url(self) :
-		self.newSpotifyTrack.set_external_url("fake/morefake/externalURL")
-		self.assertEqual(self.newSpotifyTrack.external_url(), "fake/morefake/externalURL")
+		self.newSpotifyTrack.external_url = "fake/morefake/externalURL"
+		self.assertEqual(self.newSpotifyTrack.external_url, "fake/morefake/externalURL")
 
 
 if __name__ == "__main__" :
