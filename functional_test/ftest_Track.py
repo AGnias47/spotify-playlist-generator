@@ -28,6 +28,7 @@ T = Track("Blue in Green", "Miles Davis")
 if T.spotify_query(OAuth_Token) == True :
 	TestsPassed += 1
 else :
+	print("Spotify track query test failed")
 	TestsFailed += 1
 
 print("Tests Passed: {0}".format(TestsPassed))

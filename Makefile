@@ -25,16 +25,27 @@ license : LICENSE
 runnode : 
 	node ~/spotifyapitestbed/web-api-auth-examples/authorization_code/app.js
 
-utest_Playlist : test/test_Playlist.py
-	cd test && $(PYTHON) test_Playlist.py
+utest_Playlist : unit_test/test_Playlist.py
+	cd unit_test && $(PYTHON) test_Playlist.py
 
-utest_Track : test/test_Track.py
-	cd test && $(PYTHON) test_Track.py
+utest_Track : unit_test/test_Track.py
+	cd unit_test && $(PYTHON) test_Track.py
 
-utest : utest_Playlist utest_Track
+utest_Artist : unit_test/test_Artist.py
+	cd unit_test && $(PYTHON) test_Artist.py
 
-ftest : test/test_spotify_modules.py
-	cd test && $(PYTHON) test_spotify_modules.py $$(cat ../OAuth_Token)
+utest_Album : unit_test/test_Album.py
+	cd unit_test && $(PYTHON) test_Album.py
+
+ftest_Playlist : functional_test/ftest_Playlist.py
+	cd functional_test && $(PYTHON) ftest_Playlist.py
+
+ftest_Track : functional_test/ftest_Track.py
+	cd functional_test && $(PYTHON) ftest_Track.py
+
+utest : utest_Playlist utest_Track utest_Artist utest_Album
+
+ftest : ftest_Playlist ftest_Track
 
 test : utest ftest
 

@@ -30,12 +30,15 @@ P = Playlist("__TEST__")
 if P.spotify_init(OAuth_Token) == True :
 	TestsPassed += 1
 else :
+	print("Playlist initialization test failed")
 	TestsFailed += 1
 
 if P.spotify_add_track(OAuth_Token, "0aWMVrwxPNYkKmFthzmpRi") == True :
 	TestsPassed += 1
 else :
-   TestsFailed += 1
+	print("Adding track to Playlist failed")
+	TestsFailed += 1
 
 print("Tests Passed: {0}".format(TestsPassed))
 print("Tests Failed: {0}".format(TestsFailed))
+print("\nRemove __TEST__ Playlist from Spotify; no API call to do this manually as of 7/27/19")
