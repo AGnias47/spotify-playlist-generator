@@ -30,13 +30,13 @@ class Artist :
 			set_artist_external_url(oauth)
 			set_artist_id(oauth)
 
-	def get_name(self) :
+	def name(self) :
 		return self._name
 
-	def get_external_url(self) :
+	def external_url(self) :
 		return self._external_url
 
-	def get_id(self) :
+	def id(self) :
 		return self._id
 
 	def query_artist(oauth, artist) :

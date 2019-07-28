@@ -27,19 +27,19 @@ class Album :
 		self._tracks = tracks
 		self._id = ID
 
-	def get_name(self) :
+	def name(self) :
 		return self._name
 
-	def get_artist(self) :
+	def artist(self) :
 		return self._artist
 
-	def get_year(self) :
+	def year(self) :
 		return self._year
 
-	def get_tracks(self) :
+	def tracks(self) :
 		return self._tracks
 
-	def get_id(self) :
+	def id(self) :
 		return self._id
 
 	def set_artist(self, artist) :
