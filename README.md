@@ -22,4 +22,5 @@ App is still in the early stages of development. Planned improvements include:
  * Automated test for more varied testing of adding tracks
  * Easier method of obtaining OAuth Token
  * Validate the OAuth Token works before running
+ * Create Album and Track classes
  * GUI wrapper (stretch goal)
