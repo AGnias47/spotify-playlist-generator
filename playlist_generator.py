@@ -70,7 +70,7 @@ def main() :
 		sys_exit("Could not find " + Playlist_Filename + "; exiting")
 
 	# Parse the tracks from the CSV
-	playlist_tracks = parse_csv_playlist(Playlist_Filename)
+	playlist_tracks = parse_playlist(Playlist_Filename)
 
 	# Initialize the Playlist to be created
 	playlist = Playlist(Playlist_Name, playlist_tracks)

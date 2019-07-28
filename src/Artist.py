@@ -78,17 +78,3 @@ class Artist :
 			set_artist_id(oauth)
 		SearchURL = "https://api.spotify.com/v1/artists/{}/albums?include_groups=album,single&country=US&limit=50".format(self._id)
 		return [album["name"] for album in get_json_response_dict(oauth, SearchURL)["items"]]
-
-
-	def get_tracks_by_album_id(self, oauth, album_id) :
-		"""
-		Get data on an album's tracks. Can return data as a list of 
-		either the names of an album's tracks as a string, the URL
-		used to access the tracks, or the ID of the tracks.
-		Input: OAuth Token, album ID, data specifier (can be either
-		name, href, or id; takes name by default)
-		Return value: list of specified data as strings
-		"""
-		SearchURL = "https://api.spotify.com/v1/albums/{}/tracks".format(album_id)
-		return [track[name] for track in get_json_response_dict(oauth,SearchURL)["items"]]
-

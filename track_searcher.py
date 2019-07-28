@@ -24,5 +24,5 @@ except :
 	sys_exit("OAUTH token must be provided as an argument")
 
 # Parse the tracks from the CSV
-for track in parse_csv_playlist("test/Test_Artifacts/playlist.csv") :
+for track in parse_playlist("test/Test_Artifacts/playlist.csv") :
 	track.view_top_results(OAUTH_token)
