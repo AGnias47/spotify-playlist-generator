@@ -63,7 +63,7 @@ class Artist :
 		Input: OAUTH token as a string, artist as a string
 		Return Value: id as a string
 		"""
-		_id = query_artist(oauth, self._name)["id"]
+		self._id = query_artist(oauth, self._name)["id"]
 
 	def get_album_data_by_artist(self, oauth) :
 		"""
