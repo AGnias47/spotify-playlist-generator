@@ -21,6 +21,5 @@ App is still in the early stages of development. Planned improvements include:
  * Allow for usage of already created playlists
  * Automated test for more varied testing of adding tracks
  * Easier method of obtaining OAuth Token
- * Validate the OAuth Token works before running
- * Create Album and Track classes
+ * Full coverage of classes with available API calls
  * GUI wrapper (stretch goal)
