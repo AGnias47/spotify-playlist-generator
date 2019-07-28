@@ -18,32 +18,32 @@ class test_Playlist(unittest.TestCase) :
 		self.newPlaylist = Playlist("A new playlist test instance")
 
 	def test_name(self) :
-		self.assertEqual(self.newPlaylist.name(), "A new playlist test instance")
+		self.assertEqual(self.newPlaylist.name, "A new playlist test instance")
 
 	def test_id(self) :
-		self.assertEqual(self.newPlaylist.id(), None)
+		self.assertEqual(self.newPlaylist.ID, None)
 
 	def test_tracks(self) :
-		self.assertEqual(self.newPlaylist.tracks(), None)
+		self.assertEqual(self.newPlaylist.tracks, None)
 
 	def test_url(self) :
-		if self.newPlaylist.id() is not None :
-			self.assertEqual(self.newPlaylist.url(), "https://api.spotify.com/v1/playlists/" + self.newPlaylist.id())
+		if self.newPlaylist.ID is not None :
+			self.assertEqual(self.newPlaylist.url, "https://api.spotify.com/v1/playlists/" + self.newPlaylist.ID)
 		else :
-			self.assertEqual(self.newPlaylist.url(), None)
+			self.assertEqual(self.newPlaylist.url, None)
 
 	def test_set_name(self) :
-		self.newPlaylist.set_name("Playlist Name Change")
-		self.assertEqual(self.newPlaylist.name(), "Playlist Name Change")
+		self.newPlaylist.name = "Playlist Name Change"
+		self.assertEqual(self.newPlaylist.name, "Playlist Name Change")
 
 	def test_set_id(self) :
-		self.newPlaylist.set_id("00001")
-		self.assertEqual(self.newPlaylist.id(), "00001")
+		self.newPlaylist.ID = "00001"
+		self.assertEqual(self.newPlaylist.ID, "00001")
 
 	def test_set_tracks(self) :
-		self.newPlaylist.set_tracks(Track("EARFQUAKE", "Tyler, The Creator"))
-		self.assertEqual(self.newPlaylist.tracks().song(), "EARFQUAKE")
-		self.assertEqual(self.newPlaylist.tracks().artist(), "Tyler, The Creator")
+		self.newPlaylist.track = Track("EARFQUAKE", "Tyler, The Creator")
+		self.assertEqual(self.newPlaylist.track.song, "EARFQUAKE")
+		self.assertEqual(self.newPlaylist.track.artist, "Tyler, The Creator")
 
 
 if __name__ == "__main__" :

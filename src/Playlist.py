@@ -14,38 +14,19 @@ import json
 
 class Playlist :
 	def __init__(self, name="Unnamed Playlist", tracks=None, ID=None) :
-		self._name = name
-		self._tracks = tracks
-		self._id = ID
-		if self._id is not None :
-			self._url = "https://api.spotify.com/v1/playlists/" + self._id
+		self.name = name
+		self.tracks = tracks
+		self.ID = ID
+		if self.ID is not None :
+			self.url = set_url(ID)
 		else :
-			self._url = None
+			self.url = None
 
-	def name(self) :
-		return self._name
-
-	def tracks(self) :
-		return self._tracks
-
-	def id(self) :
-		return self._id
-
-	def url(self) :
-		return self._url
-
-	def set_name(self, name) :
-		self._name = name
-
-	def set_tracks(self, Tracks) :
-		self._tracks = Tracks
-
-	def set_id(self, ID) :
-		self._id = ID
-		if self._id is not None :
-			self._url = "https://api.spotify.com/v1/playlists/" + self._id
+	def set_url(self, ID) :
+		if self.ID is not None :
+			self.url = "https://api.spotify.com/v1/playlists/" + self.ID
 		else :
-			self._url = None
+			self.url = None
 
 	def spotify_init(self, oauth, description="Playlist generated from Spotify API") :
 		"""
