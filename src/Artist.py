@@ -4,9 +4,9 @@
 #   Created: 7/27/2019
 #
 #   Artist.py - Class utilizing the Spotify API for
-#               interacting with artist data. Performs
-#               more complex functionality extending
-#               beyond and unrelated to Track class.
+#   interacting with artist data. Performs
+#   more complex functionality extending
+#   beyond and unrelated to Track class.
 # 
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.7.3

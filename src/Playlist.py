@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 #
 #   A. Gnias
+#   Created: 7/1/2019
+#
+#   Playlist.py - Class for interacting with Playlists
+#   through the Spotify API.
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.7.3

@@ -2,7 +2,7 @@
 #
 #   A. Gnias
 #
-#   playlist_generator.py - Adds a CSV of tracks to a Spotify playlist
+#   track_searcher.py - Gives top results of a list of tracks
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.7.3

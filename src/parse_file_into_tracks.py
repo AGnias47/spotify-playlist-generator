@@ -3,10 +3,9 @@
 #   A. Gnias
 #   Created: 5/22/2019
 #
-#   general_functions.py - Functions supporting use of the Spotify API
+#   parse_file_into_tracks.py - Parses a file containing a list
+#   of delimited tracks into a list of Track objects
 # 
-#   Requirements: OAuth Token value for Spotify API
-#
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
