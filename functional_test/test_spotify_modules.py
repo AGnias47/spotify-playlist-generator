@@ -22,7 +22,7 @@ from src.Track import Track
 from src.general_functions import print_pretty_json
 
 from filecmp import cmp
-from sys import argv as arg
+from sys import argv as arg, exit
 from time import sleep
 
 
@@ -69,7 +69,7 @@ if __name__ == "__main__" :
 	try :
 		OAUTH_token= arg[1]
 	except :
-		sys_exit("OAUTH token must be provided as an argument")
+		exit("OAUTH token must be provided as an argument")
 	# Artist to use as an example
 	artist = "Seal"
 	SealID = get_artist_id(OAUTH_token, artist)

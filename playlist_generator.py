@@ -8,11 +8,11 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
-from src.track_parsing import *
+from src.general_functions import *
+from src.parse_file_into_tracks import *
 from src.Playlist import Playlist
 from src.Track import Track
-from sys import argv as arg
-from sys import exit as sys_exit
+from sys import argv as arg, exit
 from os import path
 import getopt
 
@@ -27,7 +27,7 @@ def process_commandline_parameters() :
 		options, arguments = getopt.getopt(arg[1:], "t:f:n:d:", ["token=", "filename=", "name=", "description="])
 	except getopt.GetoptError as err:
 		print(err)
-		sys_exit(1)
+		exit(1)
 	for o, a in options :
 		if o in ("-t", "--token") :
 			OAuth_Token = a
@@ -67,27 +67,27 @@ def main() :
 	(OAuth_Token, Playlist_Filename, Playlist_Name, Description) = process_commandline_parameters()
 
 	if not path.exists(Playlist_Filename) :
-		sys_exit("Could not find " + Playlist_Filename + "; exiting")
+		exit("Could not find " + Playlist_Filename + "; exiting")
 
 	# Parse the tracks from the CSV
-	playlist_tracks = parse_csv_playlist(Playlist_Filename)
+	playlist_tracks = parse_playlist(Playlist_Filename)
 
 	# Initialize the Playlist to be created
 	playlist = Playlist(Playlist_Name, playlist_tracks)
 	if not playlist.spotify_init(OAuth_Token, Description) :
-		sys_exit("Playlist could not be created; exiting")
+		exit("Playlist could not be created; exiting")
 
 	# Add any tracks unable to be added to this list
 	missed_tracks = list()
 	for track in playlist_tracks :
-		print("Adding " + track.song() + " : " + track.artist() + " to " + playlist.name())
+		print("Adding " + track.song + " : " + track.artist + " to " + playlist.name)
 		if track.spotify_query(OAuth_Token) : # If track was found via search
-			if playlist.spotify_add_track(OAuth_Token, track.id()) : # add to playlist
+			if playlist.spotify_add_track(OAuth_Token, track.ID) : # add to playlist
 				print("Success")
 			else :
-				missed_tracks.append(track.song() + ", " + track.artist())
+				missed_tracks.append(track.song + ", " + track.artist)
 		else :
-			missed_tracks.append(track.song() + ", " + track.artist())
+			missed_tracks.append(track.song + ", " + track.artist)
 
 	print("\nTracks unable to be found: ")
 	print(*missed_tracks, sep="\n")

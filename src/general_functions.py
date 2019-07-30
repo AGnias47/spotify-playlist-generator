@@ -11,10 +11,9 @@
 #   Python 3.7.3
 #   Vim 8.0 [tabstop=3]
 
+
 import json
 import requests
-from sys import argv as arg
-from sys import exit as sys_exit
 
 
 def get_json_response_dict(oauth, SearchURL) :
@@ -39,14 +38,3 @@ def print_pretty_json(jsonDataLoads) :
 	Return Value: None (prints to stdout)
 	"""
 	print(json.dumps(jsonDataLoads, indent=3, sort_keys=False))
-
-
-if __name__ == "__main__" :
-	# Used for quick testing area
-	#
-	# Check if the OAuth token has been defined as an argument; if not, exit
-	try :
-		OAUTH_token= arg[1]
-	except :
-		sys_exit("OAUTH token must be provided as an argument")
-
