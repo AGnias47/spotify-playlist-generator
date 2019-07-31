@@ -16,6 +16,9 @@ path.append("../")
 from src.general_functions import *
 from filecmp import cmp
 from sys import argv as arg, exit
+from contextlib import redirect_stdout
+from src.Artist import Artist
+from os import remove
 
 
 def get_artist_JSON_test(OAUTH_token, artist) :
@@ -35,8 +38,17 @@ TestsPassed = 0
 TestsFailed = 0
 
 # Artist to use as an example
-artist = "Seal"
-print_pretty_json(query_artist(OAUTH_token, artist)) #print this to file and compare
-
-print("Tests Passed: {0}".format(TestsPassed))
-print("Tests Failed: {0}".format(TestsFailed))
+artist = Artist("Seal", OAuth_Token)
+with open("Test_Artifacts/functional.json",'a') as F:
+	with redirect_stdout(F):
+		print_pretty_json(artist.query_artist(OAuth_Token)) #print this to file and compare
+F.closed
+try : 
+	assert cmp("Test_Artifacts/seal.json", "Test_Artifacts/functional.json")
+	TestsPassed += 1
+except :
+	TestsFailed += 1
+finally :
+	remove("Test_Artifacts/functional.json")
+	print("Tests Passed: {0}".format(TestsPassed))
+	print("Tests Failed: {0}".format(TestsFailed))
