@@ -19,6 +19,7 @@ from sys import argv as arg, exit
 from contextlib import redirect_stdout
 from src.Artist import Artist
 from os import remove
+from fuzzywuzzy import fuzz as fuzzy
 
 
 def get_artist_JSON_test(OAUTH_token, artist) :
@@ -30,25 +31,31 @@ else :
 	try :
 		with open("../OAuth_Token", 'r') as F :
 			OAuth_Token = F.read().strip()
-		F.close()
+		F.closed
 	except :
 		exit("OAuth Token not provided as an argument or at ../OAuth_Token. Exiting")
 
 TestsPassed = 0
 TestsFailed = 0
 
-# Artist to use as an example
+# print_pretty_json test
 artist = Artist("Seal", OAuth_Token)
 with open("Test_Artifacts/functional.json",'a') as F:
 	with redirect_stdout(F):
 		print_pretty_json(artist.query_artist(OAuth_Token)) #print this to file and compare
 F.closed
-try : 
-	assert cmp("Test_Artifacts/seal.json", "Test_Artifacts/functional.json")
+with open("Test_Artifacts/seal.json", 'r') as S :
+	expected = S.read().strip()
+S.closed
+with open("Test_Artifacts/functional.json", 'r') as T :
+	actual = T.read().strip()
+T.closed
+if fuzzy.ratio(expected, actual) > 95 :
 	TestsPassed += 1
-except :
+else :
+	print("print_pretty_json test failed")
 	TestsFailed += 1
-finally :
-	remove("Test_Artifacts/functional.json")
-	print("Tests Passed: {0}".format(TestsPassed))
-	print("Tests Failed: {0}".format(TestsFailed))
+
+remove("Test_Artifacts/functional.json")
+print("Tests Passed: {0}".format(TestsPassed))
+print("Tests Failed: {0}".format(TestsFailed))
