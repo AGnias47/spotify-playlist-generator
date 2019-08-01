@@ -56,6 +56,23 @@ else :
 	print("print_pretty_json test failed")
 	TestsFailed += 1
 
+# get_json_response_dict test
+# basically what the print function does, just allows us to show dict functionality in more than one way
+SearchBase = "https://api.spotify.com/v1/search"
+SearchKey = "?q={0}&type=artist&market=US&limit=1".format("Seal")
+raw_d = get_json_response_dict(OAuth_Token, SearchBase + SearchKey)
+d = raw_d["artists"]["items"][0]
+e_href = "https://api.spotify.com/v1/artists/5GtMEZEeFFsuHY8ad4kOxv"
+e_id = "5GtMEZEeFFsuHY8ad4kOxv"
+e_name = "Seal"
+e_type = "artist"
+if e_href == d["href"] and e_id == d["id"] and e_name == d["name"] and e_type == d["type"] :
+	TestsPassed += 1
+else :
+	print("get_json_response_dict test failed")
+	TestsFailed += 1
+
+# Cleanup and print results
 remove("Test_Artifacts/functional.json")
 print("Tests Passed: {0}".format(TestsPassed))
 print("Tests Failed: {0}".format(TestsFailed))
