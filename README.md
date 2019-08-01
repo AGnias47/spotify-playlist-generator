@@ -14,9 +14,8 @@ There is probably an easier way to do this. Look into method used in spotipy mod
 
 ## Planned improvements
 App is still in the early stages of development. Planned improvements include:
- * User testing with more diverse array of songs
- * Dash separated list as opposed to CSV
  * 100% coverage of functional testing
+ * User testing with more diverse array of songs
  * Better sync with Playlist object and actual Spotify playlist
  * Allow for usage of already created playlists
  * Automated test for more varied testing of adding tracks
