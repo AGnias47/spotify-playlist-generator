@@ -1,9 +1,3 @@
-Playlist.py
-        def spotify_init(self, oauth, description="Playlist generated from Spotify API") :
-        def spotify_add_track(self, oauth, track_id) :
 parsing methods
 Track.py
-	Spotify query
 	view top results
-
-will need a method of deleting playlists to fully test
