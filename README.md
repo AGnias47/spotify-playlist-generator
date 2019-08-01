@@ -15,10 +15,10 @@ There is probably an easier way to do this. Look into method used in spotipy mod
 ## Planned improvements
 App is still in the early stages of development. Planned improvements include:
  * 100% coverage of functional testing
+ * Easier method of obtaining OAuth Token
  * User testing with more diverse array of songs
- * Better sync with Playlist object and actual Spotify playlist
+ * Full coverage of classes with available API calls
+ * Better sync with classes and actual Spotify objects
  * Allow for usage of already created playlists
  * Automated test for more varied testing of adding tracks
- * Easier method of obtaining OAuth Token
- * Full coverage of classes with available API calls
  * GUI wrapper (stretch goal)
