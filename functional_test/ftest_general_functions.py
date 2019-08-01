@@ -75,4 +75,4 @@ else :
 # Cleanup and print results
 remove("Test_Artifacts/functional.json")
 print("Tests Passed: {0}".format(TestsPassed))
-print("Tests Failed: {0}".format(TestsFailed))
+print("Tests Failed: {0}\n".format(TestsFailed))

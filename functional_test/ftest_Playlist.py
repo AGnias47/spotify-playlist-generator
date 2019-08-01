@@ -41,4 +41,4 @@ else :
 
 print("Tests Passed: {0}".format(TestsPassed))
 print("Tests Failed: {0}".format(TestsFailed))
-print("\nRemove __TEST__ Playlist from Spotify; no API call to do this manually as of 7/27/19")
+print("Remove __TEST__ Playlist from Spotify; no API call to do this manually as of 7/27/19\n")
