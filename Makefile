@@ -43,9 +43,12 @@ ftest_Playlist : functional_test/ftest_Playlist.py
 ftest_Track : functional_test/ftest_Track.py
 	cd functional_test && $(PYTHON) ftest_Track.py
 
+ftest_general : functional_test/ftest_general_functions.py
+	cd functional_test && $(PYTHON) ftest_general_functions.py
+
 utest : utest_Playlist utest_Track utest_Artist utest_Album
 
-ftest : ftest_Playlist ftest_Track
+ftest : ftest_Playlist ftest_Track ftest_general
 
 test : utest ftest
 

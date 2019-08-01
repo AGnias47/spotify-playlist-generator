@@ -28,14 +28,14 @@ class Artist :
 			self.set_artist_external_url(oauth)
 			self.set_artist_id(oauth)
 
-	def query_artist(oauth, artist) :
+	def query_artist(self, oauth) :
 		"""
 		Returns Spotify data of an artist in json format
 		Input: OAUTH token as a string, artist as a string
 		Return Value: Artist data as a dict
 		"""
 		SearchBase = "https://api.spotify.com/v1/search"
-		SearchKey = "?q={0}&type=artist&market=US&limit=1".format(artist)
+		SearchKey = "?q={0}&type=artist&market=US&limit=1".format(self.name)
 		return get_json_response_dict(oauth, SearchBase + SearchKey)["artists"]["items"][0]
 
 	def set_artist_external_url(self, oauth) :
@@ -44,7 +44,7 @@ class Artist :
 		Input: OAUTH token as a string, artist as a string
 		Return Value: external_url as a string
 		"""
-		self.external_url = self.query_artist(oauth, self.name)["external_urls"]["spotify"]
+		self.external_url = self.query_artist(oauth)["external_urls"]["spotify"]
 
 	def set_artist_id(self, oauth) :
 		"""
@@ -52,7 +52,7 @@ class Artist :
 		Input: OAUTH token as a string, artist as a string
 		Return Value: id as a string
 		"""
-		self.ID = self.query_artist(oauth, self.name)["id"]
+		self.ID = self.query_artist(oauth)["id"]
 
 	def get_album_data_by_artist(self, oauth) :
 		"""
