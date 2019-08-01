@@ -44,7 +44,7 @@ class Playlist :
 		response = requests.post(PlaylistURL, headers=headers, data=data)
 		if response.status_code != 201 : 
 			print(response.reason)
-			return (None, None)
+			return False
 		data = json.loads(response.content.decode("utf-8"))
 		self.ID = data["id"]
 		self.url = data["href"]
