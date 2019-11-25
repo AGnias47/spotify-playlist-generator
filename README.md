@@ -7,6 +7,12 @@ Creates a playlist from a csv of the form:
 Song, Artist
 ```
 
+Can be run with the following command:
+```
+./playlist_generator.py -t <API Token> -f <Path to csv> -n <Playlist name> -d <Playlist description (Optional)>
+```
+
+
 ## OAuth Token retrieval
 Currently just getting this by running the steps listed at https://github.com/spotify/web-api-auth-examples.
 
