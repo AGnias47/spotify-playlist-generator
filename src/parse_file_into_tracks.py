@@ -16,16 +16,18 @@ path.append("../")
 from src.Track import Track
 
 
-def parse_playlist(fname, delimiter=',') :
-	"""
-	Generates a list containing items of the form [artist, song]
-	Input: text file name in cwd
-	Output: populated list
-	"""
-	el = list()
-	with open(fname,'r') as f :
-		for line in f :
-			contents = line.strip().split(delimiter)
-			el.append(Track(contents[1].strip(), contents[0].strip()))
-	f.close()
-	return el
+def parse_playlist(fname, delimiter=','):
+    """
+    Generates a list containing items of the form [artist, song]
+    Input: text file name in cwd
+    Output: populated list
+    """
+    el = list()
+    try:
+        with open(fname, 'r') as f:
+            for line in f:
+                contents = line.strip().split(delimiter)
+                el.append(Track(contents[1].strip(), contents[0].strip()))
+    except FileNotFoundError:
+        return None
+    return el

@@ -14,7 +14,7 @@ SHELL = bash
 .PHONY : clean view license test run
 
 clean :
-	rm -rf *.pyc __pycache__
+	git clean -dxf -e OAuth_Token -e .idea/
 
 view : playlist_generator.py
 	$(VIEWER) playlist_generator.py
