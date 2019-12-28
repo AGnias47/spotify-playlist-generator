@@ -17,11 +17,11 @@ Can be run with the following command:
 Currently just getting this by running the steps listed at https://github.com/spotify/web-api-auth-examples.
 
 There is probably an easier way to do this. Look into method used in spotipy module.
-
+## Continued work
+ * Docstring cleanup
+ * Easier method of using / obtaining OAuth Token
 ## Potential improvements
- * Easier method of obtaining OAuth Token
  * User testing with more diverse array of songs
  * Full coverage of classes with available API calls
- * Better sync with classes and actual Spotify objects
  * Allow for usage of already created playlists
- * GUI wrapper (stretch goal)
+ * GUI wrapper
