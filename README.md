@@ -22,9 +22,14 @@ in line of Javascript): <br/>
 ```
 
 ### Internal Classes
-The playlist generator utilizes the Playlist and Track classes, as well as a csv parser defined in the general_functions 
-module. The Album and Artist classes are mainly for demonstration purposes, but may be used in a 
+The playlist generator utilizes the Playlist and Track classes, as well as a csv parser defined in the parse_file_into_tracks 
+module, and a function in the general_functions module get_json_response_dict for general parsing of the API 
+responses. The Album and Artist classes are mainly for demonstration purposes, but may be used in a 
 future project.
+
+### External Classes
+The requests module is used for handling all REST API calls, and the fuzzywuzzy module is used for fuzzy matching when
+searching for tracks through Spotify.
 
 ## Continued work
  * Docstring cleanup
