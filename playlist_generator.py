@@ -13,17 +13,16 @@ import os
 import sys
 import getopt
 
-from src.general_functions import *
 from src.parse_file_into_tracks import *
 from src.Playlist import Playlist
-from src.Track import Track
 
 
 def process_commandline_parameters():
     """
     Processes commandline parameters
     Input: None (hard-coded with the function)
-    Output:
+    Output: Tuple containing o_auth_token (string), playlist_filename (string), playlist_name (string),
+    description (string)
     """
     try:
         options, arguments = getopt.getopt(sys.argv[1:], "t:f:n:d:", ["token=", "filename=", "name=", "description="])
@@ -60,20 +59,24 @@ def process_commandline_parameters():
     return o_auth_token, playlist_filename, playlist_name, description
 
 
-def main():
+def create_playlist_and_add_tracks_from_file():
+    """
+    Creates playlist in Spotify for a user and adds tracks from file into the playlist
+    :return: List of tracks unable to be added to the playlist, or exit before completion if fatal error occurs
+    """
     (oauth_token, playlist_filename, playlist_name, description) = process_commandline_parameters()
 
-    # Parse the tracks from the CSV
+    # Parse the tracks from the CSV; CSV of the form (artist, song name)
     playlist_tracks = parse_playlist(playlist_filename)
     if not playlist_tracks:
         sys.exit(f"{playlist_tracks} either does not exist or does not have any content; exiting")
 
-    # Initialize the Playlist to be created
+    # Initialize the Playlist to be created in the user's Spotify Library
     playlist = Playlist(playlist_name, playlist_tracks)
     if not playlist.spotify_init(oauth_token, description):
         sys.exit("Playlist could not be created; exiting")
 
-    # Add any tracks unable to be added to this list
+    # Add the tracks from the CSV to the Playlist
     missed_tracks = list()
     print(f"Adding songs from {playlist_filename} to {playlist.name}")
     for track in playlist_tracks:
@@ -83,12 +86,13 @@ def main():
                 missed_tracks.append(track.song + ", " + track.artist)
         else:
             missed_tracks.append(track.song + ", " + track.artist)
+    return missed_tracks
 
-    if missed_tracks:
+
+if __name__ == "__main__":
+    missed_tracks_list = create_playlist_and_add_tracks_from_file()
+    if missed_tracks_list:
         print("\nTracks unable to be found: ")
-        print(*missed_tracks, sep="\n")
+        print(*missed_tracks_list, sep="\n")
     else:
         print("\nAll tracks added successfully\n")
-
-
-main()

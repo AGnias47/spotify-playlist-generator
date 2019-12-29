@@ -16,8 +16,15 @@ from src.general_functions import get_json_response_dict
 
 
 class Album:
-
     def __init__(self, name, artist=None, year=None, tracks=None, album_id=None):
+        """
+        Initializes album class.
+        :param name: Album name (string)
+        :param artist: Artist of album (string)
+        :param year: Year album was released (int)
+        :param tracks: Tracks in album (list of Track objects)
+        :param album_id: Spotify album ID (string)
+        """
         self.name = name
         self.artist = artist
         self.year = year
@@ -25,9 +32,13 @@ class Album:
         self.id = album_id
 
     def set_album_metadata(self, oauth):
-        # Search for an album here and set all properties; if
-        # artist or year are defined, use in search, else find and set
+        """
+        Searches an album and sets the object's properties
+        :param oauth: OAuth Token (string)
+        :return: None; sets tracks attribute
+        """
         self.tracks = self.get_tracks_by_album_id(oauth)
+        return None
 
     def get_tracks_by_album_id(self, oauth):
         """
@@ -40,4 +51,3 @@ class Album:
         """
         search_url = "https://api.spotify.com/v1/albums/{}/tracks".format(self.id)
         return [track[self.name] for track in get_json_response_dict(oauth, search_url)["items"]]
-

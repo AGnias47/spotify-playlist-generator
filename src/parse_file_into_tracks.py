@@ -8,7 +8,7 @@
 # 
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.7.3
-#   Vim 8.0 [tabstop=3]
+#   Vim 8.0
 
 
 from sys import path
@@ -19,8 +19,9 @@ from src.Track import Track
 def parse_playlist(fname, delimiter=','):
     """
     Generates a list containing items of the form [artist, song]
-    Input: text file name in cwd
-    Output: populated list
+    :param fname: File name (string)
+    :param delimiter: Item to split between artist and song name (comma by default)
+    :return: List of Track objects
     """
     el = list()
     try:

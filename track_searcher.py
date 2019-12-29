@@ -11,7 +11,6 @@
 import sys
 sys.path.append("./src")
 from src.parse_file_into_tracks import *
-from src.Track import Track
 
 
 # Check if the OAUTH_token was provided as an argument

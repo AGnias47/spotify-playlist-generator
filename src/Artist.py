@@ -18,8 +18,12 @@ from src.general_functions import get_json_response_dict
 
 
 class Artist:
-
     def __init__(self, name, oauth=None):
+        """
+        Initializes an Artist object
+        :param name: Artist name (string)
+        :param oauth: OAuth Token (string, or None)
+        """
         self.name = name
         if oauth is None:
             self.external_url = None
@@ -62,7 +66,8 @@ def get_album_data_by_artist(artist_id, oauth, country="US", limit=50):
     """
     Get data on an artists albums. Can return data as a list of
     either the names of an artist's albums as a string, the URL
-    used to access the albums, or the ID of the albums.
+    used to access the albums, or the ID of the albums. Returns
+    list of names in current iteration.
     Input: OAuth Token, artist ID, data specifier (can be either
     name, href, or id; takes name by default)
     Return value: list of specified data as strings

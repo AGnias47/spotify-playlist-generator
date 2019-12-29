@@ -8,7 +8,7 @@
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.7.3
-#   Vim 8.0 [tabstop=3]
+#   Vim 8.0
 
 import requests
 import json
@@ -16,6 +16,12 @@ import json
 
 class Playlist:
     def __init__(self, name="Unnamed Playlist", tracks=None, playlist_id=None):
+        """
+        Class to store Playlist information
+        :param name: Playlist name (string)
+        :param tracks: Tracks within playlist (Track objects)
+        :param playlist_id: Playlist ID within Spotify
+        """
         self.name = name
         self.tracks = tracks
         self.id = playlist_id
@@ -26,7 +32,7 @@ class Playlist:
 
     def spotify_init(self, oauth, description="Playlist generated from Spotify API") :
         """
-        Creates a new playlist for the logged-in user on Spotify
+        Creates a new playlist for the logged-in user on Spotify and updates the Playlist object attributes accordingly
         Input: OAuth Token, Playlist name, Playlist description
         Output: True if playlist was created, else False
         """
@@ -49,9 +55,9 @@ class Playlist:
 
     def spotify_add_track(self, oauth, track_id):
         """
-        Adds a track to a playlist on Spotify
+        Adds a track to a playlist on Spotify via the Track ID
         Input: OAuth Token, Playlist href, Track href
-        Output: True upon success, else false
+        Output: True upon success, else False
         """
         headers = {'Accept': 'application/json',
                    'Content-Type': 'application/json',

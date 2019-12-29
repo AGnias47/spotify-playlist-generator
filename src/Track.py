@@ -12,29 +12,39 @@
 
 from sys import path
 path.append("../")
-from src.general_functions import get_json_response_dict, print_pretty_json
+from src.general_functions import get_json_response_dict
 from fuzzywuzzy import fuzz as fuzzy
-
-
-# Define a global variable for the market being queried by country code
-MARKET = "US"
-# Define a global variable for the limit of track search results to return
-limit = 10
 
 
 class Track:
     def __init__(self, song, artist, href=None, external_url=None, track_id=None):
+        """
+        Stores Track Data
+        :param song: Track name (string)
+        :param artist: Track artist (string)
+        :param href: Spotify track href (string url)
+        :param external_url: Spotify track external url (string url)
+        :param track_id: Spotify track id (string)
+        """
         self.artist = artist
         self.song = song
         self.href = href
         self.external_url = external_url
         self.id = track_id
 
-    def spotify_query(self, oauth, lev_partial_ratio=75):
+    def spotify_query(self, oauth, lev_partial_ratio=75, market="US", limit=10):
+        """
+        Finds a track via a Spotify search
+        :param oauth: OAuth Token as a string
+        :param lev_partial_ratio: Levenshtein distance ratio
+        :param market: Country market; US by default
+        :param limit: Search Limit; Max and default is 10 as of v1
+        :return: True if track is found, else False; mutates Track object with Spotify data if found
+        """
         search_base = "https://api.spotify.com/v1/search"
-        search_key = "?q={0}&type=track&market={1}&limit={2}".format(self.song, MARKET, limit)
+        search_key = "?q={0}&type=track&market={1}&limit={2}".format(self.song, market, limit)
         search_items = get_json_response_dict(oauth, search_base + search_key)["tracks"]["items"]
-        for item in search_items :
+        for item in search_items:
             artist = item["artists"][0]["name"]
             song = item["name"]
             if fuzzy.partial_ratio(artist.lower(), self.artist.lower()) > lev_partial_ratio and \
@@ -45,9 +55,16 @@ class Track:
                 return True
         return False
 
-    def view_top_results(self, oauth):
+    def view_top_results(self, oauth, market="US", limit=10):
+        """
+        Prints a track's top search results from a Spotify query
+        :param oauth: OAuth Token as a string
+        :param market: Country market; US by default
+        :param limit: Search Limit; Max and default is 10 as of v1
+        :return: None
+        """
         search_base = "https://api.spotify.com/v1/search"
-        search_key = "?q={0}&type=track&market={1}&limit={2}".format(self.song, MARKET, limit)
+        search_key = "?q={0}&type=track&market={1}&limit={2}".format(self.song, market, limit)
         search_items = get_json_response_dict(oauth, search_base + search_key)["tracks"]["items"]
         result = 1
         for item in search_items:
@@ -58,3 +75,4 @@ class Track:
             print("   " + artist)
             print("   " + album + '\n')
             result += 1
+        return None

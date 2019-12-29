@@ -38,3 +38,4 @@ def print_pretty_json(json_data_loads):
     Return Value: None (prints to stdout)
     """
     print(json.dumps(json_data_loads, indent=3, sort_keys=False))
+    return None
