@@ -31,10 +31,8 @@ future project.
 The requests module is used for handling all REST API calls, and the fuzzywuzzy module is used for fuzzy matching when
 searching for tracks through Spotify.
 
-## Continued work
- * Docstring cleanup
- * Easier method of using / obtaining OAuth Token
 ## Potential improvements
+ * Easier method of using / obtaining OAuth Token
  * User testing with more diverse array of songs
  * Full coverage of classes with available API calls
  * Allow for usage of already created playlists
