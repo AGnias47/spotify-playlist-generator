@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# 
+#
 #   A. Gnias
 #   Created: 7/27/2019
 #
@@ -7,12 +7,13 @@
 #   interacting with artist data. Performs
 #   more complex functionality extending
 #   beyond and unrelated to Track class.
-# 
+#
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.7.3
 #   Vim 8.0
 
 from sys import path
+
 path.append("../")
 from src.general_functions import get_json_response_dict
 
@@ -72,6 +73,8 @@ def get_album_data_by_artist(artist_id, oauth, country="US", limit=50):
     name, href, or id; takes name by default)
     Return value: list of specified data as strings
     """
-    search_url = f"https://api.spotify.com/v1/artists/{artist_id}" \
-                 f"/albums?include_groups=album,single&country={country}&limit={str(limit)}"
+    search_url = (
+        f"https://api.spotify.com/v1/artists/{artist_id}"
+        f"/albums?include_groups=album,single&country={country}&limit={str(limit)}"
+    )
     return [album["name"] for album in get_json_response_dict(oauth, search_url)["items"]]

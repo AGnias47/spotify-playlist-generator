@@ -30,17 +30,19 @@ class Playlist:
         else:
             self.url = None
 
-    def spotify_init(self, oauth, description="Playlist generated from Spotify API") :
+    def spotify_init(self, oauth, description="Playlist generated from Spotify API"):
         """
         Creates a new playlist for the logged-in user on Spotify and updates the Playlist object attributes accordingly
         Input: OAuth Token, Playlist name, Playlist description
         Output: True if playlist was created, else False
         """
         playlist_url = "https://api.spotify.com/v1/me/playlists"
-        data = "{\"name\":\"" + self.name + "\",\"description\":\"" + description + "\",\"public\":false}" 
-        headers = {'Accept': 'application/json',
-                   'Content-Type': 'application/json',
-                   'Authorization': 'Bearer {0}'.format(oauth)}
+        data = '{"name":"' + self.name + '","description":"' + description + '","public":false}'
+        headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer {0}".format(oauth),
+        }
         response = requests.post(playlist_url, headers=headers, data=data)
         if response.status_code != 201:
             print(response.reason)
@@ -59,9 +61,11 @@ class Playlist:
         Input: OAuth Token, Playlist href, Track href
         Output: True upon success, else False
         """
-        headers = {'Accept': 'application/json',
-                   'Content-Type': 'application/json',
-                   'Authorization': 'Bearer {0}'.format(oauth)}
+        headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer {0}".format(oauth),
+        }
         playlist_url = "https://api.spotify.com/v1/playlists/{0}/".format(self.id)
         track_ref = "tracks?uris=spotify%3Atrack%3A{0}".format(track_id)
         response = requests.post(playlist_url + track_ref, headers=headers)

@@ -11,6 +11,7 @@
 #   Vim 8.0 [tabstop=3]
 
 from sys import path
+
 path.append("../")
 from src.general_functions import get_json_response_dict
 from fuzzywuzzy import fuzz as fuzzy
@@ -47,8 +48,10 @@ class Track:
         for item in search_items:
             artist = item["artists"][0]["name"]
             song = item["name"]
-            if fuzzy.partial_ratio(artist.lower(), self.artist.lower()) > lev_partial_ratio and \
-                    fuzzy.partial_ratio(song.lower(), self.song.lower()) > lev_partial_ratio:
+            if (
+                fuzzy.partial_ratio(artist.lower(), self.artist.lower()) > lev_partial_ratio
+                and fuzzy.partial_ratio(song.lower(), self.song.lower()) > lev_partial_ratio
+            ):
                 self.href = item["href"]
                 self.external_url = item["external_urls"]["spotify"]
                 self.id = item["id"]
@@ -73,6 +76,6 @@ class Track:
             album = item["album"]["name"]
             print("{0}. {1}".format(result, song))
             print("   " + artist)
-            print("   " + album + '\n')
+            print("   " + album + "\n")
             result += 1
         return None

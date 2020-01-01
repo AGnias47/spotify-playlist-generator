@@ -9,6 +9,7 @@
 #   Vim 8.0
 
 import sys
+
 sys.path.append("./src")
 from src.parse_file_into_tracks import *
 
@@ -18,12 +19,12 @@ if len(sys.argv) > 1:
     oauth_token = sys.argv.pop()
 else:
     try:
-        with open("OAuth_Token", 'r') as F:
+        with open("OAuth_Token", "r") as F:
             oauth_token = F.read().strip()
     except FileNotFoundError:
         sys.exit("OAuth Token not provided as an argument or at OAuth_Token. Exiting")
 
 
 # Parse the tracks from the CSV
-for track in parse_playlist("functional_test/Test_Artifacts/playlist.csv") :
+for track in parse_playlist("functional_test/Test_Artifacts/playlist.csv"):
     track.view_top_results(oauth_token)
