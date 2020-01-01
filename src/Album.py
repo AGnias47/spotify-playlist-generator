@@ -1,16 +1,17 @@
 #!/usr/bin/python3
-# 
+#
 #   A. Gnias
 #   Created: 7/27/2019
 #
 #   Album.py - Class utilizing the Spotify API for
 #   interacting with Album data.
-# 
+#
 #   Linux 4.18.0-18-generic #19-Ubuntu
 #   Python 3.7.3
 #   Vim 8.0
 
 from sys import path
+
 path.append("../")
 from src.general_functions import get_json_response_dict
 

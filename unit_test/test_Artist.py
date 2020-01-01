@@ -8,6 +8,7 @@
 
 import unittest
 from sys import path
+
 path.append("../")
 from src.Artist import Artist
 

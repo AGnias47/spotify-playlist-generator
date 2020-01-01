@@ -7,6 +7,7 @@
 #   Vim 8.0 [tabstop=3]
 
 import sys
+
 sys.path.append("../")
 from src.Playlist import Playlist
 
@@ -14,7 +15,7 @@ if len(sys.argv) > 1:
     oauth_token = sys.argv.pop()
 else:
     try:
-        with open("../OAuth_Token", 'r') as F:
+        with open("../OAuth_Token", "r") as F:
             oauth_token = F.read().strip()
         F.close()
     except FileNotFoundError:

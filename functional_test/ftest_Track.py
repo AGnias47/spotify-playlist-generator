@@ -7,6 +7,7 @@
 #   Vim 8.0
 
 import sys
+
 sys.path.append("../")
 from src.Track import Track
 
@@ -14,7 +15,7 @@ if len(sys.argv) > 1:
     OAuth_Token = sys.argv.pop()
 else:
     try:
-        with open("../OAuth_Token", 'r') as F:
+        with open("../OAuth_Token", "r") as F:
             OAuth_Token = F.read().strip()
         F.close()
     except FileNotFoundError:
