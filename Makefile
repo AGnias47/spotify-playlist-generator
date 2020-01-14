@@ -9,6 +9,7 @@
 
 PYTHON = python3
 VIEWER = less
+README_VIEWER = mdless
 SHELL = bash
 
 .PHONY : clean view license test run
@@ -18,6 +19,9 @@ clean :
 
 view : playlist_generator.py
 	$(VIEWER) playlist_generator.py
+
+readme : README.md
+	${README_VIEWER} README.md
 
 license : LICENSE
 	$(VIEWER) LICENSE
