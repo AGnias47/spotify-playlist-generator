@@ -3,8 +3,8 @@
 #   A. Gnias
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.3
-#   Vim 8.0 [tabstop=3]
+#   Python 3.7.5
+#   Vim 8.0
 
 import unittest
 from sys import path

@@ -8,7 +8,7 @@
 #   Requirements: OAuth Token value for Spotify API
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.3
+#   Python 3.7.5
 #   Vim 8.0
 
 
@@ -18,9 +18,20 @@ import requests
 
 def get_json_response_dict(oauth, search_url):
     """
-    Returns a json dict from a REST get request
-    Input: OAuth token and Search URL
-    Return Value: Json returned from request as a dict
+    Returns a json dict from a REST GET request
+
+    Parameters
+    ----------
+    oauth: str
+        OAuth Token retrieved from Spotify
+    search_url: str
+        URL to query
+
+    Returns
+    -------
+    dict
+        Data returned from search_url GET request
+
     """
     headers = {"Content-Type": "application/json", "Authorization": "Bearer {0}".format(oauth)}
     response = requests.get(search_url, headers=headers)
@@ -33,8 +44,17 @@ def get_json_response_dict(oauth, search_url):
 def print_pretty_json(json_data_loads):
     """
     Prints a formatted json to stdout
-    Input: json formatted as a dict by Python JSON library
-    Return Value: None (prints to stdout)
+
+    Parameters
+    ----------
+    json_data_loads: dict
+        json formatted as a dict by json library
+
+    Returns
+    -------
+    None
+        Prints to stdout
+
     """
     print(json.dumps(json_data_loads, indent=3, sort_keys=False))
     return None

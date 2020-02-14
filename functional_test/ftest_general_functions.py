@@ -8,8 +8,8 @@
 #   Requirements: OAuth Token value for Spotify API
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.3
-#   Vim 8.0 [tabstop=3]
+#   Python 3.7.5
+#   Vim 8.0
 
 from os import remove
 from contextlib import redirect_stdout

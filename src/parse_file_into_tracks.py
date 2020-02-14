@@ -7,7 +7,7 @@
 #   of delimited tracks into a list of Track objects
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.3
+#   Python 3.7.5
 #   Vim 8.0
 
 
@@ -19,17 +19,23 @@ from src.Track import Track
 
 def parse_playlist(fname, delimiter=","):
     """
-    Generates a list containing items of the form [artist, song]
-    :param fname: File name (string)
-    :param delimiter: Item to split between artist and song name (comma by default)
-    :return: List of Track objects
+    Generates a list of Tracks from a list delimited as [artist, song]
+
+    Parameters
+    ----------
+    fname: str
+        file name to parse into list
+    delimiter: str (default is ",")
+        string which splits artist and song name
+
+    Returns
+    -------
+    list of Tracks
+
     """
     el = list()
-    try:
-        with open(fname, "r") as f:
-            for line in f:
-                contents = line.strip().split(delimiter)
-                el.append(Track(contents[1].strip(), contents[0].strip()))
-    except FileNotFoundError:
-        return None
+    with open(fname, "r") as f:
+        for line in f:
+            contents = line.strip().split(delimiter)
+            el.append(Track(contents[1].strip(), contents[0].strip()))
     return el

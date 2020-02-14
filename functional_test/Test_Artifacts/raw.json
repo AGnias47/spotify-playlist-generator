@@ -1,3 +1,1 @@
 {'external_urls': {'spotify': 'https://open.spotify.com/artist/5GtMEZEeFFsuHY8ad4kOxv'}, 'followers': {'href': None, 'total': 851489}, 'genres': ['british soul', 'soft rock'], 'href': 'https://api.spotify.com/v1/artists/5GtMEZEeFFsuHY8ad4kOxv', 'id': '5GtMEZEeFFsuHY8ad4kOxv', 'images': [{'height': 640, 'url': 'https://i.scdn.co/image/f87ba05c9d8fde9366c092730b169729b7fd2c93', 'width': 640}, {'height': 320, 'url': 'https://i.scdn.co/image/ebba3a05ad81a03384932978859d23f765bdaa48', 'width': 320}, {'height': 160, 'url': 'https://i.scdn.co/image/bfca74945c8860c8d680d34ae4546b79cec7d1a0', 'width': 160}], 'name': 'Seal', 'popularity': 67, 'type': 'artist', 'uri': 'spotify:artist:5GtMEZEeFFsuHY8ad4kOxv'}
-Tests Passed: 1
-Tests Failed: 0

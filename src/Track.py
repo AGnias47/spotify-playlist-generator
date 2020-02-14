@@ -7,8 +7,8 @@
 #   the Spotify API.
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.3
-#   Vim 8.0 [tabstop=3]
+#   Python 3.7.5
+#   Vim 8.0
 
 from sys import path
 
@@ -20,12 +20,20 @@ from fuzzywuzzy import fuzz as fuzzy
 class Track:
     def __init__(self, song, artist, href=None, external_url=None, track_id=None):
         """
-        Stores Track Data
-        :param song: Track name (string)
-        :param artist: Track artist (string)
-        :param href: Spotify track href (string url)
-        :param external_url: Spotify track external url (string url)
-        :param track_id: Spotify track id (string)
+        Initializes Track class for storing Spotify track data
+
+        Parameters
+        ----------
+        song: str
+            Track name
+        artist: str
+            Track artist
+        href: str (default is None)
+            URL referring to Track in Spotify
+        external_url: str (default is None)
+            external URL referring to Track in Spotify
+        track_id: str (default is None)
+            ID referring to Track in Spotify
         """
         self.artist = artist
         self.song = song
@@ -36,11 +44,23 @@ class Track:
     def spotify_query(self, oauth, lev_partial_ratio=75, market="US", limit=10):
         """
         Finds a track via a Spotify search
-        :param oauth: OAuth Token as a string
-        :param lev_partial_ratio: Levenshtein distance ratio
-        :param market: Country market; US by default
-        :param limit: Search Limit; Max and default is 10 as of v1
-        :return: True if track is found, else False; mutates Track object with Spotify data if found
+
+        Parameters
+        ----------
+        oauth: str
+            OAuth Token retrieved from Spotify
+        lev_partial_ratio: int [0-100]
+            Levenshtein distance ratio
+        market: str (default is "US")
+            Country market
+        limit: int (default is 10)
+            Limit of tracks to query; max is 10 as of v1 of API
+
+        Returns
+        -------
+        bool
+            True if track is found, else False; mutates Track object with Spotify data if found
+
         """
         search_base = "https://api.spotify.com/v1/search"
         search_key = "?q={0}&type=track&market={1}&limit={2}".format(self.song, market, limit)
@@ -61,10 +81,21 @@ class Track:
     def view_top_results(self, oauth, market="US", limit=10):
         """
         Prints a track's top search results from a Spotify query
-        :param oauth: OAuth Token as a string
-        :param market: Country market; US by default
-        :param limit: Search Limit; Max and default is 10 as of v1
-        :return: None
+
+        Parameters
+        ----------
+        oauth: str
+            OAuth Token retrieved from Spotify
+        market: str (default is "US")
+            Country market
+        limit: int (default is 10)
+            Limit of tracks to query; max is 10 as of v1 of API
+
+        Returns
+        -------
+        None
+            Prints results to stdout
+
         """
         search_base = "https://api.spotify.com/v1/search"
         search_key = "?q={0}&type=track&market={1}&limit={2}".format(self.song, market, limit)

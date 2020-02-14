@@ -7,7 +7,7 @@
 #   through the Spotify API.
 #
 #   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.3
+#   Python 3.7.5
 #   Vim 8.0
 
 import requests
@@ -18,9 +18,15 @@ class Playlist:
     def __init__(self, name="Unnamed Playlist", tracks=None, playlist_id=None):
         """
         Class to store Playlist information
-        :param name: Playlist name (string)
-        :param tracks: Tracks within playlist (Track objects)
-        :param playlist_id: Playlist ID within Spotify
+
+        Parameters
+        ----------
+        name: str (default is Unnamed Playlist)
+            Playlist display name
+        tracks: list of Tracks (default is None)
+            Tracks to be included in the playlist
+        playlist_id: str (default is None)
+            Spotify ID for Playlist; should be None if not yet created in Spotify
         """
         self.name = name
         self.tracks = tracks
@@ -33,8 +39,19 @@ class Playlist:
     def spotify_init(self, oauth, description="Playlist generated from Spotify API"):
         """
         Creates a new playlist for the logged-in user on Spotify and updates the Playlist object attributes accordingly
-        Input: OAuth Token, Playlist name, Playlist description
-        Output: True if playlist was created, else False
+
+        Parameters
+        ----------
+        oauth: str
+            OAuth Token retrieved from Spotify
+        description: str
+            Playlist description
+
+        Returns
+        -------
+        bool
+            True if playlist was created, else False
+
         """
         playlist_url = "https://api.spotify.com/v1/me/playlists"
         data = '{"name":"' + self.name + '","description":"' + description + '","public":false}'
@@ -45,7 +62,7 @@ class Playlist:
         }
         response = requests.post(playlist_url, headers=headers, data=data)
         if response.status_code != 201:
-            print(response.reason)
+            print(f"Playlist was not created: {response.reason}")
             return False
         data = json.loads(response.content.decode("utf-8"))
         self.id = data["id"]
@@ -58,8 +75,19 @@ class Playlist:
     def spotify_add_track(self, oauth, track_id):
         """
         Adds a track to a playlist on Spotify via the Track ID
-        Input: OAuth Token, Playlist href, Track href
-        Output: True upon success, else False
+
+        Parameters
+        ----------
+        oauth: str
+            OAuth Token retrieved from Spotify
+        track_id: str
+            ID corresponding to track to add to Playlist
+
+        Returns
+        -------
+        bool
+            True upon success, else False
+
         """
         headers = {
             "Accept": "application/json",
