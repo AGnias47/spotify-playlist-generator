@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>playlist_generator module &#8212; Spotify Playlist Generator 1.1 documentation</title>
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script src="static/jquery.js"></script>
+    <script src="static/underscore.js"></script>
+    <script src="static/doctools.js"></script>
+    <script src="static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Spotify Playlist Generator 1.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-playlist_generator">
+<span id="playlist-generator-module"></span><h1>playlist_generator module<a class="headerlink" href="#module-playlist_generator" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="playlist_generator.create_playlist_and_add_tracks_from_file">
+<code class="sig-prename descclassname">playlist_generator.</code><code class="sig-name descname">create_playlist_and_add_tracks_from_file</code><span class="sig-paren">(</span><em class="sig-param">oauth_token</em>, <em class="sig-param">playlist_filename</em>, <em class="sig-param">playlist_name</em>, <em class="sig-param">description</em><span class="sig-paren">)</span><a class="headerlink" href="#playlist_generator.create_playlist_and_add_tracks_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates playlist in Spotify for a user and adds tracks from file into the playlist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oauth_token</strong></p></li>
+<li><p><strong>playlist_filename</strong></p></li>
+<li><p><strong>playlist_name</strong></p></li>
+<li><p><strong>description</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="src.html#src.Exceptions.PlaylistNotInitializedError" title="src.Exceptions.PlaylistNotInitializedError"><strong>PlaylistNotInitializedError</strong></a> – Raised if Playlist cannot be created in Spotify</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List includes Tracks unable to be added to the playlist</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list of Tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="playlist_generator.process_commandline_parameters">
+<code class="sig-prename descclassname">playlist_generator.</code><code class="sig-name descname">process_commandline_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#playlist_generator.process_commandline_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes commandline parameters hard-coded within the function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>N/A</strong></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Contains:</dt><dd><p>OAuth Token: str
+Playlist Filename: str
+Playlist Display Name: str
+Playlist Description: str</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="sources/playlist_generator.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Spotify Playlist Generator 1.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Andy Gnias.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>SpotifyAPI Playlist Generator &#8212; Spotify Playlist Generator 1.1 documentation</title>
+    <link rel="stylesheet" href="static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script src="static/jquery.js"></script>
+    <script src="static/underscore.js"></script>
+    <script src="static/doctools.js"></script>
+    <script src="static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Spotify Playlist Generator’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Spotify Playlist Generator’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Spotify Playlist Generator 1.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="spotifyapi-playlist-generator">
+<h1>SpotifyAPI Playlist Generator<a class="headerlink" href="#spotifyapi-playlist-generator" title="Permalink to this headline">¶</a></h1>
+<p>This project allows a user to create a playlist in the Spotify library from a csv file of the form</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Artist</span><span class="p">,</span> <span class="n">Song</span>
+</pre></div>
+</div>
+<p>This is done by utilizing the Spotify API detailed <a class="reference external" href="https://developer.spotify.com/documentation/web-api/">on the Spotify developer
+website</a>.</p>
+<p>A playlist can be generated via the following steps:</p>
+<ol class="simple">
+<li><p>As the project is not currently publicly distributed, each user must register an application separately
+via Spotify to retrieve their own <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> and <code class="docutils literal notranslate"><span class="pre">client_secret</span></code>. This can be
+done by going to the <a class="reference external" href="https://developer.spotify.com/dashboard/applications">Spotify Developer’s Dashboard</a>
+and clicking the button to <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">a</span> <span class="pre">Client</span> <span class="pre">ID</span></code></p></li>
+<li><p>Using these values, retrieve an OAuth Token by following the steps listed in the <a class="reference external" href="https://github.com/spotify/web-api-auth-examples">Spotify web-api-auth-examples GitHub
+repo</a>. The OAuth token must have the following scopes defined (example
+in line of Javascript): <br/>
+<code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">scope</span> <span class="pre">=</span> <span class="pre">'user-read-private</span> <span class="pre">user-read-email</span> <span class="pre">playlist-read-private</span> <span class="pre">playlist-modify-private</span> <span class="pre">playlist-modify-public';</span></code></p></li>
+<li><p>Store the OAuth token in a file named <code class="docutils literal notranslate"><span class="pre">OAuth_Token</span></code></p></li>
+<li><p>Run the following command</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">playlist_generator</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">f</span> <span class="o">&lt;</span><span class="n">Path</span> <span class="n">to</span> <span class="n">csv</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">n</span> <span class="o">&lt;</span><span class="n">Playlist</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">d</span> <span class="o">&lt;</span><span class="n">Playlist</span> <span class="n">description</span> <span class="p">(</span><span class="n">Optional</span><span class="p">)</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="internal-classes">
+<h2>Internal Classes<a class="headerlink" href="#internal-classes" title="Permalink to this headline">¶</a></h2>
+<p>The playlist generator utilizes the Playlist and Track classes, as well as a csv parser defined in the parse_file_into_tracks
+module, and a function in the general_functions module get_json_response_dict for general parsing of the API
+responses. The Album and Artist classes are mainly for demonstration purposes, but may be used in a
+future project.</p>
+</div>
+<div class="section" id="external-classes">
+<h2>External Classes<a class="headerlink" href="#external-classes" title="Permalink to this headline">¶</a></h2>
+<p>The requests module is used for handling all REST API calls, and the fuzzywuzzy module is used for fuzzy matching when
+searching for tracks through Spotify.</p>
+</div>
+<div class="section" id="potential-improvements">
+<h2>Potential improvements<a class="headerlink" href="#potential-improvements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Easier method of using / obtaining OAuth Token</p></li>
+<li><p>User testing with more diverse array of songs</p></li>
+<li><p>Full coverage of classes with available API calls</p></li>
+<li><p>Allow for usage of already created playlists</p></li>
+<li><p>GUI wrapper</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SpotifyAPI Playlist Generator</a><ul>
+<li><a class="reference internal" href="#internal-classes">Internal Classes</a></li>
+<li><a class="reference internal" href="#external-classes">External Classes</a></li>
+<li><a class="reference internal" href="#potential-improvements">Potential improvements</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Spotify Playlist Generator’s documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="sources/README.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Spotify Playlist Generator’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Spotify Playlist Generator 1.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Andy Gnias.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.1.
+    </div>
+  </body>
+</html>
