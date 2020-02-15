@@ -12,7 +12,7 @@ VIEWER = less
 README_VIEWER = mdless
 SHELL = bash
 
-.PHONY : clean view readme license runnode \
+.PHONY : clean view readme license runnode apidocs \
 utest_Playlist utest_Track test utest_Artist utest_Album utest \
 ftest_Playlist ftest_Track ftest_general test_parameterinput ftest \
 test run
@@ -31,6 +31,9 @@ license : LICENSE
 
 runnode : 
 	node ~/spotify_auth_page/app.js
+
+apidocs :
+	cd sphinx && sphinx-apidoc -f -o source/ ../.
 
 utest_Playlist : unit_test/test_Playlist.py
 	cd unit_test && $(PYTHON) test_Playlist.py
