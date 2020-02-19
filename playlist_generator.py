@@ -118,7 +118,7 @@ if __name__ == "__main__":
             user_oauth_token,
             playlist_fname,
             playlist_display_name,
-            playlist_description,
+            playlist_description
         ) = process_commandline_parameters()
     except getopt.GetoptError as err:
         print(err, "\nExiting")
