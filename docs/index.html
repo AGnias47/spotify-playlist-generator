@@ -5,13 +5,13 @@
   <head>
     <meta charset="utf-8" />
     <title>SpotifyAPI Playlist Generator &#8212; Spotify Playlist Generator 1.1 documentation</title>
-    <link rel="stylesheet" href="static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-    <script src="static/jquery.js"></script>
-    <script src="static/underscore.js"></script>
-    <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -35,12 +35,20 @@
             
   <div class="section" id="spotifyapi-playlist-generator">
 <h1>SpotifyAPI Playlist Generator<a class="headerlink" href="#spotifyapi-playlist-generator" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>This project allows a user to create a playlist in the Spotify library from a csv file of the form</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Artist, Song
 </pre></div>
 </div>
 <p>This is done by utilizing the Spotify API detailed <a class="reference external" href="https://developer.spotify.com/documentation/web-api/">on the Spotify developer
 website</a>.</p>
+</div>
+<div class="section" id="source-code">
+<h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
+<p>Link: <a class="reference external" href="https://github.com/AGnias47/SpotifyAPI">https://github.com/AGnias47/SpotifyAPI</a></p>
+<div class="section" id="playlist-generation">
+<h3>Playlist Generation<a class="headerlink" href="#playlist-generation" title="Permalink to this headline">¶</a></h3>
 <p>A playlist can be generated via the following steps:</p>
 <ol class="arabic">
 <li><p>As the project is not currently publicly distributed, each user must register an application separately
@@ -59,19 +67,22 @@ in line of Javascript): <span class="raw-html-m2r"><br/></span>
 </div></blockquote>
 </li>
 </ol>
+</div>
 <div class="section" id="internal-classes">
-<h2>Internal Classes<a class="headerlink" href="#internal-classes" title="Permalink to this headline">¶</a></h2>
+<h3>Internal Classes<a class="headerlink" href="#internal-classes" title="Permalink to this headline">¶</a></h3>
 <p>The playlist generator utilizes the Playlist and Track classes, as well as a csv parser defined in the parse_file_into_tracks
 module, and a function in the general_functions module get_json_response_dict for general parsing of the API
 responses. The Album and Artist classes are mainly for demonstration purposes, but may be used in a
 future project.</p>
 </div>
 <div class="section" id="external-classes">
-<h2>External Classes<a class="headerlink" href="#external-classes" title="Permalink to this headline">¶</a></h2>
+<h3>External Classes<a class="headerlink" href="#external-classes" title="Permalink to this headline">¶</a></h3>
 <p>The requests module is used for handling all REST API calls, and the fuzzywuzzy module is used for fuzzy matching when
 searching for tracks through Spotify.</p>
+</div>
+</div>
 <div class="section" id="potential-improvements">
-<h3>Potential improvements<a class="headerlink" href="#potential-improvements" title="Permalink to this headline">¶</a></h3>
+<h2>Potential improvements<a class="headerlink" href="#potential-improvements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Easier method of using / obtaining OAuth Token</p></li>
 <li><p>User testing with more diverse array of songs</p></li>
@@ -79,7 +90,6 @@ searching for tracks through Spotify.</p>
 <li><p>Allow for usage of already created playlists</p></li>
 <li><p>GUI wrapper</p></li>
 </ul>
-</div>
 </div>
 </div>
 <div class="section" id="function-and-module-indices">
@@ -100,11 +110,14 @@ searching for tracks through Spotify.</p>
   <h3><a href="#">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">SpotifyAPI Playlist Generator</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#source-code">Source Code</a><ul>
+<li><a class="reference internal" href="#playlist-generation">Playlist Generation</a></li>
 <li><a class="reference internal" href="#internal-classes">Internal Classes</a></li>
-<li><a class="reference internal" href="#external-classes">External Classes</a><ul>
-<li><a class="reference internal" href="#potential-improvements">Potential improvements</a></li>
+<li><a class="reference internal" href="#external-classes">External Classes</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#potential-improvements">Potential improvements</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#function-and-module-indices">Function and Module Indices</a></li>
@@ -113,7 +126,7 @@ searching for tracks through Spotify.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="sources/index.rst.txt"
+      <li><a href="_sources/index.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>

@@ -1,4 +1,6 @@
 # SpotifyAPI Playlist Generator
+
+## Description
 This project allows a user to create a playlist in the Spotify library from a csv file of the form
 ```
 Artist, Song
@@ -6,6 +8,10 @@ Artist, Song
 This is done by utilizing the Spotify API detailed [on the Spotify developer
 website](https://developer.spotify.com/documentation/web-api/).
 
+## Source Code
+Link: https://github.com/AGnias47/SpotifyAPI
+
+### Playlist Generation
 A playlist can be generated via the following steps:
  1. As the project is not currently publicly distributed, each user must register an application separately
  via Spotify to retrieve their own ```client_id```, ```redirect_uri``` and ```client_secret```. This can be
