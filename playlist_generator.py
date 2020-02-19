@@ -73,10 +73,14 @@ def create_playlist_and_add_tracks_from_file(oauth_token, playlist_filename, pla
 
     Parameters
     ----------
-    oauth_token:
-    playlist_filename
-    playlist_name
-    description
+    oauth_token: str
+        OAuth Token retrieved from Spotify
+    playlist_filename: str
+        Filepath to playlist
+    playlist_name: str
+        Name of playlist
+    description: str
+        Playlist description
 
     Raises
     -------
@@ -114,7 +118,7 @@ if __name__ == "__main__":
             user_oauth_token,
             playlist_fname,
             playlist_display_name,
-            playlist_description
+            playlist_description,
         ) = process_commandline_parameters()
     except getopt.GetoptError as err:
         print(err, "\nExiting")
@@ -122,13 +126,10 @@ if __name__ == "__main__":
 
     try:
         missed_tracks_list = create_playlist_and_add_tracks_from_file(
-            user_oauth_token,
-            playlist_fname,
-            playlist_display_name,
-            playlist_description
+            user_oauth_token, playlist_fname, playlist_display_name, playlist_description
         )
     except FileNotFoundError:
-        sys.exit(f"Path to file \"{playlist_fname}\" either does not exist or does not have any content; Exiting")
+        sys.exit(f'Path to file "{playlist_fname}" either does not exist or does not have any content; Exiting')
     except PlaylistNotInitializedError:
         sys.exit("Playlist could not be created in Spotify; exiting")
 
