@@ -1,0 +1,6 @@
+Replace refresh key in file
+use value from keys.json for API key
+Update instructions
+    Initially add client and secret
+    manually add access and refresh
+    Automate with refresh.py script
