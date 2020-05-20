@@ -14,4 +14,5 @@ class PlaylistNotInitializedError(Exception):
     """
     Exception to raise if a playlist cannot be created in Spotify
     """
+
     pass

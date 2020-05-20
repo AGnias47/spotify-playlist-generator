@@ -7,11 +7,9 @@
 #   Vim 8.0
 
 
-from src import Album as Album
 from src import Artist as Artist
 from src import Exceptions as Exceptions
 from src import general_functions as general_functions
 from src import parse_file_into_tracks as parse_file_into_tracks
 from src import Playlist as Playlist
 from src import Track as Track
-

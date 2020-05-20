@@ -4,14 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>SpotifyAPI Playlist Generator &#8212; Spotify Playlist Generator 1.1 documentation</title>
-    <link rel="stylesheet" href="static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
-    <script src="static/jquery.js"></script>
-    <script src="static/underscore.js"></script>
-    <script src="static/doctools.js"></script>
-    <script src="static/language_data.js"></script>
+    <title>Spotify Playlist Generator &#8212; Spotify Playlist Generator 1.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
   </head><body>
@@ -33,63 +33,160 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="spotifyapi-playlist-generator">
-<h1>SpotifyAPI Playlist Generator<a class="headerlink" href="#spotifyapi-playlist-generator" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="spotify-playlist-generator">
+<h1>Spotify Playlist Generator<a class="headerlink" href="#spotify-playlist-generator" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>This project allows a user to create a playlist in the Spotify library from a csv file of the form</p>
-<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Artist, Song
+<p>This project allows a user to create a Spotify playlist from a csv file of the form</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Artist, Song
 </pre></div>
 </div>
 <p>This is done by utilizing the Spotify API detailed <a class="reference external" href="https://developer.spotify.com/documentation/web-api/">on the Spotify developer
 website</a>.</p>
+<dl class="simple">
+<dt>This project also contains an authorization app for generating an initial access and refresh token. This app was pulled</dt><dd><p>from the <code class="docutils literal notranslate"><span class="pre">authorization_code</span></code> directory within
+<a class="reference external" href="https://github.com/spotify/web-api-auth-examples">spotify/web-api-auth-examples</a>. The License for that project is
+included in the <code class="docutils literal notranslate"><span class="pre">auth_page</span></code> repo.</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="source-code">
 <h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
 <p>Link: <a class="reference external" href="https://github.com/AGnias47/SpotifyAPI">https://github.com/AGnias47/SpotifyAPI</a></p>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="system-requirements">
+<h3>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>python &gt;= 3.7</p></li>
+<li><p>pip</p></li>
+<li><p>node</p></li>
+<li><p>npm</p></li>
+</ul>
+</div>
+<div class="section" id="spotify-playlist-generator-pypi-dependencies">
+<h3>Spotify Playlist Generator PyPi Dependencies<a class="headerlink" href="#spotify-playlist-generator-pypi-dependencies" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-requirements.txt notranslate"><div class="highlight"><pre><span></span>requests==2.23.0
+fuzzywuzzy==0.17.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="auth-page-npm-dependencies">
+<h3>Auth Page npm Dependencies<a class="headerlink" href="#auth-page-npm-dependencies" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>&quot;dependencies&quot;: {
+  &quot;cookie-parser&quot;: &quot;1.3.2&quot;,
+  &quot;cors&quot;: &quot;^2.8.4&quot;,
+  &quot;express&quot;: &quot;~4.16.0&quot;,
+  &quot;npm&quot;: &quot;^6.9.0&quot;,
+  &quot;querystring&quot;: &quot;~0.2.0&quot;,
+  &quot;request&quot;: &quot;~2.83.0&quot;
+}
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="playlist-generation">
-<h3>Playlist Generation<a class="headerlink" href="#playlist-generation" title="Permalink to this headline">¶</a></h3>
-<p>A playlist can be generated via the following steps:</p>
+<h2>Playlist Generation<a class="headerlink" href="#playlist-generation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-a-csv-playlist">
+<h3>Creating a CSV Playlist<a class="headerlink" href="#creating-a-csv-playlist" title="Permalink to this headline">¶</a></h3>
+<p>The playlist should be in a text file of the form</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Artist, Song
+</pre></div>
+</div>
+<dl class="simple">
+<dt>If using a spreadsheet tool, such as Excel, add the artist to Column A and the song to Column B. Do not add column</dt><dd><p>titles (ex. Row 1 should be the first song in your playlist). Ensure the file is saved as a CSV and not xlsx, etc.</p>
+</dd>
+<dt>The playlist uses fuzzy matching to determine which songs should be added. This makes the playlist generator forgiving</dt><dd><p>of misspellings, missing commas, and incomplete titles of songs, among other things, but it does increase the likelihood
+of an unwanted song being added to your playlist. So it goes. The playlist generator currently uses a <a class="reference external" href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein
+distance</a> ratio of 0.75. This can be altered if too many / not
+enough songs from a playlist are being added.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="initial-token-generation">
+<h3>Initial Token Generation<a class="headerlink" href="#initial-token-generation" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>Use of the playlist generator requires users to obtain their own <code class="docutils literal notranslate"><span class="pre">client_id</span></code> and <code class="docutils literal notranslate"><span class="pre">client_secret</span></code> token from the</dt><dd><p><a class="reference external" href="https://developer.spotify.com/dashboard/applications">Spotify Developer’s Dashboard</a>. Once these tokens are obtained,
+follow the steps below to obtain your initial <code class="docutils literal notranslate"><span class="pre">access_token</span></code> and a <code class="docutils literal notranslate"><span class="pre">refresh_token</span></code>.</p>
+</dd>
+</dl>
 <ol class="arabic">
-<li><p>As the project is not currently publicly distributed, each user must register an application separately
-via Spotify to retrieve their own <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">redirect_uri</span></code> and <code class="docutils literal notranslate"><span class="pre">client_secret</span></code>. This can be
-done by going to the <a class="reference external" href="https://developer.spotify.com/dashboard/applications">Spotify Developer’s Dashboard</a>
-and clicking the button to <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">a</span> <span class="pre">Client</span> <span class="pre">ID</span></code></p></li>
-<li><p>Using these values, retrieve an OAuth Token by following the steps listed in the <a class="reference external" href="https://github.com/spotify/web-api-auth-examples">Spotify web-api-auth-examples GitHub
-repo</a>. The OAuth token must have the following scopes defined (example
-in line of Javascript): <span class="raw-html-m2r"><br/></span>
-<code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">scope</span> <span class="pre">=</span> <span class="pre">'user-read-private</span> <span class="pre">user-read-email</span> <span class="pre">playlist-read-private</span> <span class="pre">playlist-modify-private</span> <span class="pre">playlist-modify-public';</span></code></p></li>
-<li><p>Store the OAuth token in a file named <code class="docutils literal notranslate"><span class="pre">OAuth_Token</span></code></p></li>
-<li><p>Run the following command
-.. code-block:: guess</p>
-<blockquote>
-<div><p>./playlist_generator.py -f &lt;Path to csv&gt; -n &lt;Playlist name&gt; -d &lt;Playlist description (Optional)&gt;</p>
-</div></blockquote>
+<li><p>In the project root directory, create a <code class="docutils literal notranslate"><span class="pre">keys.json</span></code> file with the following contents:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>   {
+       &quot;client_id&quot;: &quot;&lt;Your Client ID&gt;&quot;,
+       &quot;client_secret&quot;: &quot;&lt;Your Client Secret ID&gt;&quot;,
+       &quot;access_token&quot;: &quot;&quot;,
+       &quot;refresh_token&quot;: &quot;&quot;
+   }
+
+The ``access_token`` and ``refresh_token`` are intentionally left blank for now, but should conform to valid JSON standards.
+</pre></div>
+</div>
 </li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">auth_page</span></code> directory, run <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> to download the dependencies needed to run the auth page</p></li>
+<li><p>In the project root directory, run <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">./auth_page/app.js</span></code></p></li>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">localhost:8888</span></code> in a web browser and click “Log in with Spotify”</p></li>
+<li><p>Authorize the app for access by logging in with your Spotify user credentials</p></li>
+<li><p>Copy the <code class="docutils literal notranslate"><span class="pre">access_token</span></code> and <code class="docutils literal notranslate"><span class="pre">refresh_token</span></code> and use those values for the corresponding keys in the <code class="docutils literal notranslate"><span class="pre">keys.json</span></code> file</p></li>
 </ol>
 </div>
-<div class="section" id="internal-classes">
-<h3>Internal Classes<a class="headerlink" href="#internal-classes" title="Permalink to this headline">¶</a></h3>
-<p>The playlist generator utilizes the Playlist and Track classes, as well as a csv parser defined in the parse_file_into_tracks
-module, and a function in the general_functions module get_json_response_dict for general parsing of the API
-responses. The Album and Artist classes are mainly for demonstration purposes, but may be used in a
-future project.</p>
+<div class="section" id="refreshing-the-access-token">
+<h3>Refreshing the Access Token<a class="headerlink" href="#refreshing-the-access-token" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>At this point, an access token has been generated, and the playlist generator is able to authenticate with Spotify.</dt><dd><p>However, the access token expires after 1 hour. The access token can be regenerated using your refresh token via
+the following steps.</p>
+</dd>
+</dl>
+<ol class="arabic simple">
+<li><p>Ensure your <code class="docutils literal notranslate"><span class="pre">keys.json</span></code> file exists with all required fields. <code class="docutils literal notranslate"><span class="pre">client_id</span></code>, <code class="docutils literal notranslate"><span class="pre">client_secret</span></code>, and <code class="docutils literal notranslate"><span class="pre">refresh_token</span></code> must
+be accurate. If they are not, rerun the steps for “Initial Token Generation”.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">./spotify_token_refresh/refresh.py</span></code>. The <code class="docutils literal notranslate"><span class="pre">access_token</span></code> in <code class="docutils literal notranslate"><span class="pre">keys.json</span></code> will be updated in place and should now
+be able to authenticate with Spotify.</p></li>
+</ol>
+<dl class="simple">
+<dt>The GUI method can always be used to generate a new access token, but this method allows for it to be updated directly</dt><dd><p>from the command line.</p>
+</dd>
+</dl>
 </div>
-<div class="section" id="external-classes">
-<h3>External Classes<a class="headerlink" href="#external-classes" title="Permalink to this headline">¶</a></h3>
-<p>The requests module is used for handling all REST API calls, and the fuzzywuzzy module is used for fuzzy matching when
-searching for tracks through Spotify.</p>
+<div class="section" id="running-the-playlist-generator">
+<h3>Running the Playlist Generator<a class="headerlink" href="#running-the-playlist-generator" title="Permalink to this headline">¶</a></h3>
+<p>Once the access token has been updated in <code class="docutils literal notranslate"><span class="pre">keys.json</span></code>, the playlist generator can be executed with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./playlist_generator.py -f &lt;Path to csv playlist&gt; -n &lt;Playlist name&gt; -d &lt;Playlist description <span class="o">(</span>Optional<span class="o">)</span>&gt;
+</pre></div>
+</div>
+<p>The script will print to stdout which songs were and were not added to the playlist.</p>
 </div>
 </div>
-<div class="section" id="potential-improvements">
-<h2>Potential improvements<a class="headerlink" href="#potential-improvements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="improvements">
+<h2>Improvements<a class="headerlink" href="#improvements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="planned">
+<h3>Planned<a class="headerlink" href="#planned" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Easier method of using / obtaining OAuth Token</p></li>
-<li><p>User testing with more diverse array of songs</p></li>
-<li><p>Full coverage of classes with available API calls</p></li>
-<li><p>Allow for usage of already created playlists</p></li>
-<li><p>GUI wrapper</p></li>
+<li><p>Calculate coverage</p>
+<ul>
+<li><p>Full coverage of existing classes and modules</p></li>
 </ul>
+</li>
+<li><p>Remove unnecessary code and classes</p></li>
+<li><p>User testing with more diverse array of songs</p></li>
+<li><p>Allow for usage of already created playlists</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">black</span></code> icon</p></li>
+<li><p>Documentation - repo description for directories, etc., instructions on other scripts, cases, technical descriptions</p></li>
+</ul>
+</div>
+<div class="section" id="stretch">
+<h3>Stretch<a class="headerlink" href="#stretch" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>GUI wrapper</p></li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">auth_page</span></code> app</p>
+<ul>
+<li><p>Remove unnecessary content</p></li>
+<li><p>Rewrite in Flask</p></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="section" id="function-and-module-indices">
@@ -109,15 +206,27 @@ searching for tracks through Spotify.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">SpotifyAPI Playlist Generator</a><ul>
+<li><a class="reference internal" href="#">Spotify Playlist Generator</a><ul>
 <li><a class="reference internal" href="#description">Description</a></li>
-<li><a class="reference internal" href="#source-code">Source Code</a><ul>
-<li><a class="reference internal" href="#playlist-generation">Playlist Generation</a></li>
-<li><a class="reference internal" href="#internal-classes">Internal Classes</a></li>
-<li><a class="reference internal" href="#external-classes">External Classes</a></li>
+<li><a class="reference internal" href="#source-code">Source Code</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a><ul>
+<li><a class="reference internal" href="#system-requirements">System Requirements</a></li>
+<li><a class="reference internal" href="#spotify-playlist-generator-pypi-dependencies">Spotify Playlist Generator PyPi Dependencies</a></li>
+<li><a class="reference internal" href="#auth-page-npm-dependencies">Auth Page npm Dependencies</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#potential-improvements">Potential improvements</a></li>
+<li><a class="reference internal" href="#playlist-generation">Playlist Generation</a><ul>
+<li><a class="reference internal" href="#creating-a-csv-playlist">Creating a CSV Playlist</a></li>
+<li><a class="reference internal" href="#initial-token-generation">Initial Token Generation</a></li>
+<li><a class="reference internal" href="#refreshing-the-access-token">Refreshing the Access Token</a></li>
+<li><a class="reference internal" href="#running-the-playlist-generator">Running the Playlist Generator</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#improvements">Improvements</a><ul>
+<li><a class="reference internal" href="#planned">Planned</a></li>
+<li><a class="reference internal" href="#stretch">Stretch</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#function-and-module-indices">Function and Module Indices</a></li>
@@ -126,7 +235,7 @@ searching for tracks through Spotify.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="sources/index.rst.txt"
+      <li><a href="_sources/index.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>

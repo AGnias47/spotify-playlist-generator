@@ -9,13 +9,13 @@
 #   Vim 8.0
 
 
-import os
 import sys
-import getopt
+import argparse
 
 from src.parse_file_into_tracks import parse_playlist
 from src.Playlist import Playlist
 from src.Exceptions import PlaylistNotInitializedError
+from spotify_token_refresh.refresh import get_access_token
 
 
 def process_commandline_parameters():
@@ -36,35 +36,15 @@ def process_commandline_parameters():
             Playlist Description: str
 
     """
-    options, arguments = getopt.getopt(sys.argv[1:], "t:f:n:d:", ["token=", "filename=", "name=", "description="])
-    for o, a in options:
-        if o in ("-t", "--token"):
-            _oauth_token = a
-        elif o in ("-f", "--filename"):
-            _playlist_filename = a
-        elif o in ("-n", "--name"):
-            _playlist_name = a
-        elif o in ("-d", "--description"):
-            _description = a
-        else:
-            print("Unhandled option; ignoring {1}", o)
-    if "_oauth_token" not in locals():
-        if os.path.exists("OAuth_Token"):
-            with open("OAuth_Token") as T:
-                _oauth_token = T.read().strip()
-        else:
-            _oauth_token = input("OAuth Token: ").strip()
-    if "_playlist_filename" not in locals():
-        _playlist_filename = input("File containing tracks to add to playlist: (playlist.csv) ").strip()
-        if _playlist_filename == "":
-            _playlist_filename = "playlist.csv"
-    if "_playlist_name" not in locals():
-        _playlist_name = input("Playlist name: (SpotifyAPI Test Playlist) ").strip()
-        if _playlist_name == "":
-            _playlist_name = "SpotifyAPI Test Playlist"
-    if "_description" not in locals():
-        _description = "Playlist generated from playlist_generator.py"
-    return _oauth_token, _playlist_filename, _playlist_name, _description
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-k", "--keys", default="keys.json", help="Keys file containing auth token")
+    parser.add_argument("-f", "--filename", default="playlist.csv", help="File containing tracks to add to playlist")
+    parser.add_argument("-n", "--name", default="SpotifyAPI Test Playlist", help="Playlist name")
+    parser.add_argument(
+        "-d", "--description", default="Playlist generated from playlist_generator.py", help="Playlist description"
+    )
+    args = parser.parse_args()
+    return args.keys, args.filename, args.name, args.description
 
 
 def create_playlist_and_add_tracks_from_file(oauth_token, playlist_filename, playlist_name, description):
@@ -113,17 +93,8 @@ def create_playlist_and_add_tracks_from_file(oauth_token, playlist_filename, pla
 
 
 if __name__ == "__main__":
-    try:
-        (
-            user_oauth_token,
-            playlist_fname,
-            playlist_display_name,
-            playlist_description
-        ) = process_commandline_parameters()
-    except getopt.GetoptError as err:
-        print(err, "\nExiting")
-        sys.exit(1)
-
+    (keys_filename, playlist_fname, playlist_display_name, playlist_description,) = process_commandline_parameters()
+    user_oauth_token = get_access_token(keys_filename)
     try:
         missed_tracks_list = create_playlist_and_add_tracks_from_file(
             user_oauth_token, playlist_fname, playlist_display_name, playlist_description
@@ -132,7 +103,6 @@ if __name__ == "__main__":
         sys.exit(f'Path to file "{playlist_fname}" either does not exist or does not have any content; Exiting')
     except PlaylistNotInitializedError:
         sys.exit("Playlist could not be created in Spotify; exiting")
-
     if missed_tracks_list:
         print("\nTracks unable to be found: ")
         print(*missed_tracks_list, sep="\n")
