@@ -38,7 +38,13 @@ The requests module is used for handling all REST API calls, and the fuzzywuzzy 
 searching for tracks through Spotify.
 
 ## Potential improvements
+ * Calculate coverage
+ * Remove unnecessary code and classes
  * User testing with more diverse array of songs
  * Full coverage of classes with available API calls
  * Allow for usage of already created playlists
  * GUI wrapper
+ * Update instructions
+    * Initially add client and secret
+    * manually add access and refresh
+    * Automate with refresh.py script
