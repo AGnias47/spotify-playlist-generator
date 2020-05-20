@@ -53,9 +53,7 @@ def refresh_spotify_access_token(keys_filename, output_file=None):
     data = {"grant_type": "refresh_token", "refresh_token": f"{refresh_token}"}
 
     # Send post command
-    response = requests.post(
-        "https://accounts.spotify.com/api/token", headers=headers, data=data
-    )
+    response = requests.post("https://accounts.spotify.com/api/token", headers=headers, data=data)
 
     # Get the new access token from the response and set it within the keys dict
     new_access_token = json.loads(response.content)["access_token"]
@@ -72,7 +70,6 @@ def refresh_spotify_access_token(keys_filename, output_file=None):
 def get_access_token(keys_filename="keys.json"):
     with open(keys_filename) as K:
         return json.load(K)["access_token"]
-
 
 
 if __name__ == "__main__":

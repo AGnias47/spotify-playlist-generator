@@ -26,6 +26,7 @@ class Seal:
     """
     Defines expected attributes of the artist Seal within Spotify
     """
+
     def __init__(self):
         self.name = "Seal"
         self.type = "artist"
@@ -75,4 +76,3 @@ class GeneralFunctionTests(unittest.TestCase):
         self.assertEqual(self.artist.type, d["type"])
         self.assertEqual(self.artist.href, d["href"])
         self.assertEqual(self.artist.spotify_id, d["id"])
-

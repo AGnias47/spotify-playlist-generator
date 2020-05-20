@@ -12,7 +12,7 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
-var keys = require("./keys.json");
+var keys = require("../keys.json");
 
 var client_id = keys.client_id;
 var client_secret = keys.client_secret;

@@ -40,7 +40,9 @@ def process_commandline_parameters():
     parser.add_argument("-k", "--keys", default="keys.json", help="Keys file containing auth token")
     parser.add_argument("-f", "--filename", default="playlist.csv", help="File containing tracks to add to playlist")
     parser.add_argument("-n", "--name", default="SpotifyAPI Test Playlist", help="Playlist name")
-    parser.add_argument("-d", "--description", default="Playlist generated from playlist_generator.py", help="Playlist description")
+    parser.add_argument(
+        "-d", "--description", default="Playlist generated from playlist_generator.py", help="Playlist description"
+    )
     args = parser.parse_args()
     return args.keys, args.filename, args.name, args.description
 
@@ -91,12 +93,7 @@ def create_playlist_and_add_tracks_from_file(oauth_token, playlist_filename, pla
 
 
 if __name__ == "__main__":
-    (
-        keys_filename,
-        playlist_fname,
-        playlist_display_name,
-        playlist_description,
-    ) = process_commandline_parameters()
+    (keys_filename, playlist_fname, playlist_display_name, playlist_description,) = process_commandline_parameters()
     user_oauth_token = get_access_token(keys_filename)
     try:
         missed_tracks_list = create_playlist_and_add_tracks_from_file(
