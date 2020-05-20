@@ -12,18 +12,17 @@
 #
 import os
 import sys
-
-sys.path.insert(0, os.path.abspath("../../"))
+sys.path.insert(0, os.path.abspath('../../'))
 
 
 # -- Project information -----------------------------------------------------
 
-project = "Spotify Playlist Generator"
-copyright = "2020, Andy Gnias"
-author = "Andy Gnias"
+project = 'Spotify Playlist Generator'
+copyright = '2020, Andy Gnias'
+author = 'Andy Gnias'
 
 # The full version, including alpha/beta/rc tags
-release = "1.1"
+release = '1.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -31,17 +30,21 @@ release = "1.1"
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon", "m2r"]
-
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+    'm2r'
+]
+ 
 napoleon_google_docstring = False
 napoleon_use_param = False
 napoleon_use_ivar = True
 
-source_suffix = [".rst", ".md"]
+source_suffix = ['.rst', '.md']
 
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ["_templates"]
+templates_path = ['_templates']
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -60,7 +63,7 @@ html_theme = "nature"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ["_static"]
+html_static_path = ['_static']
 
 
 # -- Extension configuration -------------------------------------------------
