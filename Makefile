@@ -39,7 +39,7 @@ apidocs :
 	cd sphinx && sphinx-apidoc -f -o source/ ../.
 
 test :
-	pytest
+	rm -rf auth_page/node_modules/ && pytest
 
 
 run : playlist_generator.py
