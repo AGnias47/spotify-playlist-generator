@@ -37,8 +37,8 @@ class GeneralFunctionTests(unittest.TestCase):
     def setUp(self):
         self.access_token = get_access_token()
         self.artist = Seal()
-        self.artist_json = "Test_Artifacts/seal.json"
-        self.prettyprint_json_filename = "Test_Artifacts/functional.json"
+        self.artist_json = "test/test_artifacts/seal.json"
+        self.prettyprint_json_filename = "test/test_artifacts/functional.json"
         self.search_url = "https://api.spotify.com/v1/search"
         self.search_key = f"?q={self.artist.name}&type=artist&market=US&limit=1"
 

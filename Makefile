@@ -18,7 +18,7 @@ ftest_Playlist ftest_Track ftest_general test_parameterinput ftest \
 test run
 
 clean :
-	git clean -dxf -e OAuth_Token -e .idea/
+	git clean -dxf -e keys.json -e .idea/
 
 view : playlist_generator.py
 	$(VIEWER) playlist_generator.py
@@ -66,6 +66,6 @@ ftest : ftest_Playlist ftest_Track ftest_general
 test : utest ftest
 
 run : playlist_generator.py
-	$(PYTHON) playlist_generator.py -t $$(cat OAuth_Token) -f functional_test/Test_Artifacts/playlist.csv -n Spotify_API_$$(date +%m_%d_%Y) -d "Playlist from the spotify API"
+	$(PYTHON) playlist_generator.py -k keys.json -f playlist.csv -n Spotify_API_$$(date +%m_%d_%Y) -d "Playlist from the spotify API"
 
 

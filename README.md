@@ -38,7 +38,6 @@ The requests module is used for handling all REST API calls, and the fuzzywuzzy 
 searching for tracks through Spotify.
 
 ## Potential improvements
- * Easier method of using / obtaining OAuth Token
  * User testing with more diverse array of songs
  * Full coverage of classes with available API calls
  * Allow for usage of already created playlists

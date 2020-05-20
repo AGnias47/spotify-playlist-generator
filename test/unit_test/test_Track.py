@@ -7,9 +7,7 @@
 #   Vim 8.0
 
 import unittest
-from sys import path
 
-path.append("../")
 from src.Track import Track
 
 
