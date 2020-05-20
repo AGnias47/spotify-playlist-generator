@@ -126,6 +126,7 @@ The script will print to stdout which songs were and were not added to the playl
  * Allow for usage of already created playlists
  * Add `black` icon
  * Documentation - repo description for directories, etc., instructions on other scripts, cases, technical descriptions
+ * Update package structure
  
 ### Stretch
 

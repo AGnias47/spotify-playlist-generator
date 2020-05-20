@@ -4,14 +4,6 @@ src package
 Submodules
 ----------
 
-src.Album module
-----------------
-
-.. automodule:: src.Album
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 src.Artist module
 -----------------
 
