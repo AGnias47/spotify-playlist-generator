@@ -35,9 +35,6 @@ runnode :
 refresh :
 	$(PYTHON)  ./spotify_token_refresh/refresh.py
 
-apidocs :
-	cd sphinx && sphinx-apidoc -f -o source/ ../.
-
 test :
 	rm -rf auth_page/node_modules/ && pytest
 
