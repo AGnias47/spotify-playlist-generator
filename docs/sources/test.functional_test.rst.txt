@@ -20,6 +20,14 @@ test.functional\_test.test\_playlist module
    :undoc-members:
    :show-inheritance:
 
+test.functional\_test.test\_spotify\_token\_refresh module
+----------------------------------------------------------
+
+.. automodule:: test.functional_test.test_spotify_token_refresh
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 test.functional\_test.test\_track module
 ----------------------------------------
 

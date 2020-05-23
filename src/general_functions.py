@@ -3,17 +3,18 @@
 #   A. Gnias
 #   Created: 5/22/2019
 #
-#   general_functions.py - Functions supporting use of the Spotify API
-#
-#   Requirements: OAuth Token value for Spotify API
-#
-#   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.5
-#   Vim 8.0
+#   5.4.0-32-generic #36-Ubuntu
+#   Python 3.8.2
+#   Vim 8.1
+
+"""
+Functions supporting use of the Spotify API
+"""
 
 
 import json
 import requests
+from src.Exceptions import UnsuccessfulGetRequest
 
 
 def get_json_response_dict(oauth, search_url):
@@ -34,10 +35,12 @@ def get_json_response_dict(oauth, search_url):
 
     """
     headers = {"Content-Type": "application/json", "Authorization": "Bearer {0}".format(oauth)}
-    response = requests.get(search_url, headers=headers)
+    try:
+        response = requests.get(search_url, headers=headers)
+    except requests.exceptions.RequestException as e:
+        raise Exception(e)
     if response.status_code != 200:
-        print("catch errors here")
-        return "Something bad here"
+        raise UnsuccessfulGetRequest(f"Status Code: {response.status_code}")
     return json.loads(response.content.decode("utf-8"))
 
 

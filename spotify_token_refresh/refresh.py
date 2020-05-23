@@ -1,32 +1,47 @@
 #!/usr/bin/env python3
 #
 #   A. Gnias
+#   Created: 5/20/2020
 #
 #   Linux 5.3.0-40-generic #32-Ubuntu
-#   Python 3.7.5
+#   Python 3.8.2
 #   Vim 8.1
+
+"""
+Functions interacting with keys JSON file. Keys file format should be:
+
+.. code-block:: json
+
+    {
+        "client_id": "<Your Client ID>",
+        "client_secret": "<Your Client Secret ID>",
+        "access_token": "<Access Token>",
+        "refresh_token": "<Refresh Token>"
+    }
+"""
 
 import requests
 import json
 from base64 import b64encode
+import argparse
 
 
-def refresh_spotify_access_token(keys_filename, output_file=None):
+def refresh_spotify_access_token(keys_filename="keys.json", output_file=None):
     """
     Refreshes the access token in a json file with the contents:
 
-    ```json
-    {
-        "client_id": "client id",
-        "client_secret": "client secret",
-        "access_token": "access token",
-        "refresh_token": "refresh token"
-    }
-    ```
+    .. code-block:: json
+
+        {
+            "client_id": "client id",
+            "client_secret": "client secret",
+            "access_token": "access token",
+            "refresh_token": "refresh token"
+        }
 
     Parameters
     ----------
-    keys_filename: str
+    keys_filename: str (default is "keys.json")
         Path to json file
     output_file: str (default is None)
         Path to save updated json file; if None, update the file that was loaded
@@ -68,9 +83,26 @@ def refresh_spotify_access_token(keys_filename, output_file=None):
 
 
 def get_access_token(keys_filename="keys.json"):
+    """
+    Gets the access_token value from the keys JSON file
+
+    Parameters
+    ----------
+    keys_filename: str (default is "keys.json")
+        Filename of keys JSON
+
+    Returns
+    -------
+    str
+        Value of access_token from keys JSON
+
+    """
     with open(keys_filename) as K:
         return json.load(K)["access_token"]
 
 
 if __name__ == "__main__":
-    refresh_spotify_access_token("keys.json")  # Eventually parameterize keys.json
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-k", "--keys", default="keys.json", help="Keys file containing auth token")
+    args = parser.parse_args()
+    refresh_spotify_access_token(args.keys)

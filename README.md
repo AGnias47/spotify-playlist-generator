@@ -1,12 +1,30 @@
 # Spotify Playlist Generator
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-## Description
+<svg xmlns="http://www.w3.org/2000/svg" width="99" height="20">
+    <linearGradient id="b" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <mask id="a">
+        <rect width="99" height="20" rx="3" fill="#fff"/>
+    </mask>
+    <g mask="url(#a)">
+        <path fill="#555" d="M0 0h63v20H0z"/>
+        <path fill="#a4a61d" d="M63 0h36v20H63z"/>
+        <path fill="url(#b)" d="M0 0h99v20H0z"/>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+        <text x="31.5" y="15" fill="#010101" fill-opacity=".3">coverage</text>
+        <text x="31.5" y="14">coverage</text>
+        <text x="80" y="15" fill="#010101" fill-opacity=".3">85%</text>
+        <text x="80" y="14">85%</text>
+    </g>
+</svg>
 
 This project allows a user to create a Spotify playlist from a csv file of the form
 
-```csv
+```text
 Artist, Song
 ```
 
@@ -32,7 +50,7 @@ Link: https://github.com/AGnias47/SpotifyAPI
 
 ### Spotify Playlist Generator PyPi Dependencies
 
-```requirements.txt
+```text
 requests==2.23.0
 fuzzywuzzy==0.17.0
 ```
@@ -40,14 +58,13 @@ fuzzywuzzy==0.17.0
 ### Auth Page npm Dependencies
 
 ```json
-  "dependencies": {
-    "cookie-parser": "1.3.2",
-    "cors": "^2.8.4",
-    "express": "~4.16.0",
-    "npm": "^6.9.0",
-    "querystring": "~0.2.0",
-    "request": "~2.83.0"
-  }
+{
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2"
+}
 ```
 
 ## Playlist Generation
@@ -56,7 +73,7 @@ fuzzywuzzy==0.17.0
 
 The playlist should be in a text file of the form
 
-```csv
+```text
 Artist, Song
 ```
 
@@ -75,7 +92,9 @@ Use of the playlist generator requires users to obtain their own `client_id` and
  [Spotify Developer's Dashboard](https://developer.spotify.com/dashboard/applications). Once these tokens are obtained,
  follow the steps below to obtain your initial `access_token` and a `refresh_token`.
 
-1. In the project root directory, create a `keys.json` file with the following contents:
+1. In the project root directory, create a `keys.json` file with the following contents 
+(Note: The `access_token` and `refresh_token` are intentionally left blank for now, but 
+should conform to valid JSON standards):
 
     ```json
     {
@@ -85,8 +104,7 @@ Use of the playlist generator requires users to obtain their own `client_id` and
         "refresh_token": ""
     }
     ```
-   
-    The `access_token` and `refresh_token` are intentionally left blank for now, but should conform to valid JSON standards.
+
 2. In the `auth_page` directory, run `npm install` to download the dependencies needed to run the auth page
 3. In the project root directory, run `node ./auth_page/app.js`
 4. Go to `localhost:8888` in a web browser and click "Log in with Spotify"
@@ -126,7 +144,6 @@ The script will print to stdout which songs were and were not added to the playl
  * Remove unnecessary code and classes
  * User testing with more diverse array of songs
  * Allow for usage of already created playlists
- * Add `black` icon
  * Documentation - repo description for directories, etc., instructions on other scripts, cases, technical descriptions
  * Update package structure
  
@@ -136,3 +153,4 @@ The script will print to stdout which songs were and were not added to the playl
 * Update `auth_page` app
   * Remove unnecessary content
   * Rewrite in Flask
+

@@ -131,16 +131,25 @@
 </div>
 <div class="section" id="module-src.Exceptions">
 <span id="src-exceptions-module"></span><h2>src.Exceptions module<a class="headerlink" href="#module-src.Exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Defines specific exceptions to throw</p>
 <dl class="exception">
 <dt id="src.Exceptions.PlaylistNotInitializedError">
-<em class="property">exception </em><code class="sig-prename descclassname">src.Exceptions.</code><code class="sig-name descname">PlaylistNotInitializedError</code><a class="headerlink" href="#src.Exceptions.PlaylistNotInitializedError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">src.Exceptions.</code><code class="sig-name descname">PlaylistNotInitializedError</code><span class="sig-paren">(</span><em class="sig-param">msg=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Exceptions.PlaylistNotInitializedError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Exception to raise if a playlist cannot be created in Spotify</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="src.Exceptions.UnsuccessfulGetRequest">
+<em class="property">exception </em><code class="sig-prename descclassname">src.Exceptions.</code><code class="sig-name descname">UnsuccessfulGetRequest</code><span class="sig-paren">(</span><em class="sig-param">msg=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Exceptions.UnsuccessfulGetRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception to raise if a GET request to the API fails</p>
 </dd></dl>
 
 </div>
 <div class="section" id="module-src.Playlist">
 <span id="src-playlist-module"></span><h2>src.Playlist module<a class="headerlink" href="#module-src.Playlist" title="Permalink to this headline">¶</a></h2>
+<p>Class for interacting with Playlists through the Spotify API</p>
 <dl class="class">
 <dt id="src.Playlist.Playlist">
 <em class="property">class </em><code class="sig-prename descclassname">src.Playlist.</code><code class="sig-name descname">Playlist</code><span class="sig-paren">(</span><em class="sig-param">name='Unnamed Playlist'</em>, <em class="sig-param">tracks=None</em>, <em class="sig-param">playlist_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Playlist.Playlist" title="Permalink to this definition">¶</a></dt>
@@ -190,6 +199,7 @@
 </div>
 <div class="section" id="module-src.Track">
 <span id="src-track-module"></span><h2>src.Track module<a class="headerlink" href="#module-src.Track" title="Permalink to this headline">¶</a></h2>
+<p>Class for interacting with Tracks through the Spotify API</p>
 <dl class="class">
 <dt id="src.Track.Track">
 <em class="property">class </em><code class="sig-prename descclassname">src.Track.</code><code class="sig-name descname">Track</code><span class="sig-paren">(</span><em class="sig-param">song</em>, <em class="sig-param">artist</em>, <em class="sig-param">href=None</em>, <em class="sig-param">external_url=None</em>, <em class="sig-param">track_id=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Track.Track" title="Permalink to this definition">¶</a></dt>
@@ -242,6 +252,7 @@
 </div>
 <div class="section" id="module-src.general_functions">
 <span id="src-general-functions-module"></span><h2>src.general_functions module<a class="headerlink" href="#module-src.general_functions" title="Permalink to this headline">¶</a></h2>
+<p>Functions supporting use of the Spotify API</p>
 <dl class="function">
 <dt id="src.general_functions.get_json_response_dict">
 <code class="sig-prename descclassname">src.general_functions.</code><code class="sig-name descname">get_json_response_dict</code><span class="sig-paren">(</span><em class="sig-param">oauth</em>, <em class="sig-param">search_url</em><span class="sig-paren">)</span><a class="headerlink" href="#src.general_functions.get_json_response_dict" title="Permalink to this definition">¶</a></dt>
@@ -282,6 +293,7 @@
 </div>
 <div class="section" id="module-src.parse_file_into_tracks">
 <span id="src-parse-file-into-tracks-module"></span><h2>src.parse_file_into_tracks module<a class="headerlink" href="#module-src.parse_file_into_tracks" title="Permalink to this headline">¶</a></h2>
+<p>Parses a file containing a list of delimited tracks into a list of Track objects</p>
 <dl class="function">
 <dt id="src.parse_file_into_tracks.parse_playlist">
 <code class="sig-prename descclassname">src.parse_file_into_tracks.</code><code class="sig-name descname">parse_playlist</code><span class="sig-paren">(</span><em class="sig-param">fname</em>, <em class="sig-param">delimiter='</em>, <em class="sig-param">'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.parse_file_into_tracks.parse_playlist" title="Permalink to this definition">¶</a></dt>

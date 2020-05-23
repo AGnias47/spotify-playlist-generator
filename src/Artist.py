@@ -1,21 +1,18 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 #
 #   A. Gnias
 #   Created: 7/27/2019
 #
-#   Artist.py - Class utilizing the Spotify API for
-#   interacting with artist data. Performs
-#   more complex functionality extending
-#   beyond and unrelated to Track class.
-#
-#   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.5
-#   Vim 8.0
+#   5.4.0-32-generic #36-Ubuntu
+#   Python 3.8.2
+#   Vim 8.1
 
-from sys import path
-
-path.append("../")
 from src.general_functions import get_json_response_dict
+
+"""
+Class and functions utilizing the Spotify API for interacting with artist data. Performs 
+more complex functionality extending beyond and unrelated to Track class.
+"""
 
 
 class Artist:

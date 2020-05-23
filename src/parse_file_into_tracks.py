@@ -3,17 +3,14 @@
 #   A. Gnias
 #   Created: 5/22/2019
 #
-#   parse_file_into_tracks.py - Parses a file containing a list
-#   of delimited tracks into a list of Track objects
-#
-#   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.5
-#   Vim 8.0
+#   5.4.0-32-generic #36-Ubuntu
+#   Python 3.8.2
+#   Vim 8.1
 
+"""
+Parses a file containing a list of delimited tracks into a list of Track objects
+"""
 
-from sys import path
-
-path.append("../")
 from src.Track import Track
 
 

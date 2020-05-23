@@ -1,0 +1,13 @@
+[run]
+source = src/
+         spotify_token_refresh/
+         
+         
+
+[report]
+exclude_lines =
+    if 0:
+    if __name__ == .__main__.:
+ignore_errors = True
+[html]
+directory = coverage_html_report

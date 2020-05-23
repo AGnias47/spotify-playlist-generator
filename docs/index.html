@@ -36,10 +36,28 @@
   <div class="section" id="spotify-playlist-generator">
 <h1>Spotify Playlist Generator<a class="headerlink" href="#spotify-playlist-generator" title="Permalink to this headline">¶</a></h1>
 <a class="reference external image-reference" href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
-<p>This project allows a user to create a Spotify playlist from a csv file of the form</p>
-<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Artist, Song
+<p>&lt;?xml version=”1.0” encoding=”UTF-8”?&gt;</p>
+<svg xmlns="http://www.w3.org/2000/svg" width="99" height="20">
+    <linearGradient id="b" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <mask id="a">
+        <rect width="99" height="20" rx="3" fill="#fff"/>
+    </mask>
+    <g mask="url(#a)">
+        <path fill="#555" d="M0 0h63v20H0z"/>
+        <path fill="#a4a61d" d="M63 0h36v20H63z"/>
+        <path fill="url(#b)" d="M0 0h99v20H0z"/>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
+        <text x="31.5" y="15" fill="#010101" fill-opacity=".3">coverage</text>
+        <text x="31.5" y="14">coverage</text>
+        <text x="80" y="15" fill="#010101" fill-opacity=".3">85%</text>
+        <text x="80" y="14">85%</text>
+    </g>
+</svg><p>This project allows a user to create a Spotify playlist from a csv file of the form</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Artist, Song
 </pre></div>
 </div>
 <p>This is done by utilizing the Spotify API detailed <a class="reference external" href="https://developer.spotify.com/documentation/web-api/">on the Spotify developer
@@ -50,7 +68,6 @@ website</a>.</p>
 included in the <code class="docutils literal notranslate"><span class="pre">auth_page</span></code> repo.</p>
 </dd>
 </dl>
-</div>
 <div class="section" id="source-code">
 <h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
 <p>Link: <a class="reference external" href="https://github.com/AGnias47/SpotifyAPI">https://github.com/AGnias47/SpotifyAPI</a></p>
@@ -68,21 +85,20 @@ included in the <code class="docutils literal notranslate"><span class="pre">aut
 </div>
 <div class="section" id="spotify-playlist-generator-pypi-dependencies">
 <h3>Spotify Playlist Generator PyPi Dependencies<a class="headerlink" href="#spotify-playlist-generator-pypi-dependencies" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-requirements.txt notranslate"><div class="highlight"><pre><span></span>requests==2.23.0
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>requests==2.23.0
 fuzzywuzzy==0.17.0
 </pre></div>
 </div>
 </div>
 <div class="section" id="auth-page-npm-dependencies">
 <h3>Auth Page npm Dependencies<a class="headerlink" href="#auth-page-npm-dependencies" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>&quot;dependencies&quot;: {
-  &quot;cookie-parser&quot;: &quot;1.3.2&quot;,
-  &quot;cors&quot;: &quot;^2.8.4&quot;,
-  &quot;express&quot;: &quot;~4.16.0&quot;,
-  &quot;npm&quot;: &quot;^6.9.0&quot;,
-  &quot;querystring&quot;: &quot;~0.2.0&quot;,
-  &quot;request&quot;: &quot;~2.83.0&quot;
-}
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;cookie-parser&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.4.5&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cors&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.8.5&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;express&quot;</span><span class="p">:</span> <span class="s2">&quot;^4.17.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;querystring&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;^2.88.2&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -92,7 +108,7 @@ fuzzywuzzy==0.17.0
 <div class="section" id="creating-a-csv-playlist">
 <h3>Creating a CSV Playlist<a class="headerlink" href="#creating-a-csv-playlist" title="Permalink to this headline">¶</a></h3>
 <p>The playlist should be in a text file of the form</p>
-<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>Artist, Song
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Artist, Song
 </pre></div>
 </div>
 <dl class="simple">
@@ -113,15 +129,15 @@ follow the steps below to obtain your initial <code class="docutils literal notr
 </dd>
 </dl>
 <ol class="arabic">
-<li><p>In the project root directory, create a <code class="docutils literal notranslate"><span class="pre">keys.json</span></code> file with the following contents:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>   {
-       &quot;client_id&quot;: &quot;&lt;Your Client ID&gt;&quot;,
-       &quot;client_secret&quot;: &quot;&lt;Your Client Secret ID&gt;&quot;,
-       &quot;access_token&quot;: &quot;&quot;,
-       &quot;refresh_token&quot;: &quot;&quot;
-   }
-
-The ``access_token`` and ``refresh_token`` are intentionally left blank for now, but should conform to valid JSON standards.
+<li><p>In the project root directory, create a <code class="docutils literal notranslate"><span class="pre">keys.json</span></code> file with the following contents
+(Note: The <code class="docutils literal notranslate"><span class="pre">access_token</span></code> and <code class="docutils literal notranslate"><span class="pre">refresh_token</span></code> are intentionally left blank for now, but
+should conform to valid JSON standards):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;Your Client ID&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;Your Client Secret ID&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </li>
@@ -172,7 +188,6 @@ be able to authenticate with Spotify.</p></li>
 <li><p>Remove unnecessary code and classes</p></li>
 <li><p>User testing with more diverse array of songs</p></li>
 <li><p>Allow for usage of already created playlists</p></li>
-<li><p>Add <code class="docutils literal notranslate"><span class="pre">black</span></code> icon</p></li>
 <li><p>Documentation - repo description for directories, etc., instructions on other scripts, cases, technical descriptions</p></li>
 <li><p>Update package structure</p></li>
 </ul>
@@ -209,7 +224,6 @@ be able to authenticate with Spotify.</p></li>
   <h3><a href="#">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Spotify Playlist Generator</a><ul>
-<li><a class="reference internal" href="#description">Description</a></li>
 <li><a class="reference internal" href="#source-code">Source Code</a></li>
 <li><a class="reference internal" href="#requirements">Requirements</a><ul>
 <li><a class="reference internal" href="#system-requirements">System Requirements</a></li>

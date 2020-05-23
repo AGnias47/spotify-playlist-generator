@@ -1,0 +1,6 @@
+{
+    "client_id": "clientid",
+    "client_secret": "clientsecret",
+    "access_token": "accesstokenvalue",
+    "refresh_token": "refreshtokenvalue"
+}

@@ -1,13 +1,15 @@
 #!/usr/bin/python3
 #
 #   A. Gnias
+#   Created: ~7/18/2019
 #
-#   playlist_generator.py - Adds a CSV of tracks to a Spotify playlist
-#
-#   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.5
-#   Vim 8.0
+#   5.4.0-32-generic #36-Ubuntu
+#   Python 3.8.2
+#   Vim 8.1
 
+"""
+Adds a CSV of tracks to a Spotify playlist
+"""
 
 import sys
 import argparse

@@ -1,30 +1,25 @@
 #!/usr/bin/python3
 #
 #   A. Gnias
+#   Created: 7/12/2019
 #
-#   track_searcher.py - Gives top results of a list of tracks
-#
-#   Linux 4.18.0-18-generic #19-Ubuntu
-#   Python 3.7.5
-#   Vim 8.0
+#   5.4.0-32-generic #36-Ubuntu
+#   Python 3.8.2
+#   Vim 8.1
 
-import sys
+"""
+Script which returns the top search results for each track in a playlist.csv style file
+"""
 
-sys.path.append("./src")
-from src.parse_file_into_tracks import *
-
-
-# Check if the OAUTH_token was provided as an argument
-if len(sys.argv) > 1:
-    oauth_token = sys.argv.pop()
-else:
-    try:
-        with open("OAuth_Token", "r") as F:
-            oauth_token = F.read().strip()
-    except FileNotFoundError:
-        sys.exit("OAuth Token not provided as an argument or at OAuth_Token. Exiting")
+import argparse
+from src.parse_file_into_tracks import parse_playlist
+from spotify_token_refresh.refresh import get_access_token
 
 
-# Parse the tracks from the CSV
-for track in parse_playlist("functional_test/Test_Artifacts/playlist.csv"):
-    track.view_top_results(oauth_token)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-k", "--keys", default="keys.json", help="Keys file containing auth token")
+    parser.add_argument("-f", "--filename", default="playlist.csv", help="File containing tracks to add to playlist")
+    args = parser.parse_args()
+    for track in parse_playlist(args.filename):
+        track.view_top_results(get_access_token())
