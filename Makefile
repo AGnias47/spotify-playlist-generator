@@ -15,7 +15,7 @@ BROWSER = google-chrome
 COVERAGE = coverage
 TEST_MODULE = pytest
 
-.PHONY : clean view readme license runnode refresh test coverage_report search run docs sphinxview
+.PHONY : clean view readme license runnode refresh test covreport search run docs sview format
 
 clean :
 	git clean -dxf -e keys.json -e .idea/
@@ -36,9 +36,9 @@ refresh :
 	$(PYTHON)  ./spotify_token_refresh/refresh.py
 
 test :
-	rm -rf auth_page/node_modules/ && $(COVERAGE) run -m $(TEST_MODULE)
+	rm -rf auth_page/node_modules/ && $(COVERAGE) run -m $(TEST_MODULE) -s
 
-coverage_report :
+covreport :
 	$(COVERAGE) report && coverage-badge
 
 search : track_searcher.py
@@ -47,8 +47,11 @@ search : track_searcher.py
 run : playlist_generator.py
 	$(PYTHON) playlist_generator.py -k keys.json -f playlist.csv -n Spotify_API_$$(date +%m_%d_%Y) -d "Playlist from the spotify API"
 
+format :
+	black -l 120 .
+
 docs : sphinx/update_documentation.bash
 	cd sphinx && bash update_documentation.bash
 
-sphinxview : docs/index.html
+sview : docs/index.html
 	$(BROWSER) docs/index.html

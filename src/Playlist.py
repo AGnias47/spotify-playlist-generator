@@ -13,6 +13,7 @@ Class for interacting with Playlists through the Spotify API
 
 import requests
 import json
+from src.Exceptions import PlaylistNotInitializedError
 
 
 class Playlist:
@@ -48,6 +49,11 @@ class Playlist:
         description: str
             Playlist description
 
+        Raises
+        -------
+        PlaylistNotInitializedError
+            Raised if Playlist cannot be created in Spotify
+
         Returns
         -------
         bool
@@ -63,17 +69,16 @@ class Playlist:
         }
         response = requests.post(playlist_url, headers=headers, data=data)
         if response.status_code != 201:
-            print(f"Playlist was not created: {response.reason}")
-            return False
+            raise PlaylistNotInitializedError(response.reason)
         data = json.loads(response.content.decode("utf-8"))
         self.id = data["id"]
         self.url = data["href"]
-        if self.id is not None and self.url is not None:
-            return True
-        else:
+        # If ID and URL are not properly returned by playlist creation call, return false
+        if self.id is None or self.url is None:
             return False
+        return True
 
-    def spotify_add_track(self, oauth, track_id):
+    def spotify_add_track(self, oauth, track_id, quiet=False):
         """
         Adds a track to a playlist on Spotify via the Track ID
 
@@ -83,6 +88,8 @@ class Playlist:
             OAuth Token retrieved from Spotify
         track_id: str
             ID corresponding to track to add to Playlist
+        quiet: bool (default is False)
+            If true, suppress output; no functional difference
 
         Returns
         -------
@@ -99,6 +106,41 @@ class Playlist:
         track_ref = "tracks?uris=spotify%3Atrack%3A{0}".format(track_id)
         response = requests.post(playlist_url + track_ref, headers=headers)
         if response.status_code != 201:
-            print(response.reason)
+            if not quiet:
+                print(response.reason)
             return False
         return True
+
+    def spotify_add_tracks(self, oauth_token, quiet=False):
+        """
+        Adds tracks in self.tracks to the playlist in Spotify.
+        If any tracks are missed, append them to the missed_tracks list
+
+
+        Parameters
+        ----------
+        oauth_token: str
+            OAuth Token retrieved from Spotify
+        quiet: bool (default is False)
+            If true, suppress output; no functional difference
+
+
+        Returns
+        -------
+        list(Tracks)
+            List includes Tracks unable to be added to the playlist
+
+        """
+        missed_tracks = list()
+        for track in self.tracks:
+            if not quiet:
+                print(f"Adding {track.song} by {track.artist}")
+            # If track was found via search, add to playlist
+            if track.spotify_query(oauth_token):
+                # If the track was not added, append to missed_tracks, else continue
+                if not self.spotify_add_track(oauth_token, track.id):
+                    missed_tracks.append(track.song + ", " + track.artist)
+            # If track was not found via search, append to missed_tracks
+            else:
+                missed_tracks.append(track.song + ", " + track.artist)
+        return missed_tracks

@@ -36,55 +36,6 @@
   <div class="section" id="module-playlist_generator">
 <span id="playlist-generator-module"></span><h1>playlist_generator module<a class="headerlink" href="#module-playlist_generator" title="Permalink to this headline">¶</a></h1>
 <p>Adds a CSV of tracks to a Spotify playlist</p>
-<dl class="function">
-<dt id="playlist_generator.create_playlist_and_add_tracks_from_file">
-<code class="sig-prename descclassname">playlist_generator.</code><code class="sig-name descname">create_playlist_and_add_tracks_from_file</code><span class="sig-paren">(</span><em class="sig-param">oauth_token</em>, <em class="sig-param">playlist_filename</em>, <em class="sig-param">playlist_name</em>, <em class="sig-param">description</em><span class="sig-paren">)</span><a class="headerlink" href="#playlist_generator.create_playlist_and_add_tracks_from_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates playlist in Spotify for a user and adds tracks from file into the playlist</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>oauth_token</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
-<li><p><strong>playlist_filename</strong> (<em>str</em>) – Filepath to playlist</p></li>
-<li><p><strong>playlist_name</strong> (<em>str</em>) – Name of playlist</p></li>
-<li><p><strong>description</strong> (<em>str</em>) – Playlist description</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><a class="reference internal" href="src.html#src.Exceptions.PlaylistNotInitializedError" title="src.Exceptions.PlaylistNotInitializedError"><strong>PlaylistNotInitializedError</strong></a> – Raised if Playlist cannot be created in Spotify</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>List includes Tracks unable to be added to the playlist</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list of Tracks</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="playlist_generator.process_commandline_parameters">
-<code class="sig-prename descclassname">playlist_generator.</code><code class="sig-name descname">process_commandline_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#playlist_generator.process_commandline_parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Processes commandline parameters hard-coded within the function</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>N/A</strong></p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>Contains:</dt><dd><p>OAuth Token: str
-Playlist Filename: str
-Playlist Display Name: str
-Playlist Description: str</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-</dd></dl>
-
 </div>
 
 
