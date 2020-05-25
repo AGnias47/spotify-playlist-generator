@@ -142,7 +142,6 @@ The script will print to stdout which songs were and were not added to the playl
  * Full coverage of existing classes and modules
  * User testing with more diverse array of songs
  * Allow for usage of already created playlists
- * Documentation - repo description for directories, etc., instructions on other scripts, cases, technical descriptions
  
 ### Stretch
 
