@@ -34,5 +34,8 @@ def parse_playlist(fname, delimiter=","):
     with open(fname, "r") as f:
         for line in f:
             contents = line.strip().split(delimiter)
-            el.append(Track(contents[1].strip(), contents[0].strip()))
+            try:
+                el.append(Track(contents[1].strip(), contents[0].strip()))
+            except IndexError:
+                el.append(Track(contents, contents))
     return el
