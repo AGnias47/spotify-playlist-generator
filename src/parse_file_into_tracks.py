@@ -37,5 +37,5 @@ def parse_playlist(fname, delimiter=","):
             try:
                 el.append(Track(contents[1].strip(), contents[0].strip()))
             except IndexError:
-                el.append(Track(contents, contents))
+                el.append(Track(contents[0].strip(), contents[0].strip()))
     return el
