@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-
-function App() {
-  const [currentTime, setCurrentTime] = useState(0);
-
-  useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
-  }, []);
-
-  return (
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Playlist Generator</title>
+  <meta name="description" content="Spotify Playlist Generator">
+  <meta name="author" content="A. Gnias">
+</head>
+<body>
     <div className="App">
       <header className="App-header">
         <h1>Spotify Playlist Generator</h1>
-        <p>The current time is {currentTime}.</p>
       </header>
-      <form action="/submit/" method="post">
+
+      <form method="POST">
         <label>
           Playlist Name:
           <input type="text" name="name" />
@@ -35,14 +31,13 @@ function App() {
           <option selected value="dash">-</option>
           <option value="slash">/</option>
         </select><br/>
-        <label>
-          Playlist<br/>
-          <textarea/>
+        <label>Playlist<br/>
+          <textarea id="playlist-content" name="playlist-content" rows=30 cols=100>
+Add playlist in the form Artist, Song
+          </textarea>
         </label><br/>
         <input type="submit" value="Submit" />
       </form>
     </div>
-  );
-}
-
-export default App;
+</body>
+</html>
