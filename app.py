@@ -43,12 +43,16 @@ def submit_form():
     return render_template('index.html')
     
 
-@app.route("/submit/", methods=['POST'])
+@app.route("/submit", methods=['POST'])
 def create_playlist():
-    playlist_name = None
-    playlist_tracks = None
-    user_oauth_token = None
-    playlist_description = None
+    playlist_name = request.form["name"]
+    playlist_description = request.form["desc"]
+    user_oauth_token = request.form["apikey"]
+    playlist_content = request.form["playlist-content"]
+    return render_template('submit.html')
+
+
+def create_playlist(playlist_display_name, playlist_tracks, user_oauth_token, playlist_description):
     playlist = Playlist(playlist_display_name, playlist_tracks)
     if not playlist.spotify_init(user_oauth_token, playlist_description):
         raise PlaylistNotInitializedError
