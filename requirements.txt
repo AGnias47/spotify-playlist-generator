@@ -1,2 +1,5 @@
 requests==2.23.0
-fuzzywuzzy==0.17.0
+fuzzywuzzy[speedup]==0.17.0
+Flask==1.1.2
+pytest==6.1.1
+
