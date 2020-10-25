@@ -43,7 +43,13 @@ def login():
 
 @app.route("/callback")
 def callback():
-    return "A"
+    try:
+        return request.args.keys()
+    except:
+        try:
+            return request.form.keys()
+        except:
+            return "A"
 
 
 @app.route("/")
