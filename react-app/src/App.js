@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [currentTime, setCurrentTime] = useState(0);
+
+  useEffect(() => {
+    fetch('/time').then(res => res.json()).then(data => {
+      setCurrentTime(data.time);
+    });
+  }, []);
+
   return (
     <div className="App">
-      <h1>Spotify Playlist Generator</h1>
-      <h2>File Name</h2>
-      <h2>Playlist Name</h2>
-      <h2>Playlist Description</h2>
+      <header className="App-header">
+
+        ... no changes in this part ...
+
+        <p>The current time is {currentTime}.</p>
+      </header>
     </div>
   );
 }
