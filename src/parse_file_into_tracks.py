@@ -14,7 +14,7 @@ Parses a file containing a list of delimited tracks into a list of Track objects
 from src.Track import Track
 
 
-def parse_playlist(fname, delimiter=","):
+def parse_file_playlist(fname, delimiter=","):
     """
     Generates a list of Tracks from a list delimited as [artist, song]
 
@@ -39,3 +39,7 @@ def parse_playlist(fname, delimiter=","):
             except IndexError:
                 el.append(Track(contents[0].strip(), contents[0].strip()))
     return el
+
+
+def parse_string_playlist(content, delimiter=","):
+    el = list()

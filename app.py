@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 #
 #   A. Gnias
 #   Created: ~7/18/2019
@@ -17,7 +17,7 @@ import urllib.parse
 
 from flask import Flask, render_template, Response, request, redirect, url_for
 
-from src.parse_file_into_tracks import parse_playlist
+from src.parse_file_into_tracks import parse_file_playlist
 from src.Playlist import Playlist
 from src.Exceptions import PlaylistNotInitializedError
 from spotify_token_refresh.refresh import get_access_token
@@ -72,7 +72,8 @@ def create_playlist():
     playlist_description = request.form["desc"]
     user_oauth_token = request.form["apikey"]
     playlist_content = request.form["playlist-content"]
-    return render_template("submit.html")
+    # create_playlist_help(playlist_name, playlist_content, user_oauth_token,playlist_description)
+    return render_template("submit.html", playlist_name=playlist_name, playlist_description=playlist_description, playlist_content=playlist_content)
 
 
 def generate_random_string(length):

@@ -1,13 +1,17 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Submit Page</title>
-  <meta name="description" content="Submit Page">
-  <meta name="author" content="A. Gnias">
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='main.css') }}">
+    <meta charset="UTF-8">
+    <title>Submit Page</title>
+    <meta name="description" content="Submit Page">
+    <meta name="author" content="A. Gnias">
 </head>
 <body>
     <p>Playlist Created</p>
+    <p>Name: {{playlist_name}}</p>
+    <h2>Content</h2>
+    <p><pre>{{playlist_content}}</pre></p>
     <p><a href="/">Return to home page</a></p>
 </body>
 </html>

@@ -15,7 +15,7 @@ import sys
 import argparse
 from json import JSONDecodeError
 
-from src.parse_file_into_tracks import parse_playlist
+from src.parse_file_into_tracks import parse_file_playlist
 from src.Playlist import Playlist
 from src.Exceptions import PlaylistNotInitializedError
 from spotify_token_refresh.refresh import get_access_token
@@ -43,7 +43,7 @@ if __name__ == "__main__":
     except JSONDecodeError as e:
         sys.exit(f'{keys_filename}" must be a valid json: \nError: {e}')
     try:
-        playlist_tracks = parse_playlist(playlist_fname)
+        playlist_tracks = parse_file_playlist(playlist_fname)
     except FileNotFoundError:
         sys.exit(f'Path to file "{playlist_fname}" does not exist or does not have any content; Exiting')
 
