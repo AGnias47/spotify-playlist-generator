@@ -33,13 +33,50 @@ def parse_file_playlist(fname, delimiter=","):
     el = list()
     with open(fname, "r") as f:
         for line in f:
-            contents = line.strip().split(delimiter)
-            try:
-                el.append(Track(contents[1].strip(), contents[0].strip()))
-            except IndexError:
-                el.append(Track(contents[0].strip(), contents[0].strip()))
+            el.append(_get_list_of_tracks(line, delimiter))
     return el
 
 
 def parse_string_playlist(content, delimiter=","):
+    """
+    Generates a list of Tracks from a block of text delimited as [artist, song]\n
+
+    Parameters
+    ----------
+    content: str
+        Text containing tracks separated by new lines
+    delimiter: str (default is ",")
+        string which splits artist and song name
+
+    Returns
+    -------
+    list of Tracks
+
+    """
     el = list()
+    for line in content.split("\n"):
+        el.append(_get_list_of_tracks(line, delimiter))
+    return el
+
+
+def _get_list_of_tracks(line, delimiter):
+    """
+    Helper function for generating track lists from files and string blocks. Parses an individual track string into
+    a Track object
+
+    Parameters
+    ----------
+    line: str
+        Contains artist and track separated by a delimiter
+    delimiter: str
+        Character(s) separating artist and track
+
+    Returns
+    -------
+    Track
+    """
+    contents = line.strip().split(delimiter)
+    try:
+        return Track(contents[1].strip(), contents[0].strip())
+    except IndexError:
+        return Track(contents[0].strip(), contents[0].strip())

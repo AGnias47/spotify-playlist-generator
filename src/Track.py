@@ -39,6 +39,12 @@ class Track:
         self.external_url = external_url
         self.id = track_id
 
+    def __str__(self):
+        return f"Artist: {self.artist}\nTrack Name: {self.song}"
+
+    def __eq__(self, other):
+        return self.id == other.id
+
     def spotify_query(self, oauth, lev_partial_ratio=75, market="US", limit=10):
         """
         Finds a track via a Spotify search
