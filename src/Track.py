@@ -39,7 +39,7 @@ class Track:
         self.external_url = external_url
         self.id = track_id
 
-    def spotify_query(self, oauth, lev_partial_ratio=75, market="US", limit=10):
+    def spotify_query(self, oauth, lev_partial_ratio=50, market="US", limit=10):
         """
         Finds a track via a Spotify search
 
@@ -61,7 +61,9 @@ class Track:
 
         """
         search_base = "https://api.spotify.com/v1/search"
-        search_key = "?q={0}&type=track&market={1}&limit={2}".format(self.song, market, limit)
+        # search_key = "?q=name:{0} artist:{1}&type=track&market={2}&limit={3}".format(self.song, self.artist, market, limit)
+        # search_key = "?q=name:{0} artist:{1}&type=track&market={2}&limit={3}".format(self.artist, self.song, market, limit)
+        search_key = "?q={0}%20artist:{1}&type=track&market={2}&limit={3}".format(self.song, self.artist, market, limit)
         search_items = get_json_response_dict(oauth, search_base + search_key)["tracks"]["items"]
         for item in search_items:
             artist = item["artists"][0]["name"]
@@ -74,6 +76,8 @@ class Track:
                 self.external_url = item["external_urls"]["spotify"]
                 self.id = item["id"]
                 return True
+            else:
+                print("Could not find match for artist {0}, song {1}".format(self.artist, self.song))
         return False
 
     def view_top_results(self, oauth, market="US", limit=10):
