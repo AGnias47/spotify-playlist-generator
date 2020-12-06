@@ -56,7 +56,7 @@ if __name__ == "__main__":
         sys.exit(f"Could not create playlist in Spotify; Exiting.\nError: {e}")
 
     print(f"Adding songs from {playlist_fname} to {playlist_display_name}")
-    missed_tracks_list = playlist.spotify_add_tracks(user_oauth_token)
+    added_tracks_list, missed_tracks_list = playlist.spotify_add_tracks(user_oauth_token)
     if missed_tracks_list:
         print("\nTracks unable to be found: ")
         print(*missed_tracks_list, sep="\n")

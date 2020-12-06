@@ -131,16 +131,18 @@ class Playlist:
             List includes Tracks unable to be added to the playlist
 
         """
-        missed_tracks = list()
+        added_tracks, missed_tracks = list(), list()
         for track in self.tracks:
             if not quiet:
                 print(f"Adding {track.song} by {track.artist}")
             # If track was found via search, add to playlist
             if track.spotify_query(oauth_token):
                 # If the track was not added, append to missed_tracks, else continue
-                if not self.spotify_add_track(oauth_token, track.id):
-                    missed_tracks.append(track.song + ", " + track.artist)
+                if self.spotify_add_track(oauth_token, track.id):
+                    added_tracks.append(track.song + " by " + track.artist)
+                else:
+                    missed_tracks.append(track.song + " by " + track.artist)
             # If track was not found via search, append to missed_tracks
             else:
                 missed_tracks.append(track.song + ", " + track.artist)
-        return missed_tracks
+        return added_tracks, missed_tracks

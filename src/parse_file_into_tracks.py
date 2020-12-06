@@ -55,7 +55,9 @@ def parse_string_playlist(content, delimiter=","):
     """
     el = list()
     for line in content.split("\n"):
-        el.append(_get_list_of_tracks(line, delimiter))
+        line.strip()
+        if len(line) > 0:
+            el.append(_get_list_of_tracks(line, delimiter))
     return el
 
 

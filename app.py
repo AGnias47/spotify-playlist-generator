@@ -19,7 +19,7 @@ from flask import Flask, render_template, Response, request, redirect, url_for
 
 from src.parse_file_into_tracks import parse_string_playlist
 from src.Playlist import Playlist
-from src.Exceptions import PlaylistNotInitializedError
+from src.Exceptions import PlaylistNotInitializedError, UnsuccessfulGetRequest
 from spotify_token_refresh.refresh import get_access_token
 
 
@@ -57,15 +57,6 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/", methods=["POST"])
-def submit_form():
-    playlist_name = request.form["name"]
-    playlist_description = request.form["desc"]
-    user_oauth_token = request.form["apikey"]
-    playlist_content = request.form["playlist-content"]
-    return render_template("index.html")
-
-
 @app.route("/submit", methods=["POST"])
 def create_playlist():
     playlist_name = request.form["name"]
@@ -80,14 +71,25 @@ def create_playlist():
     else:
         raise ValueError
     playlist_content = parse_string_playlist(request.form["playlist-content"])
-    create_playlist_help(playlist_name, playlist_content, user_oauth_token, playlist_description)
+    added_tracks, missed_tracks = create_playlist_through_flask_app(playlist_name, playlist_content, user_oauth_token, playlist_description)
     return render_template(
         "submit.html",
         playlist_name=playlist_name,
         playlist_description=playlist_description,
-        playlist_content=playlist_content,
-        delimiter=delimiter
+        added_tracks=added_tracks,
+        missed_tracks=missed_tracks,
+        delimiter=delimiter,
     )
+
+
+@app.errorhandler(PlaylistNotInitializedError)
+def handle_bad_request(e):
+    return "Playlist was not proprely initialized", 400
+
+
+@app.errorhandler(UnsuccessfulGetRequest)
+def handle_bad_request(e):
+    return "Invalid GET request was processed", 400
 
 
 def generate_random_string(length):
@@ -103,8 +105,8 @@ def get_random_character():
     return chr(randint(rand_type[0], rand_type[1]))
 
 
-def create_playlist_help(playlist_display_name, playlist_tracks, user_oauth_token, playlist_description):
+def create_playlist_through_flask_app(playlist_display_name, playlist_tracks, user_oauth_token, playlist_description):
     playlist = Playlist(playlist_display_name, playlist_tracks)
     if not playlist.spotify_init(user_oauth_token, playlist_description):
         raise PlaylistNotInitializedError
-    missed_tracks_list = playlist.spotify_add_tracks(user_oauth_token)
+    return playlist.spotify_add_tracks(user_oauth_token)

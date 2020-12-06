@@ -11,7 +11,18 @@
     <p>Playlist Created</p>
     <p>Name: {{playlist_name}}</p>
     <h2>Content</h2>
-    <p><pre>{{playlist_content}}</pre></p>
+    <h3>Added Tracks</h3>
+    {% for track in added_tracks %}
+    <ul>
+      <li>{{track}}</li>
+    </ul>
+    {% endfor %}
+    <h3>Missed Tracks</h3>
+    {% for track in missed_tracks %}
+    <ul>
+      <li>{{track}}</li>
+    </ul>
+    {% endfor %}
     <p><a href="/">Return to home page</a></p>
 </body>
 </html>
