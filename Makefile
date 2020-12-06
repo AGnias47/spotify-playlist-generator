@@ -15,13 +15,10 @@ BROWSER = google-chrome
 COVERAGE = coverage
 TEST_MODULE = pytest
 
-.PHONY : clean view readme license runnode refresh test covreport search run docs sview format
+.PHONY : clean view readme license run_authpage refresh test search run docs sview format
 
 clean :
 	git clean -dxf -e keys.json -e .idea/
-
-view : playlist_generator.py
-	$(VIEWER) playlist_generator.py
 
 readme : README.md
 	$(README_VIEWER) README.md
@@ -29,17 +26,14 @@ readme : README.md
 license : LICENSE
 	$(VIEWER) LICENSE
 
-runnode : 
+run_authpage :
 	node auth_page/app.js
 
 refresh :
 	$(PYTHON)  ./spotify_token_refresh/refresh.py
 
 test :
-	rm -rf auth_page/node_modules/ && $(COVERAGE) run -m $(TEST_MODULE) -s
-
-covreport :
-	$(COVERAGE) report && coverage-badge
+	rm -rf auth_page/node_modules/ && $(COVERAGE) run -m $(TEST_MODULE) -s && $(COVERAGE) report && coverage-badge
 
 search : track_searcher.py
 	$(PYTHON) track_searcher.py

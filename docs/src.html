@@ -279,6 +279,11 @@ If any tracks are missed, append them to the missed_tracks list</p>
 <span id="src-general-functions-module"></span><h2>src.general_functions module<a class="headerlink" href="#module-src.general_functions" title="Permalink to this headline">¶</a></h2>
 <p>Functions supporting use of the Spotify API</p>
 <dl class="function">
+<dt id="src.general_functions.generate_random_string">
+<code class="sig-prename descclassname">src.general_functions.</code><code class="sig-name descname">generate_random_string</code><span class="sig-paren">(</span><em class="sig-param">length</em><span class="sig-paren">)</span><a class="headerlink" href="#src.general_functions.generate_random_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="src.general_functions.get_json_response_dict">
 <code class="sig-prename descclassname">src.general_functions.</code><code class="sig-name descname">get_json_response_dict</code><span class="sig-paren">(</span><em class="sig-param">oauth</em>, <em class="sig-param">search_url</em><span class="sig-paren">)</span><a class="headerlink" href="#src.general_functions.get_json_response_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a json dict from a REST GET request</p>
@@ -297,6 +302,11 @@ If any tracks are missed, append them to the missed_tracks list</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="function">
+<dt id="src.general_functions.get_random_character">
+<code class="sig-prename descclassname">src.general_functions.</code><code class="sig-name descname">get_random_character</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.general_functions.get_random_character" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="function">
 <dt id="src.general_functions.print_pretty_json">
@@ -327,6 +337,26 @@ If any tracks are missed, append them to the missed_tracks list</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fname</strong> (<em>str</em>) – file name to parse into list</p></li>
+<li><p><strong>delimiter</strong> (<em>str (default is “,”)</em>) – string which splits artist and song name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of Tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.parse_file_into_tracks.parse_string_playlist">
+<code class="sig-prename descclassname">src.parse_file_into_tracks.</code><code class="sig-name descname">parse_string_playlist</code><span class="sig-paren">(</span><em class="sig-param">content</em>, <em class="sig-param">delimiter='</em>, <em class="sig-param">'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.parse_file_into_tracks.parse_string_playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a list of Tracks from a block of text delimited as [artist, song]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<em>str</em>) – Text containing tracks separated by new lines</p></li>
 <li><p><strong>delimiter</strong> (<em>str (default is “,”)</em>) – string which splits artist and song name</p></li>
 </ul>
 </dd>
