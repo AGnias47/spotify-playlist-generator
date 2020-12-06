@@ -139,10 +139,10 @@ The script will print to stdout which songs were and were not added to the playl
 ## Improvements
 
 ### Planned
- * User testing with more diverse array of songs
- * Allow for usage of already created playlists
- 
-### Stretch
 
-* GUI wrapper
+* User testing with more diverse array of songs
+* Allow for usage of already created playlists
+* Flask App - Integrate Flask auth page
+ 
+
 

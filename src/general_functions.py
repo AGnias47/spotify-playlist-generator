@@ -11,10 +11,23 @@
 Functions supporting use of the Spotify API
 """
 
-
+from random import randint
 import json
 import requests
 from src.Exceptions import UnsuccessfulGetRequest
+
+
+def generate_random_string(length):
+    text = str()
+    for i in range(0, length):
+        text += get_random_character()
+    return text
+
+
+def get_random_character():
+    random_ascii_chars = [[65, 90], [97, 122], [48, 57]]
+    rand_type = random_ascii_chars[randint(0, len(random_ascii_chars) - 1)]
+    return chr(randint(rand_type[0], rand_type[1]))
 
 
 def get_json_response_dict(oauth, search_url):

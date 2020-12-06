@@ -1,35 +1,29 @@
 #!/usr/bin/env python3
-#
-#   A. Gnias
-#   Created: ~7/18/2019
-#
-#   5.4.0-32-generic #36-Ubuntu
-#   Python 3.8.2
-#   Vim 8.1
 
 """
-Adds a CSV of tracks to a Spotify playlist
+Flask app for generating a Spotify playlist from text
 """
 
+import base64
 import json
-from random import randint
 import urllib.parse
 
-from flask import Flask, render_template, Response, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, session
+import requests
 
+from src.general_functions import generate_random_string
 from src.parse_file_into_tracks import parse_string_playlist
 from src.Playlist import Playlist
 from src.Exceptions import PlaylistNotInitializedError, UnsuccessfulGetRequest
-from spotify_token_refresh.refresh import get_access_token
 
 
 app = Flask(__name__)
-
+app.secret_key = generate_random_string(77)
 with open("keys.json") as K:
     keys = json.load(K)
 
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def login():
     client_id = keys["client_id"]
     state = generate_random_string(16)
@@ -37,23 +31,24 @@ def login():
     redirect_uri = "http://localhost:5000/callback"
     url = "https://accounts.spotify.com/authorize?"
     url += f"response_type=code&client_id={client_id}"
-    url += f"&scope={scope}&redirect_uri={redirect_uri}&state={state}"
+    url += f"&scope={urllib.parse.quote(scope)}&redirect_uri={urllib.parse.quote(redirect_uri)}&state={state}"
     return redirect(url)
 
 
 @app.route("/callback")
 def callback():
-    try:
-        return request.args.keys()
-    except:
-        try:
-            return request.form.keys()
-        except:
-            return "A"
-
-
-@app.route("/")
-def index():
+    client_id = keys["client_id"]
+    secret_id = keys["client_secret"]
+    authorization_code = request.args["code"]
+    encoded_auth = base64.urlsafe_b64encode(f"{client_id}:{secret_id}".encode("UTF-8")).decode("UTF-8")
+    headers = {"Content-Type": "application/x-www-form-urlencoded", "Authorization": f"Basic {encoded_auth}"}
+    params = {
+        "grant_type": "authorization_code",
+        "code": authorization_code,
+        "redirect_uri": "http://localhost:5000/callback",
+    }
+    response = requests.post("https://accounts.spotify.com/api/token/", headers=headers, params=params)
+    session["OAUTH_TOKEN"] = json.loads(response.content)["access_token"]
     return render_template("index.html")
 
 
@@ -61,7 +56,6 @@ def index():
 def create_playlist():
     playlist_name = request.form["name"]
     playlist_description = request.form["desc"]
-    user_oauth_token = request.form["apikey"]
     if request.form["delimiter"] == "dash":
         delimiter = "-"
     elif request.form["delimiter"] == "slash":
@@ -71,7 +65,9 @@ def create_playlist():
     else:
         raise ValueError
     playlist_content = parse_string_playlist(request.form["playlist-content"])
-    added_tracks, missed_tracks = create_playlist_through_flask_app(playlist_name, playlist_content, user_oauth_token, playlist_description)
+    added_tracks, missed_tracks = create_playlist_through_flask_app(
+        playlist_name, playlist_content, session.get("OAUTH_TOKEN"), playlist_description
+    )
     return render_template(
         "submit.html",
         playlist_name=playlist_name,
@@ -82,31 +78,18 @@ def create_playlist():
     )
 
 
-@app.errorhandler(PlaylistNotInitializedError)
-def handle_bad_request(e):
-    return "Playlist was not proprely initialized", 400
-
-
-@app.errorhandler(UnsuccessfulGetRequest)
-def handle_bad_request(e):
-    return "Invalid GET request was processed", 400
-
-
-def generate_random_string(length):
-    text = str()
-    for i in range(0, length):
-        text += get_random_character()
-    return text
-
-
-def get_random_character():
-    random_ascii_chars = [[65, 90], [97, 122], [48, 57]]
-    rand_type = random_ascii_chars[randint(0, len(random_ascii_chars) - 1)]
-    return chr(randint(rand_type[0], rand_type[1]))
-
-
 def create_playlist_through_flask_app(playlist_display_name, playlist_tracks, user_oauth_token, playlist_description):
     playlist = Playlist(playlist_display_name, playlist_tracks)
     if not playlist.spotify_init(user_oauth_token, playlist_description):
         raise PlaylistNotInitializedError
     return playlist.spotify_add_tracks(user_oauth_token)
+
+
+@app.errorhandler(PlaylistNotInitializedError)
+def handle_bad_request(e):
+    return "Playlist was not properly initialized", 400
+
+
+@app.errorhandler(UnsuccessfulGetRequest)
+def handle_bad_request(e):
+    return "Invalid GET request was processed. This is likely an error with the app itself or the playlist input.", 400
