@@ -84,7 +84,7 @@ The GUI method can always be used to generate a new access token, but this metho
 Once the access token has been updated in `keys.json`, the playlist generator can be executed with the following command:
 
 ```bash
-./playlist_generator.py -f <Path to csv playlist> -n <Playlist name> -d <Playlist description (Optional)>
+PYTHONPATH=. ./spotifytools/playlist_generator.py -f <Path to csv playlist> -n <Playlist name> -d <Playlist description (Optional)>
 ```
 
 The script will print to stdout which songs were and were not added to the playlist.

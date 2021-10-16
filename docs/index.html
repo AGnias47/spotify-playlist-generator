@@ -135,7 +135,7 @@ be able to authenticate with Spotify.</p></li>
 <div class="section" id="running-the-playlist-generator">
 <h3>Running the Playlist Generator<a class="headerlink" href="#running-the-playlist-generator" title="Permalink to this headline">¶</a></h3>
 <p>Once the access token has been updated in <code class="docutils literal notranslate"><span class="pre">keys.json</span></code>, the playlist generator can be executed with the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./playlist_generator.py -f &lt;Path to csv playlist&gt; -n &lt;Playlist name&gt; -d &lt;Playlist description <span class="o">(</span>Optional<span class="o">)</span>&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYTHONPATH</span><span class="o">=</span>. ./spotifytools/playlist_generator.py -f &lt;Path to csv playlist&gt; -n &lt;Playlist name&gt; -d &lt;Playlist description <span class="o">(</span>Optional<span class="o">)</span>&gt;
 </pre></div>
 </div>
 <p>The script will print to stdout which songs were and were not added to the playlist.</p>
