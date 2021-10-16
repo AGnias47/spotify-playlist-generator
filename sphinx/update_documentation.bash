@@ -6,11 +6,12 @@
 #   Linux 5.3.0-40-generic #32-Ubuntu
 #   GNU bash, version 5.0.3(1)-release
 
-# Regenerate function documentation
-sphinx-apidoc -f -o source/ ../.
+# Only activate when refactoring or adding modules
+# sphinx-apidoc -f -o source/ ../.
 
 # Run the Sphinx target for generating HTML pages
-make html
+mkdir -p build
+sphinx-build -M html source build
 
 # Rename so directories do not use underscores, which is incompatible with GitHub Pages
 cd build/html

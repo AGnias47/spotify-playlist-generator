@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spotifytools package &#8212; Spotify Playlist Generator 1.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="static/documentation_options.js"></script>
+    <script src="static/jquery.js"></script>
+    <script src="static/underscore.js"></script>
+    <script src="static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Spotify Playlist Generator 1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spotifytools package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="spotifytools-package">
+<h1>spotifytools package<a class="headerlink" href="#spotifytools-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-spotifytools.artist">
+<span id="spotifytools-artist-module"></span><h2>spotifytools.artist module<a class="headerlink" href="#module-spotifytools.artist" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="spotifytools.artist.Artist">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spotifytools.artist.</span></span><span class="sig-name descname"><span class="pre">Artist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oauth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.artist.Artist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.artist.get_album_data_by_artist">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.artist.</span></span><span class="sig-name descname"><span class="pre">get_album_data_by_artist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artist_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'US'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.artist.get_album_data_by_artist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of artist’s albums</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>artist_id</strong> (<em>str</em>) – Artist’s name / title</p></li>
+<li><p><strong>oauth</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+<li><p><strong>country</strong> (<em>str (default is “US”)</em>) – Country code from within search should be executed</p></li>
+<li><p><strong>limit</strong> (<em>int (default is 50)</em>) – Limit of albums to search; current max is 50</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of album names for artist</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.artist.get_artist_external_url">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.artist.</span></span><span class="sig-name descname"><span class="pre">get_artist_external_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artist_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.artist.get_artist_external_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the external_url for a specified artist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>artist_name</strong> (<em>str</em>) – Artist’s name / title</p></li>
+<li><p><strong>oauth</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>External Spotify URL for artist</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.artist.get_artist_id">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.artist.</span></span><span class="sig-name descname"><span class="pre">get_artist_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artist_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.artist.get_artist_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the id for a specified artist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>artist_name</strong> (<em>str</em>) – Artist’s name / title</p></li>
+<li><p><strong>oauth</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Spotify ID for artist</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.artist.query_artist">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.artist.</span></span><span class="sig-name descname"><span class="pre">query_artist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">artist_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.artist.query_artist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets Spotify data of an artist in json format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>artist_name</strong> (<em>str</em>) – Artist’s name / title</p></li>
+<li><p><strong>oauth</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Contains artist data returned from Spotify API</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spotifytools.exceptions">
+<span id="spotifytools-exceptions-module"></span><h2>spotifytools.exceptions module<a class="headerlink" href="#module-spotifytools.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>Defines specific exceptions to throw</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="spotifytools.exceptions.PlaylistNotInitializedError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">spotifytools.exceptions.</span></span><span class="sig-name descname"><span class="pre">PlaylistNotInitializedError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.exceptions.PlaylistNotInitializedError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception to raise if a playlist cannot be created in Spotify</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="spotifytools.exceptions.UnsuccessfulGetRequest">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">spotifytools.exceptions.</span></span><span class="sig-name descname"><span class="pre">UnsuccessfulGetRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.exceptions.UnsuccessfulGetRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception to raise if a GET request to the API fails</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spotifytools.general">
+<span id="spotifytools-general-module"></span><h2>spotifytools.general module<a class="headerlink" href="#module-spotifytools.general" title="Permalink to this headline">¶</a></h2>
+<p>Functions supporting use of the Spotify API</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.general.generate_random_string">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.general.</span></span><span class="sig-name descname"><span class="pre">generate_random_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.general.generate_random_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.general.get_json_response_dict">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.general.</span></span><span class="sig-name descname"><span class="pre">get_json_response_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.general.get_json_response_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a json dict from a REST GET request</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oauth</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+<li><p><strong>search_url</strong> (<em>str</em>) – URL to query</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Data returned from search_url GET request</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.general.get_random_character">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.general.</span></span><span class="sig-name descname"><span class="pre">get_random_character</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.general.get_random_character" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.general.print_pretty_json">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.general.</span></span><span class="sig-name descname"><span class="pre">print_pretty_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_data_loads</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.general.print_pretty_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a formatted json to stdout</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>json_data_loads</strong> (<em>dict</em>) – json formatted as a dict by json library</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Prints to stdout</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spotifytools.parser">
+<span id="spotifytools-parser-module"></span><h2>spotifytools.parser module<a class="headerlink" href="#module-spotifytools.parser" title="Permalink to this headline">¶</a></h2>
+<p>Parses a file containing a list of delimited tracks into a list of Track objects</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.parser.parse_file_playlist">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.parser.</span></span><span class="sig-name descname"><span class="pre">parse_file_playlist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.parser.parse_file_playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a list of Tracks from a list delimited as [artist, song]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em>) – file name to parse into list</p></li>
+<li><p><strong>delimiter</strong> (<em>str (default is “,”)</em>) – string which splits artist and song name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of Tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.parser.parse_string_playlist">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.parser.</span></span><span class="sig-name descname"><span class="pre">parse_string_playlist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.parser.parse_string_playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a list of Tracks from a block of text delimited as [artist, song]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> (<em>str</em>) – Text containing tracks separated by new lines</p></li>
+<li><p><strong>delimiter</strong> (<em>str (default is “,”)</em>) – string which splits artist and song name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of Tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spotifytools.playlist">
+<span id="spotifytools-playlist-module"></span><h2>spotifytools.playlist module<a class="headerlink" href="#module-spotifytools.playlist" title="Permalink to this headline">¶</a></h2>
+<p>Class for interacting with Playlists through the Spotify API</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="spotifytools.playlist.Playlist">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spotifytools.playlist.</span></span><span class="sig-name descname"><span class="pre">Playlist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Unnamed</span> <span class="pre">Playlist'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">playlist_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.playlist.Playlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spotifytools.playlist.Playlist.spotify_add_track">
+<span class="sig-name descname"><span class="pre">spotify_add_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.playlist.Playlist.spotify_add_track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a track to a playlist on Spotify via the Track ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oauth</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+<li><p><strong>track_id</strong> (<em>str</em>) – ID corresponding to track to add to Playlist</p></li>
+<li><p><strong>quiet</strong> (<em>bool (default is False)</em>) – If true, suppress output; no functional difference</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True upon success, else False</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spotifytools.playlist.Playlist.spotify_add_tracks">
+<span class="sig-name descname"><span class="pre">spotify_add_tracks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oauth_token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.playlist.Playlist.spotify_add_tracks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds tracks in self.tracks to the playlist in Spotify.
+If any tracks are missed, append them to the missed_tracks list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oauth_token</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+<li><p><strong>quiet</strong> (<em>bool (default is False)</em>) – If true, suppress output; no functional difference</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List includes Tracks unable to be added to the playlist</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list(Tracks)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spotifytools.playlist.Playlist.spotify_init">
+<span class="sig-name descname"><span class="pre">spotify_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Playlist</span> <span class="pre">generated</span> <span class="pre">from</span> <span class="pre">Spotify</span> <span class="pre">API'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.playlist.Playlist.spotify_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a new playlist for the logged-in user on Spotify and updates the Playlist object attributes accordingly</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oauth</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Playlist description</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spotifytools.exceptions.PlaylistNotInitializedError" title="spotifytools.exceptions.PlaylistNotInitializedError"><strong>PlaylistNotInitializedError</strong></a> – Raised if Playlist cannot be created in Spotify</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if playlist was created, else False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spotifytools.playlist_generator">
+<span id="spotifytools-playlist-generator-module"></span><h2>spotifytools.playlist_generator module<a class="headerlink" href="#module-spotifytools.playlist_generator" title="Permalink to this headline">¶</a></h2>
+<p>Adds a CSV of tracks to a Spotify playlist</p>
+</div>
+<div class="section" id="module-spotifytools.token_refresh">
+<span id="spotifytools-token-refresh-module"></span><h2>spotifytools.token_refresh module<a class="headerlink" href="#module-spotifytools.token_refresh" title="Permalink to this headline">¶</a></h2>
+<p>Functions interacting with keys JSON file. Keys file format should be:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;Your Client ID&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;Your Client Secret ID&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;Access Token&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;Refresh Token&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.token_refresh.get_access_token">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.token_refresh.</span></span><span class="sig-name descname"><span class="pre">get_access_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'keys.json'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.token_refresh.get_access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the access_token value from the keys JSON file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>keys_filename</strong> (<em>str (default is “keys.json”)</em>) – Filename of keys JSON</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Value of access_token from keys JSON</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spotifytools.token_refresh.refresh_spotify_access_token">
+<span class="sig-prename descclassname"><span class="pre">spotifytools.token_refresh.</span></span><span class="sig-name descname"><span class="pre">refresh_spotify_access_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keys_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'keys.json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.token_refresh.refresh_spotify_access_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Refreshes the access token in a json file with the contents:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;client id&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;client secret&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;access token&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="s2">&quot;refresh token&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keys_filename</strong> (<em>str (default is “keys.json”)</em>) – Path to json file</p></li>
+<li><p><strong>output_file</strong> (<em>str (default is None)</em>) – Path to save updated json file; if None, update the file that was loaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Value for access_token is modified for the file in place or in output_file</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spotifytools.track">
+<span id="spotifytools-track-module"></span><h2>spotifytools.track module<a class="headerlink" href="#module-spotifytools.track" title="Permalink to this headline">¶</a></h2>
+<p>Class for interacting with Tracks through the Spotify API</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="spotifytools.track.Track">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spotifytools.track.</span></span><span class="sig-name descname"><span class="pre">Track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">song</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">artist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">href</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">external_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.track.Track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spotifytools.track.Track.spotify_query">
+<span class="sig-name descname"><span class="pre">spotify_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lev_partial_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'US'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.track.Track.spotify_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds a track via a Spotify search</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oauth</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+<li><p><strong>lev_partial_ratio</strong> (<em>int [0-100]</em>) – Levenshtein distance ratio</p></li>
+<li><p><strong>market</strong> (<em>str (default is “US”)</em>) – Country market</p></li>
+<li><p><strong>limit</strong> (<em>int (default is 10)</em>) – Limit of tracks to query; max is 10 as of v1 of API</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if track is found, else False; mutates Track object with Spotify data if found</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spotifytools.track.Track.view_top_results">
+<span class="sig-name descname"><span class="pre">view_top_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">oauth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">market</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'US'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spotifytools.track.Track.view_top_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a track’s top search results from a Spotify query</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>oauth</strong> (<em>str</em>) – OAuth Token retrieved from Spotify</p></li>
+<li><p><strong>market</strong> (<em>str (default is “US”)</em>) – Country market</p></li>
+<li><p><strong>limit</strong> (<em>int (default is 10)</em>) – Limit of tracks to query; max is 10 as of v1 of API</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Prints results to stdout</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spotifytools.track_searcher">
+<span id="spotifytools-track-searcher-module"></span><h2>spotifytools.track_searcher module<a class="headerlink" href="#module-spotifytools.track_searcher" title="Permalink to this headline">¶</a></h2>
+<p>Script which returns the top search results for each track in a playlist.csv style file</p>
+</div>
+<div class="section" id="module-spotifytools">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-spotifytools" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">spotifytools package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-spotifytools.artist">spotifytools.artist module</a></li>
+<li><a class="reference internal" href="#module-spotifytools.exceptions">spotifytools.exceptions module</a></li>
+<li><a class="reference internal" href="#module-spotifytools.general">spotifytools.general module</a></li>
+<li><a class="reference internal" href="#module-spotifytools.parser">spotifytools.parser module</a></li>
+<li><a class="reference internal" href="#module-spotifytools.playlist">spotifytools.playlist module</a></li>
+<li><a class="reference internal" href="#module-spotifytools.playlist_generator">spotifytools.playlist_generator module</a></li>
+<li><a class="reference internal" href="#module-spotifytools.token_refresh">spotifytools.token_refresh module</a></li>
+<li><a class="reference internal" href="#module-spotifytools.track">spotifytools.track module</a></li>
+<li><a class="reference internal" href="#module-spotifytools.track_searcher">spotifytools.track_searcher module</a></li>
+<li><a class="reference internal" href="#module-spotifytools">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="sources/spotifytools.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Spotify Playlist Generator 1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">spotifytools package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Andy Gnias.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
+  </body>
+</html>
