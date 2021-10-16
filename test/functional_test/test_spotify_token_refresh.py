@@ -15,8 +15,8 @@ import unittest
 import os
 import hashlib
 import json
-from spotify_token_refresh.refresh import refresh_spotify_access_token, get_access_token
-from src.general_functions import get_json_response_dict
+from spotifytools.token_refresh import refresh_spotify_access_token, get_access_token
+from spotifytools.general import get_json_response_dict
 
 
 keys = "keys.json"

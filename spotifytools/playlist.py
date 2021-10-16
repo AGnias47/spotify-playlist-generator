@@ -13,7 +13,7 @@ Class for interacting with Playlists through the Spotify API
 
 import requests
 import json
-from src.Exceptions import PlaylistNotInitializedError
+from spotifytools.exceptions import PlaylistNotInitializedError
 
 
 class Playlist:

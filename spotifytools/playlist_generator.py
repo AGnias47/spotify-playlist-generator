@@ -15,10 +15,10 @@ import sys
 import argparse
 from json import JSONDecodeError
 
-from src.parse_file_into_tracks import parse_file_playlist
-from src.Playlist import Playlist
-from src.Exceptions import PlaylistNotInitializedError
-from spotify_token_refresh.refresh import get_access_token
+from spotifytools.parser import parse_file_playlist
+from spotifytools.playlist import Playlist
+from spotifytools.exceptions import PlaylistNotInitializedError
+from spotifytools.token_refresh import get_access_token
 
 
 if __name__ == "__main__":

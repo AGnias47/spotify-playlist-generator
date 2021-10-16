@@ -14,7 +14,7 @@ Functions supporting use of the Spotify API
 from random import randint
 import json
 import requests
-from src.Exceptions import UnsuccessfulGetRequest
+from spotifytools.exceptions import UnsuccessfulGetRequest
 
 
 def generate_random_string(length):

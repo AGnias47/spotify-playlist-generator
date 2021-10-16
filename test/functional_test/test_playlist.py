@@ -8,8 +8,8 @@
 
 import unittest
 
-from src.Playlist import Playlist
-from spotify_token_refresh.refresh import get_access_token
+from spotifytools.playlist import Playlist
+from spotifytools.token_refresh import get_access_token
 
 
 class TestPlaylist(unittest.TestCase):

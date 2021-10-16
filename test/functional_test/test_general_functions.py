@@ -17,9 +17,9 @@ import unittest
 
 from fuzzywuzzy import fuzz as fuzzy
 
-from src.general_functions import *
-from src.Artist import Artist, query_artist
-from spotify_token_refresh.refresh import get_access_token
+from spotifytools.general import get_json_response_dict, print_pretty_json
+from spotifytools.artist import Artist, query_artist
+from spotifytools.token_refresh import get_access_token
 
 
 class Seal:
@@ -58,7 +58,7 @@ class GeneralFunctionTests(unittest.TestCase):
             expected = S.read().strip()
         with open(self.prettyprint_json_filename, "r") as T:
             actual = T.read().strip()
-        assert fuzzy.ratio(expected, actual) > 95
+        assert fuzzy.ratio(expected, actual) > 90
         # Need this in like a finally function
         os.remove(self.prettyprint_json_filename)
 

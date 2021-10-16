@@ -11,7 +11,7 @@
 Class for interacting with Tracks through the Spotify API
 """
 
-from src.general_functions import get_json_response_dict
+from spotifytools.general import get_json_response_dict
 from fuzzywuzzy import fuzz as fuzzy
 
 

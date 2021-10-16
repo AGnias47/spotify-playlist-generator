@@ -11,7 +11,7 @@
 Parses a file containing a list of delimited tracks into a list of Track objects
 """
 
-from src.Track import Track
+from spotifytools.track import Track
 
 
 def parse_file_playlist(fname, delimiter=","):

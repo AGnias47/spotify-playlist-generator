@@ -8,7 +8,7 @@
 
 import unittest
 
-from src.Track import Track
+from spotifytools.track import Track
 
 
 class TestTrack(unittest.TestCase):

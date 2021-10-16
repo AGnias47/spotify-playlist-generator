@@ -1,8 +1,5 @@
 [run]
-source = src/
-         spotify_token_refresh/
-         
-         
+source = spotifytools/
 
 [report]
 exclude_lines =

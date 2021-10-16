@@ -8,8 +8,8 @@
 
 import unittest
 
-from src.Playlist import Playlist
-from src.Track import Track
+from spotifytools.playlist import Playlist
+from spotifytools.track import Track
 
 
 class TestPlaylist(unittest.TestCase):

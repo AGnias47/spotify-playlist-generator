@@ -12,8 +12,8 @@ Script which returns the top search results for each track in a playlist.csv sty
 """
 
 import argparse
-from src.parse_file_into_tracks import parse_file_playlist
-from spotify_token_refresh.refresh import get_access_token
+from spotifytools.parser import parse_file_playlist
+from spotifytools.token_refresh import get_access_token
 
 
 if __name__ == "__main__":

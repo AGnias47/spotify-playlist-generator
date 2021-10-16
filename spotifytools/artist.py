@@ -7,7 +7,7 @@
 #   Python 3.8.2
 #   Vim 8.1
 
-from src.general_functions import get_json_response_dict
+from spotifytools.general import get_json_response_dict
 
 """
 Class and functions utilizing the Spotify API for interacting with artist data. Performs 
