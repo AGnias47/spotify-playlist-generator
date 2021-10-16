@@ -11,10 +11,10 @@ import urllib.parse
 from flask import Flask, render_template, request, redirect, session
 import requests
 
-from src.general_functions import generate_random_string
-from src.parse_file_into_tracks import parse_string_playlist
-from src.Playlist import Playlist
-from src.Exceptions import PlaylistNotInitializedError, UnsuccessfulGetRequest
+from spotifytools.general import generate_random_string
+from spotifytools.parser import parse_string_playlist
+from spotifytools.playlist import Playlist
+from spotifytools.exceptions import PlaylistNotInitializedError, UnsuccessfulGetRequest
 
 
 app = Flask(__name__)

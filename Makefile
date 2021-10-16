@@ -1,12 +1,3 @@
-#
-#   A. Gnias
-#
-#   Makefile - Used for SpotifyAPI Repository
-#
-#   Linux 4.18.0-18-generic #19-Ubuntu
-#   Make 4.2.1
-#   Vim 8.0
-
 PYTHON = python3
 VIEWER = less
 README_VIEWER = mdless
@@ -18,7 +9,7 @@ TEST_MODULE = pytest
 .PHONY : clean view readme license run_authpage refresh test search run docs sview format
 
 clean :
-	git clean -dxf -e keys.json -e .idea/
+	git clean -dxf -e keys.json -e .idea/ -e .vscode/
 
 readme : README.md
 	$(README_VIEWER) README.md
