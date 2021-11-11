@@ -19,7 +19,7 @@ from spotifytools.exceptions import UnsuccessfulGetRequest
 
 def generate_random_string(length):
     text = str()
-    for i in range(0, length):
+    for _ in range(length):
         text += get_random_character()
     return text
 
@@ -47,11 +47,8 @@ def get_json_response_dict(oauth, search_url):
         Data returned from search_url GET request
 
     """
-    headers = {"Content-Type": "application/json", "Authorization": "Bearer {0}".format(oauth)}
-    try:
-        response = requests.get(search_url, headers=headers)
-    except requests.exceptions.RequestException as e:
-        raise Exception(e)
+    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {oauth}"}
+    response = requests.get(search_url, headers=headers)
     if response.status_code != 200:
         raise UnsuccessfulGetRequest(f"Status Code: {response.status_code}")
     return json.loads(response.content.decode("utf-8"))

@@ -14,7 +14,6 @@ Class and functions utilizing the Spotify API for interacting with artist data. 
 more complex functionality extending beyond and unrelated to Track class.
 """
 
-
 class Artist:
     def __init__(self, name, oauth=None):
         """
@@ -54,7 +53,7 @@ def query_artist(artist_name, oauth):
 
     """
     search_base = "https://api.spotify.com/v1/search"
-    search_key = "?q={0}&type=artist&market=US&limit=1".format(artist_name)
+    search_key = f"?q={artist_name}&type=artist&market=US&limit=1"
     return get_json_response_dict(oauth, search_base + search_key)["artists"]["items"][0]
 
 

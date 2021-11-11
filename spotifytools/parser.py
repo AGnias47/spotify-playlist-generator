@@ -31,7 +31,7 @@ def parse_file_playlist(fname, delimiter=","):
 
     """
     el = list()
-    with open(fname, "r") as f:
+    with open(fname, "r", encoding="UTF-8") as f:
         for line in f:
             el.append(_get_list_of_tracks(line, delimiter))
     return el

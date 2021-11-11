@@ -11,10 +11,9 @@
 Class for interacting with Playlists through the Spotify API
 """
 
-import requests
 import json
+import requests
 from spotifytools.exceptions import PlaylistNotInitializedError
-
 
 class Playlist:
     def __init__(self, name="Unnamed Playlist", tracks=None, playlist_id=None):
@@ -65,7 +64,7 @@ class Playlist:
         headers = {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Authorization": "Bearer {0}".format(oauth),
+            "Authorization": f"Bearer {oauth}"
         }
         response = requests.post(playlist_url, headers=headers, data=data)
         if response.status_code != 201:
@@ -100,10 +99,10 @@ class Playlist:
         headers = {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Authorization": "Bearer {0}".format(oauth),
+            "Authorization": f"Bearer {oauth}",
         }
-        playlist_url = "https://api.spotify.com/v1/playlists/{0}/".format(self.id)
-        track_ref = "tracks?uris=spotify%3Atrack%3A{0}".format(track_id)
+        playlist_url = f"https://api.spotify.com/v1/playlists/{self.id}/"
+        track_ref = f"tracks?uris=spotify%3Atrack%3A{track_id}"
         response = requests.post(playlist_url + track_ref, headers=headers)
         if response.status_code != 201:
             if not quiet:

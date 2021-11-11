@@ -20,11 +20,10 @@ Functions interacting with keys JSON file. Keys file format should be:
     }
 """
 
-import requests
-import json
-from base64 import b64encode
 import argparse
-
+from base64 import b64encode
+import json
+import requests
 
 def refresh_spotify_access_token(keys_filename="keys.json", output_file=None):
     """

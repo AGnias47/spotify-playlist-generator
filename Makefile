@@ -6,7 +6,7 @@ BROWSER = google-chrome
 COVERAGE = coverage
 TEST_MODULE = pytest
 
-.PHONY : clean view readme license run_authpage refresh test search run docs sview format
+.PHONY : clean view readme static license run_authpage refresh test search run docs sview format
 
 clean :
 	git clean -dxf -e keys.json -e .idea/ -e .vscode/
@@ -22,6 +22,9 @@ run_authpage :
 
 refresh :
 	$(PYTHON)  ./spotify_token_refresh/refresh.py
+
+static:
+	pylint --disable=C0103,C0301,R1711,R1705,R0903 spotifytools/ || true
 
 test :
 	rm -rf auth_page/node_modules/ && $(COVERAGE) run -m $(TEST_MODULE) -s && $(COVERAGE) report && coverage-badge

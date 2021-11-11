@@ -86,10 +86,10 @@ def create_playlist_through_flask_app(playlist_display_name, playlist_tracks, us
 
 
 @app.errorhandler(PlaylistNotInitializedError)
-def handle_bad_request(e):
+def handle_bad_playlist_request(e):
     return "Playlist was not properly initialized", 400
 
 
 @app.errorhandler(UnsuccessfulGetRequest)
-def handle_bad_request(e):
+def handle_bad_get_request(e):
     return "Invalid GET request was processed. This is likely an error with the app itself or the playlist input.", 400
