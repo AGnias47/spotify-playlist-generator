@@ -1,40 +1,41 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='main.css') }}">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="main.css">
     <meta charset="UTF-8">
     <title>Spotify Playlist Generator</title>
     <meta name="description" content="Spotify Playlist Generator">
     <meta name="author" content="A. Gnias">
 </head>
+
 <body>
     <div className="App">
-      <header className="App-header">
-        <h1>Spotify Playlist Generator</h1>
-      </header>
-
-      <form action="submit" method="POST">
-        <label>
-          Playlist Name:
-          <input type="text" name="name" />
-        </label><br/>
-        <label>
-          Playlist Description:
-          <input type="text" name="desc" />
-        </label><br/>
-        <label>Artist Song Separator   </label>
-        <select id="delimiter" name="delimiter">
+        <center>
+            <header className="App-header">
+                <h1>Spotify Playlist Generator</h1>
+            </header>
+            <form action="submit" method="POST">
+                <h2>Playlist Name</h2>
+                <input type="text" name="name" /><br />
+                <h2>Playlist Description</h2>
+                <input type="text" name="desc" /><br />
+                <h2>Artist-Song Separator</h2>
+                <select id="delimiter" name="delimiter">
           <option value="comma">comma (,)</option>
           <option selected value="dash">dash (-)</option>
           <option value="slash">slash (/)</option>
-        </select><br/>
-        <label>Playlist<br/>
-          <textarea id="playlist-content" name="playlist-content" rows=30 cols=100>
-Add playlist in the form Artist, Song
+        </select><br />
+                <h2>Playlist</h2>
+                <textarea id="playlist-content" name="playlist-content" rows=30 cols=100>
+                  Artist, Song
           </textarea>
-        </label><br/>
-        <input type="submit" value="Submit" />
-      </form>
+                </label><br />
+                <input type="submit" value="Submit" />
+            </form>
+        </center>
     </div>
 </body>
+
 </html>
