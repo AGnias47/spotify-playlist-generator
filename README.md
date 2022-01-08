@@ -84,7 +84,7 @@ The GUI method can always be used to generate a new access token, but this metho
 Once the access token has been updated in `keys.json`, the playlist generator can be executed with the following command:
 
 ```bash
-PYTHONPATH=. ./spotifytools/playlist_generator.py -f <Path to csv playlist> -n <Playlist name> -d <Playlist description (Optional)>
+./playlist_generator.py -f <Path to csv playlist> -n <Playlist name> -d <Playlist description (Optional)>
 ```
 
 The script will print to stdout which songs were and were not added to the playlist.
@@ -97,12 +97,12 @@ Use of the Flask app requires users to obtain their own `client_id` and `client_
  [Spotify Developer's Dashboard](https://developer.spotify.com/dashboard/applications). Once these have 
 been obtained, create a `keys.json` file in the root directory with the following contents:
 
-    ```json
-    {
-        "client_id": "<Your Client ID>",
-        "client_secret": "<Your Client Secret ID>"
-    }
-    ```
+```json
+{
+    "client_id": "<Your Client ID>",
+    "client_secret": "<Your Client Secret ID>"
+}
+```
 
 ### Running the Flask App
 
