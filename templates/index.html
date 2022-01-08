@@ -1,13 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="main.css">
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="main.css" />
+    <meta charset="UTF-8" />
     <title>Spotify Playlist Generator</title>
-    <meta name="description" content="Spotify Playlist Generator">
-    <meta name="author" content="A. Gnias">
+    <meta name="description" content="Spotify Playlist Generator" />
+    <meta name="author" content="A. Gnias" />
 </head>
 
 <body>
@@ -23,14 +23,15 @@
                 <input type="text" name="desc" /><br />
                 <h2>Artist-Song Separator</h2>
                 <select id="delimiter" name="delimiter">
-          <option value="comma">comma (,)</option>
-          <option selected value="dash">dash (-)</option>
-          <option value="slash">slash (/)</option>
-        </select><br />
+                        <option value="comma">comma (,)</option>
+                        <option selected value="dash">dash (-)</option>
+                        <option value="slash">slash (/)</option>
+                    </select>
+                <br />
                 <h2>Playlist</h2>
-                <textarea id="playlist-content" name="playlist-content" rows=30 cols=65>Artist, Song</textarea>
-                </label><br />
-                <input type="submit" value="Submit" />
+                <textarea id="playlist-content" name="playlist-content" rows="30" cols="65" placeholder="Artist - Song"></textarea>
+                <br />
+                <input type="submit" value="Submit" /><br/>
             </form>
         </center>
     </div>

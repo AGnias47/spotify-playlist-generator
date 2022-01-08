@@ -1,28 +1,32 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='main.css') }}">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="main.css" />
     <meta charset="UTF-8">
     <title>Submit Page</title>
     <meta name="description" content="Submit Page">
     <meta name="author" content="A. Gnias">
 </head>
+
 <body>
-    <p>Playlist Created</p>
+    <h2>Playlist Created</h2>
     <p>Name: {{playlist_name}}</p>
     <h2>Content</h2>
     <h3>Added Tracks</h3>
     {% for track in added_tracks %}
     <ul>
-      <li>{{track}}</li>
+        <li>{{track}}</li>
     </ul>
     {% endfor %}
     <h3>Missed Tracks</h3>
     {% for track in missed_tracks %}
     <ul>
-      <li>{{track}}</li>
+        <li>{{track}}</li>
     </ul>
     {% endfor %}
     <p><a href="/">Return to home page</a></p>
 </body>
+
 </html>
