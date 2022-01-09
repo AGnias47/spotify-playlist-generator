@@ -118,7 +118,6 @@ artists and song titles, but a comma or slash can also be used. Click submit, an
 
 ## Planned Improvements
 
-* Flask App UI Upgrade
 * User testing with more diverse array of songs
 * Allow for usage of already created playlists
 

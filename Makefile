@@ -21,10 +21,10 @@ run_authpage :
 	node auth_page/app.js
 
 refresh :
-	$(PYTHON)  ./spotify_token_refresh/refresh.py
+	$(PYTHON)  ./spotifytools/token_refresh.py
 
 static:
-	pylint --disable=C0103,C0301,R1711,R1705,R0903 spotifytools/ || true
+	pylint --disable=C0103,C0301,R1711,R1705,R0903,R1734,W1514 spotifytools/ || true
 
 test :
 	rm -rf auth_page/node_modules/ && $(COVERAGE) run -m $(TEST_MODULE) -s && $(COVERAGE) report && coverage-badge

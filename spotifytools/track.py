@@ -67,7 +67,7 @@ class Track:
 
         """
         search_base = "https://api.spotify.com/v1/search"
-        search_key = "?q={0}&type=track&market={1}&limit={2}".format(self.song, market, limit)
+        search_key = f"?q={self.song}&type=track&market={market}&limit={limit}"
         search_items = get_json_response_dict(oauth, search_base + search_key)["tracks"]["items"]
         for item in search_items:
             artist = item["artists"][0]["name"]
@@ -102,14 +102,14 @@ class Track:
 
         """
         search_base = "https://api.spotify.com/v1/search"
-        search_key = "?q={0}&type=track&market={1}&limit={2}".format(self.song, market, limit)
+        search_key = f"?q={self.song}&type=track&market={market}&limit={limit}"
         search_items = get_json_response_dict(oauth, search_base + search_key)["tracks"]["items"]
         result = 1
         for item in search_items:
             artist = item["artists"][0]["name"]
             song = item["name"]
             album = item["album"]["name"]
-            print("{0}. {1}".format(result, song))
+            print(f"{result}. {song}")
             print("   " + artist)
             print("   " + album + "\n")
             result += 1
