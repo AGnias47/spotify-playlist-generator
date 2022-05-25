@@ -135,7 +135,7 @@ be able to authenticate with Spotify.</p></li>
 <div class="section" id="running-the-playlist-generator">
 <h3>Running the Playlist Generator<a class="headerlink" href="#running-the-playlist-generator" title="Permalink to this headline">¶</a></h3>
 <p>Once the access token has been updated in <code class="docutils literal notranslate"><span class="pre">keys.json</span></code>, the playlist generator can be executed with the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYTHONPATH</span><span class="o">=</span>. ./spotifytools/playlist_generator.py -f &lt;Path to csv playlist&gt; -n &lt;Playlist name&gt; -d &lt;Playlist description <span class="o">(</span>Optional<span class="o">)</span>&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./playlist_generator.py -f &lt;Path to csv playlist&gt; -n &lt;Playlist name&gt; -d &lt;Playlist description <span class="o">(</span>Optional<span class="o">)</span>&gt;
 </pre></div>
 </div>
 <p>The script will print to stdout which songs were and were not added to the playlist.</p>
@@ -149,12 +149,10 @@ be able to authenticate with Spotify.</p></li>
 </dd>
 </dl>
 <p>been obtained, create a <code class="docutils literal notranslate"><span class="pre">keys.json</span></code> file in the root directory with the following contents:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```json
-{
-    &quot;client_id&quot;: &quot;&lt;Your Client ID&gt;&quot;,
-    &quot;client_secret&quot;: &quot;&lt;Your Client Secret ID&gt;&quot;
-}
-```
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;client_id&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;Your Client ID&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;client_secret&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;Your Client Secret ID&gt;&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="section" id="running-the-flask-app">
@@ -171,7 +169,6 @@ artists and song titles, but a comma or slash can also be used. Click submit, an
 <div class="section" id="planned-improvements">
 <h2>Planned Improvements<a class="headerlink" href="#planned-improvements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Flask App UI Upgrade</p></li>
 <li><p>User testing with more diverse array of songs</p></li>
 <li><p>Allow for usage of already created playlists</p></li>
 </ul>
@@ -194,8 +191,9 @@ artists and song titles, but a comma or slash can also be used. Click submit, an
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Welcome to Spotify Playlist Generator’s documentation!</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 <li><a class="reference internal" href="#spotify-playlist-generator">Spotify Playlist Generator</a><ul>
@@ -218,6 +216,7 @@ artists and song titles, but a comma or slash can also be used. Click submit, an
 </li>
 </ul>
 
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -254,7 +253,7 @@ artists and song titles, but a comma or slash can also be used. Click submit, an
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, Andy Gnias.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
     </div>
   </body>
 </html>
