@@ -15,6 +15,7 @@ import json
 import requests
 from spotifytools.exceptions import PlaylistNotInitializedError
 
+
 class Playlist:
     def __init__(self, name="Unnamed Playlist", tracks=None, playlist_id=None):
         """
@@ -55,27 +56,18 @@ class Playlist:
 
         Returns
         -------
-        bool
-            True if playlist was created, else False
-
+        None
         """
         playlist_url = "https://api.spotify.com/v1/me/playlists"
         data = '{"name":"' + self.name + '","description":"' + description + '","public":false}'
-        headers = {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {oauth}"
-        }
+        headers = {"Accept": "application/json", "Content-Type": "application/json", "Authorization": f"Bearer {oauth}"}
         response = requests.post(playlist_url, headers=headers, data=data)
         if response.status_code != 201:
             raise PlaylistNotInitializedError(response.reason)
         data = json.loads(response.content.decode("utf-8"))
         self.id = data["id"]
         self.url = data["href"]
-        # If ID and URL are not properly returned by playlist creation call, return false
-        if self.id is None or self.url is None:
-            return False
-        return True
+        return None
 
     def spotify_add_track(self, oauth, track_id, quiet=False):
         """

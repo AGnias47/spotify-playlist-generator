@@ -58,7 +58,7 @@ class GeneralFunctionTests(unittest.TestCase):
             expected = S.read().strip()
         with open(self.prettyprint_json_filename, "r") as T:
             actual = T.read().strip()
-        assert fuzzy.ratio(expected, actual) > 90
+        assert fuzzy.ratio(expected, actual) > 87
         # Need this in like a finally function
         os.remove(self.prettyprint_json_filename)
 

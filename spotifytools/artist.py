@@ -14,6 +14,7 @@ Class and functions utilizing the Spotify API for interacting with artist data. 
 more complex functionality extending beyond and unrelated to Track class.
 """
 
+
 class Artist:
     def __init__(self, name, oauth=None):
         """

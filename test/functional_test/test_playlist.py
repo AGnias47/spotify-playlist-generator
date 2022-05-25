@@ -19,6 +19,6 @@ class TestPlaylist(unittest.TestCase):
         self.track_id = "1KueOLeUZpaNRK2InckxVT"
 
     def test_add_track(self):
-        self.assertTrue(self.playlist.spotify_init(self.access_token))
+        self.playlist.spotify_init(self.access_token)
         self.assertTrue(self.playlist.spotify_add_track(self.access_token, self.track_id))
         print("Remove __TEST__ Playlist from Spotify; no API call to do this manually as of 7/27/19\n")

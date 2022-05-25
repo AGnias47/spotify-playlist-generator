@@ -25,6 +25,7 @@ from base64 import b64encode
 import json
 import requests
 
+
 def refresh_spotify_access_token(keys_filename="keys.json", output_file=None):
     """
     Refreshes the access token in a json file with the contents:
