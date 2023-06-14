@@ -34,7 +34,7 @@ If using a spreadsheet tool, such as Excel, add the artist to Column A and the s
  
 The playlist uses fuzzy matching to determine which songs should be added. This makes the playlist generator forgiving
  of misspellings, missing commas, and incomplete titles of songs, among other things, but it does increase the likelihood
- of an unwanted song being added to your playlist. So it goes. The playlist generator currently uses a [Levenshtein
+ of an unwanted song being added to your playlist. The playlist generator currently uses a [Levenshtein
  distance](https://en.wikipedia.org/wiki/Levenshtein_distance) ratio of 0.75. This can be altered if too many / not
  enough songs from a playlist are being added.
 
